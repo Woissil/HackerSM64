@@ -33,3 +33,4 @@
 
 #include "new_title_screen/model.inc.c"
 #include "crystal_mario/model.inc.c"
+#include "crystal/model.inc.c"

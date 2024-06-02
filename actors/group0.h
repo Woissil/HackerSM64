@@ -335,4 +335,6 @@ extern const Gfx white_particle_small_unused_dl[];
 
 #include "crystal_mario/geo_header.h"
 
+#include "crystal/geo_header.h"
+
 #endif

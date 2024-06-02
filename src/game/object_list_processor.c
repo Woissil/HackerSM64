@@ -22,6 +22,8 @@
 #include "puppyprint.h"
 #include "profiling.h"
 
+extern u8 gPowerup;
+extern u8 POWERUP_CRYSTAL;
 
 /**
  * Flags controlling what debug info is displayed.
@@ -192,24 +194,28 @@ struct ParticleProperties {
  * A table mapping particle flags to various properties use when spawning a particle.
  */
 struct ParticleProperties sParticleTypes[] = {
-    { PARTICLE_DUST,                 ACTIVE_PARTICLE_DUST,                 MODEL_MIST,                 bhvMistParticleSpawner },
-    { PARTICLE_VERTICAL_STAR,        ACTIVE_PARTICLE_V_STAR,               MODEL_NONE,                 bhvVertStarParticleSpawner },
-    { PARTICLE_HORIZONTAL_STAR,      ACTIVE_PARTICLE_H_STAR,               MODEL_NONE,                 bhvHorStarParticleSpawner },
-    { PARTICLE_SPARKLES,             ACTIVE_PARTICLE_SPARKLES,             MODEL_SPARKLES,             bhvSparkleParticleSpawner },
-    { PARTICLE_BUBBLE,               ACTIVE_PARTICLE_BUBBLE,               MODEL_BUBBLE,               bhvBubbleParticleSpawner },
-    { PARTICLE_WATER_SPLASH,         ACTIVE_PARTICLE_WATER_SPLASH,         MODEL_WATER_SPLASH,         bhvWaterSplash },
-    { PARTICLE_IDLE_WATER_WAVE,      ACTIVE_PARTICLE_IDLE_WATER_WAVE,      MODEL_IDLE_WATER_WAVE,      bhvIdleWaterWave },
-    { PARTICLE_PLUNGE_BUBBLE,        ACTIVE_PARTICLE_PLUNGE_BUBBLE,        MODEL_WHITE_PARTICLE_SMALL, bhvPlungeBubble },
-    { PARTICLE_WAVE_TRAIL,           ACTIVE_PARTICLE_WAVE_TRAIL,           MODEL_WAVE_TRAIL,           bhvWaveTrail },
-    { PARTICLE_FIRE,                 ACTIVE_PARTICLE_FIRE,                 MODEL_RED_FLAME,            bhvFireParticleSpawner },
-    { PARTICLE_SHALLOW_WATER_WAVE,   ACTIVE_PARTICLE_SHALLOW_WATER_WAVE,   MODEL_NONE,                 bhvShallowWaterWave },
-    { PARTICLE_SHALLOW_WATER_SPLASH, ACTIVE_PARTICLE_SHALLOW_WATER_SPLASH, MODEL_NONE,                 bhvShallowWaterSplash },
-    { PARTICLE_LEAF,                 ACTIVE_PARTICLE_LEAF,                 MODEL_NONE,                 bhvLeafParticleSpawner },
-    { PARTICLE_SNOW,                 ACTIVE_PARTICLE_SNOW,                 MODEL_NONE,                 bhvSnowParticleSpawner },
-    { PARTICLE_BREATH,               ACTIVE_PARTICLE_BREATH,               MODEL_NONE,                 bhvBreathParticleSpawner },
-    { PARTICLE_DIRT,                 ACTIVE_PARTICLE_DIRT,                 MODEL_NONE,                 bhvDirtParticleSpawner },
-    { PARTICLE_MIST_CIRCLE,          ACTIVE_PARTICLE_MIST_CIRCLE,          MODEL_NONE,                 bhvMistCircParticleSpawner },
-    { PARTICLE_TRIANGLE,             ACTIVE_PARTICLE_TRIANGLE,             MODEL_NONE,                 bhvTriangleParticleSpawner },
+    { PARTICLE_DUST, ACTIVE_PARTICLE_DUST, MODEL_MIST, bhvMistParticleSpawner },
+    { PARTICLE_VERTICAL_STAR, ACTIVE_PARTICLE_V_STAR, MODEL_NONE, bhvVertStarParticleSpawner },
+    { PARTICLE_HORIZONTAL_STAR, ACTIVE_PARTICLE_H_STAR, MODEL_NONE, bhvHorStarParticleSpawner },
+    { PARTICLE_SPARKLES, ACTIVE_PARTICLE_SPARKLES, MODEL_SPARKLES, bhvSparkleParticleSpawner },
+    { PARTICLE_BUBBLE, ACTIVE_PARTICLE_BUBBLE, MODEL_BUBBLE, bhvBubbleParticleSpawner },
+    { PARTICLE_WATER_SPLASH, ACTIVE_PARTICLE_WATER_SPLASH, MODEL_WATER_SPLASH, bhvWaterSplash },
+    { PARTICLE_IDLE_WATER_WAVE, ACTIVE_PARTICLE_IDLE_WATER_WAVE, MODEL_IDLE_WATER_WAVE,
+      bhvIdleWaterWave },
+    { PARTICLE_PLUNGE_BUBBLE, ACTIVE_PARTICLE_PLUNGE_BUBBLE, MODEL_WHITE_PARTICLE_SMALL,
+      bhvPlungeBubble },
+    { PARTICLE_WAVE_TRAIL, ACTIVE_PARTICLE_WAVE_TRAIL, MODEL_WAVE_TRAIL, bhvWaveTrail },
+    { PARTICLE_FIRE, ACTIVE_PARTICLE_FIRE, MODEL_RED_FLAME, bhvFireParticleSpawner },
+    { PARTICLE_SHALLOW_WATER_WAVE, ACTIVE_PARTICLE_SHALLOW_WATER_WAVE, MODEL_NONE,
+      bhvShallowWaterWave },
+    { PARTICLE_SHALLOW_WATER_SPLASH, ACTIVE_PARTICLE_SHALLOW_WATER_SPLASH, MODEL_NONE,
+      bhvShallowWaterSplash },
+    { PARTICLE_LEAF, ACTIVE_PARTICLE_LEAF, MODEL_NONE, bhvLeafParticleSpawner },
+    { PARTICLE_SNOW, ACTIVE_PARTICLE_SNOW, MODEL_NONE, bhvSnowParticleSpawner },
+    { PARTICLE_BREATH, ACTIVE_PARTICLE_BREATH, MODEL_NONE, bhvBreathParticleSpawner },
+    { PARTICLE_DIRT, ACTIVE_PARTICLE_DIRT, MODEL_NONE, bhvDirtParticleSpawner },
+    { PARTICLE_MIST_CIRCLE, ACTIVE_PARTICLE_MIST_CIRCLE, MODEL_NONE, bhvMistCircParticleSpawner },
+    { PARTICLE_TRIANGLE, ACTIVE_PARTICLE_TRIANGLE, MODEL_NONE, bhvTriangleParticleSpawner },
     { PARTICLE_NONE, ACTIVE_PARTICLE_NONE, MODEL_NONE, NULL },
 };
 
@@ -257,6 +263,9 @@ void spawn_particle(u32 activeParticleFlag, ModelID16 model, const BehaviorScrip
     }
 }
 
+s32 crystalThrown = FALSE;
+s32 crystalTimer = 0;
+
 /**
  * Mario's primary behavior update function.
  */
@@ -281,8 +290,24 @@ void bhv_mario_update(void) {
         i++;
     }
 
-    //power up code
-    
+    // power up code
+    if (gPowerup == POWERUP_CRYSTAL) {
+        if ((gMarioState->action == ACT_MOVE_PUNCHING || gMarioState->action == ACT_PUNCHING
+             || gMarioState->action == ACT_JUMP_KICK || gMarioState->action == ACT_SLIDE_KICK)
+            && crystalThrown == FALSE) {
+            spawn_object(gMarioState->marioObj, MODEL_CRYSTAl_SHARD, bhvCrystalShard);
+            crystalThrown = TRUE;
+        }
+    }
+
+    if (crystalThrown) {
+        crystalTimer++;
+    }
+
+    if (crystalTimer >= 40) {
+        crystalThrown = FALSE;
+        crystalTimer = 0;
+    }
 }
 
 /**
@@ -502,7 +527,8 @@ void spawn_objects_from_info(UNUSED s32 unused, struct SpawnInfo *spawnInfo) {
 
             vec3s_to_vec3i(&object->oMoveAngleVec, spawnInfo->startAngle);
 
-            object->oFloorHeight = find_floor(object->oPosX, object->oPosY, object->oPosZ, &object->oFloor);
+            object->oFloorHeight =
+                find_floor(object->oPosX, object->oPosY, object->oPosZ, &object->oFloor);
         }
 
         spawnInfo = spawnInfo->next;
@@ -553,7 +579,9 @@ void update_terrain_objects(void) {
     profiler_update(PROFILER_TIME_DYNAMIC, profiler_get_delta(PROFILER_DELTA_COLLISION) - first);
 
     // If the dynamic surface pool has overflowed, throw an error.
-    assert((uintptr_t)gDynamicSurfacePoolEnd <= (uintptr_t)gDynamicSurfacePool + DYNAMIC_SURFACE_POOL_SIZE, "Dynamic surface pool size exceeded");
+    assert((uintptr_t) gDynamicSurfacePoolEnd
+               <= (uintptr_t) gDynamicSurfacePool + DYNAMIC_SURFACE_POOL_SIZE,
+           "Dynamic surface pool size exceeded");
 }
 
 /**
@@ -567,7 +595,8 @@ void update_non_terrain_objects(void) {
     while ((listIndex = sObjectListUpdateOrder[i]) != -1) {
         PROFILER_GET_SNAPSHOT_TYPE(PROFILER_DELTA_COLLISION);
         if (listIndex == OBJ_LIST_PLAYER) {
-            profiler_update(PROFILER_TIME_BEHAVIOR_BEFORE_MARIO, profiler_get_delta(PROFILER_DELTA_COLLISION) - first);
+            profiler_update(PROFILER_TIME_BEHAVIOR_BEFORE_MARIO,
+                            profiler_get_delta(PROFILER_DELTA_COLLISION) - first);
         }
         gObjectCounter += update_objects_in_list(&gObjectLists[listIndex]);
         if (listIndex == OBJ_LIST_PLAYER) {
@@ -606,7 +635,7 @@ UNUSED static u16 unused_get_elapsed_time(u64 *cycleCounts, s32 index) {
         cycles = 0;
     }
 
-    time = (u16)(((u64) cycles * 1000000 / osClockRate) / 16667.0 * 1000.0);
+    time = (u16) (((u64) cycles * 1000000 / osClockRate) / 16667.0 * 1000.0);
     if (time > 999) {
         time = 999;
     }
@@ -617,7 +646,7 @@ UNUSED static u16 unused_get_elapsed_time(u64 *cycleCounts, s32 index) {
 /**
  * Clear all floors tied to dynamic collision, as they become invalid once the dynamic
  * surfaces are cleared.
- * 
+ *
  * NOTE: Checking over the full object pool is slower than checking against the linked lists of active
  * objects until the active object pool is around half capacity, after which, this is faster.
  * Change this function to use a linked list instead if you add any additional logic here whatsoever.
@@ -664,9 +693,9 @@ void update_objects(UNUSED s32 unused) {
 
     // Update all other objects that haven't been updated yet
     update_non_terrain_objects();
-    
+
     // Take a snapshot of the current collision processing time.
-    UNUSED u32 firstPoint = profiler_get_delta(PROFILER_DELTA_COLLISION); 
+    UNUSED u32 firstPoint = profiler_get_delta(PROFILER_DELTA_COLLISION);
 
     // Unload any objects that have been deactivated
     unload_deactivated_objects();
@@ -685,6 +714,8 @@ void update_objects(UNUSED s32 unused) {
     }
 
     gPrevFrameObjectCount = gObjectCounter;
-    // Set the recorded behaviour time, minus the difference between the snapshotted collision time and the actual collision time.
-    profiler_update(PROFILER_TIME_BEHAVIOR_AFTER_MARIO, profiler_get_delta(PROFILER_DELTA_COLLISION) - firstPoint);
+    // Set the recorded behaviour time, minus the difference between the snapshotted collision time and
+    // the actual collision time.
+    profiler_update(PROFILER_TIME_BEHAVIOR_AFTER_MARIO,
+                    profiler_get_delta(PROFILER_DELTA_COLLISION) - firstPoint);
 }
