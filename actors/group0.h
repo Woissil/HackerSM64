@@ -333,4 +333,6 @@ extern const Gfx white_particle_small_unused_dl[];
 
 #include "new_title_screen/header.h"
 
+#include "crystal_mario/geo_header.h"
+
 #endif

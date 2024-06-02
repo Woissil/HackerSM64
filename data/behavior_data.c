@@ -6078,4 +6078,11 @@ const BehaviorScript bhvIntroScene[] = {
     END_LOOP(),
 };
 
-
+const BehaviorScript bhvCrystalCap[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    OR_LONG(oFlags, (OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_SILHOUETTE)),
+    CALL_NATIVE(crystal_powerup_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(crystal_powerup_loop),
+    END_LOOP(),
+};
