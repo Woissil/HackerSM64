@@ -541,5 +541,7 @@ extern const BehaviorScript bhvEndBirds2[];
 extern const BehaviorScript bhvIntroScene[];
 extern const BehaviorScript bhvUnusedFakeStar[];
 extern const BehaviorScript bhvCrystalCap[];
+extern const BehaviorScript bhvCrystalShard[];
+extern const BehaviorScript bhvTargetBulseye[];
 
 #endif // BEHAVIOR_DATA_H
