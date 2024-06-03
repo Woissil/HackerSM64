@@ -6226,7 +6226,7 @@ const BehaviorScript bhvCrystalCap[] = {
 const BehaviorScript bhvCrystalShard[] = {
     BEGIN(OBJ_LIST_LEVEL),
     OR_LONG(oFlags, (OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_MOVE_XZ_USING_FVEL)),
-    CALL_NATIVE(crystal_powerup_init),
+    CALL_NATIVE(crystal_shard_init),
     BEGIN_LOOP(),
     CALL_NATIVE(crystal_shard),
     END_LOOP(),

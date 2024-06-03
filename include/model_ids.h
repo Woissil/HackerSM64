@@ -546,6 +546,7 @@
 #define MODEL_TRAJECTORY_MARKER_BALL      0xE1        // bowling_ball_track_geo - duplicate used in SSL Pyramid small sized and as a track ball
 #define MODEL_CRYSTAL_MARIO       0xE4   
 #define MODEL_CRYSTAl_SHARD 0xE5
+#define MODEL_CRYSTAl_POWERUP 0xE6
 
 #ifdef IA8_30FPS_COINS
 #define MODEL_SILVER_COIN                 0xE2        // silver_coin_geo

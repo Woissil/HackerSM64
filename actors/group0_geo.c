@@ -19,3 +19,4 @@
 
 #include "crystal_mario/geo.inc.c"
 #include "crystal/geo.inc.c"
+#include "crystal_powerup/geo.inc.c"

@@ -554,6 +554,7 @@ void bhv_volcano_trap_loop(void);
 void crystal_powerup_init(void);
 void crystal_powerup_loop(void);
 void crystal_shard(void);
+void crystal_shard_init(void);
 
 Gfx *geo_move_mario_part_from_parent(s32 callContext, UNUSED struct GraphNode *node, Mat4 mtx);
 

@@ -20,7 +20,7 @@ struct ExclamationBoxContents {
 
 struct ExclamationBoxContents sExclamationBoxContents[] = {
     [EXCLAMATION_BOX_BP_WING_CAP        ] = { MODEL_MARIOS_WING_CAP,  bhvWingCap,               0 },
-    [EXCLAMATION_BOX_BP_METAL_CAP       ] = { MODEL_GOOMBA, bhvCrystalCap,              0 },
+    [EXCLAMATION_BOX_BP_METAL_CAP       ] = { MODEL_CRYSTAl_POWERUP, bhvCrystalCap,              0 },
     [EXCLAMATION_BOX_BP_VANISH_CAP      ] = { MODEL_MARIOS_CAP,       bhvVanishCap,             0 },
     [EXCLAMATION_BOX_BP_KOOPA_SHELL     ] = { MODEL_KOOPA_SHELL,      bhvKoopaShell,            0 },
     [EXCLAMATION_BOX_BP_COINS_1         ] = { MODEL_YELLOW_COIN,      bhvSingleCoinGetsSpawned, 0 },
