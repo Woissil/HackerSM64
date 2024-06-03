@@ -22,6 +22,5 @@ void crystal_powerup_loop(void) {
     if (detect_object_hitbox_overlap(o, gMarioState->marioObj)) {
         obj_set_model(gMarioState->marioObj, MODEL_CRYSTAL_MARIO);
         gPowerup = POWERUP_CRYSTAL;
-
     }
 }
