@@ -22,9 +22,7 @@
 #include "puppyprint.h"
 #include "profiling.h"
 
-extern u8 gPowerup;
-extern u8 POWERUP_CRYSTAL;
-extern u8 POWERUP_NORMAL;
+#include "src/game/powerups.h"
 
 /**
  * Flags controlling what debug info is displayed.

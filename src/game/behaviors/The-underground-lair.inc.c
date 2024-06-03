@@ -1,5 +1,4 @@
-extern u8 gPowerup;
-extern u8 POWERUP_CRYSTAL;
+#include "src/game/powerups.h"
 
 static struct ObjectHitbox sPowerupHitbox = {
     /* interactType:      */ 0,

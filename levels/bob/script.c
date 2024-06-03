@@ -85,6 +85,7 @@ const LevelScript level_bob_entry[] = {
 		OBJECT(MODEL_GOOMBA, -3606, 201, 2326, 0, 0, 0, 0x00000000, bhvGoomba),
 		OBJECT(MODEL_GOOMBA, -401, 756, 2348, 0, 0, 0, 0x00000000, bhvGoomba),
 		MARIO_POS(0x01, 90, -5573, 310, -3983),
+		OBJECT(MODEL_GOOMBA, -3729, 567, -2485, 0, 0, 0, 0x00000000, bhvGoomba),
 		OBJECT(MODEL_WOODEN_SIGNPOST, -3014, 201, -1906, 0, -180, 0, 0x00000000, bhvMessagePanel),
 		OBJECT(MODEL_WOODEN_SIGNPOST, 1988, 995, 1782, 0, -90, 0, (1 << 16), bhvMessagePanel),
 		OBJECT(MODEL_TARGET_BULSEYE, 5410, 995, 1022, 0, 180, 0, (1 << 24), bhvTargetBulseye),
