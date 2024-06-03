@@ -31,7 +31,6 @@ void crystal_powerup_loop(void) {
     }
 }
 
-
 void crystal_shard_init(void) {
     obj_set_hitbox(o, &sPowerupHitbox);
 }
@@ -39,17 +38,14 @@ void crystal_shard_init(void) {
 void crystal_shard(void) {
     o->oForwardVel = approach_f32(o->oForwardVel, 50, 8, 0);
     if (cur_obj_dist_to_nearest_object_with_behavior(bhvGoomba) < 200.0f) {
-    struct Object *nearest_goomba = cur_obj_nearest_object_with_behavior(bhvGoomba);
-    if (nearest_goomba && detect_object_hitbox_overlap(o, nearest_goomba)) {
-        cur_obj_nearest_object_with_behavior(bhvGoomba)->oInteractStatus =
-            ATTACK_KICK_OR_TRIP | INT_STATUS_INTERACTED | INT_STATUS_WAS_ATTACKED;
-        cur_obj_play_sound_2(SOUND_GENERAL_BREAK_BOX);
-    }
-
-    if (o->oTimer > 75) {
-    if (o->oTimer > 105) {
-        obj_mark_for_deletion(o);
-            }
+        struct Object *nearest_goomba = cur_obj_nearest_object_with_behavior(bhvGoomba);
+        if (nearest_goomba && detect_object_hitbox_overlap(o, nearest_goomba)) {
+            cur_obj_nearest_object_with_behavior(bhvGoomba)->oInteractStatus =
+                ATTACK_KICK_OR_TRIP | INT_STATUS_INTERACTED | INT_STATUS_WAS_ATTACKED;
+            cur_obj_play_sound_2(SOUND_GENERAL_BREAK_BOX);
+        }
+        if (o->oTimer > 105) {
+            obj_mark_for_deletion(o);
         }
     }
 }
