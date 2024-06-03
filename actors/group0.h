@@ -339,4 +339,6 @@ extern const Gfx white_particle_small_unused_dl[];
 
 #include "crystal_powerup/geo_header.h"
 
+#include "target_bulseye/geo_header.h"
+
 #endif

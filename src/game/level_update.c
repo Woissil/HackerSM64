@@ -703,8 +703,13 @@ void initiate_painting_warp(void) {
  * based on the warp operation and sometimes Mario's used object.
  * Return the time left until the delayed warp is initiated.
  */
+
+// make power ups disappear after warp.
+extern u8 gPowerup;
+
 s16 level_trigger_warp(struct MarioState *m, s32 warpOp) {
     s32 fadeMusic = TRUE;
+    gPowerup = 0;
 
     if (sDelayedWarpOp == WARP_OP_NONE) {
         m->invincTimer = -1;

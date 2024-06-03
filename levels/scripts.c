@@ -69,6 +69,7 @@ const LevelScript level_main_scripts_entry[] = {
     LOAD_MODEL_FROM_GEO(MODEL_CRYSTAL_MARIO,                   crystal_mario_geo),
     LOAD_MODEL_FROM_GEO(MODEL_CRYSTAl_SHARD,                   crystal_geo),
     LOAD_MODEL_FROM_GEO(MODEL_CRYSTAl_POWERUP,                   crystal_powerup_geo),
+    LOAD_MODEL_FROM_GEO(MODEL_TARGET_BULSEYE,                   target_bulseye_geo),
     LOAD_MODEL_FROM_GEO(MODEL_SMOKE,                   smoke_geo),
     LOAD_MODEL_FROM_GEO(MODEL_SPARKLES,                sparkles_geo),
     LOAD_MODEL_FROM_GEO(MODEL_BUBBLE,                  bubble_geo),

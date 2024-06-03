@@ -6231,3 +6231,12 @@ const BehaviorScript bhvCrystalShard[] = {
     CALL_NATIVE(crystal_shard),
     END_LOOP(),
 };
+
+const BehaviorScript bhvTargetBulseye[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    OR_LONG(oFlags, (OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    CALL_NATIVE(target_bulseye_init),
+    BEGIN_LOOP(),
+    CALL_NATIVE(target_bulseye),
+    END_LOOP(),
+};

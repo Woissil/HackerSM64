@@ -1,0 +1,10 @@
+extern const GeoLayout target_bulseye_geo[];
+extern Lights1 target_bulseye_f3dlite_material_lights;
+extern Lights1 target_bulseye_f3dlite_material_003_lights;
+extern Vtx target_bulseye_Bone_mesh_layer_1_vtx_0[93];
+extern Gfx target_bulseye_Bone_mesh_layer_1_tri_0[];
+extern Vtx target_bulseye_Bone_mesh_layer_1_vtx_1[29];
+extern Gfx target_bulseye_Bone_mesh_layer_1_tri_1[];
+extern Gfx mat_target_bulseye_f3dlite_material[];
+extern Gfx mat_target_bulseye_f3dlite_material_003[];
+extern Gfx target_bulseye_Bone_mesh_layer_1[];

@@ -24,6 +24,7 @@
 
 extern u8 gPowerup;
 extern u8 POWERUP_CRYSTAL;
+extern u8 POWERUP_NORMAL;
 
 /**
  * Flags controlling what debug info is displayed.
@@ -291,6 +292,13 @@ void bhv_mario_update(void) {
     }
 
     // power up code
+
+    //general
+    if (gPowerup == POWERUP_NORMAL) {
+        obj_set_model(gMarioState->marioObj, MODEL_MARIO);
+    }
+
+    //crystal powers
     if (gPowerup == POWERUP_CRYSTAL) {
         if ((gMarioState->action == ACT_MOVE_PUNCHING || gMarioState->action == ACT_PUNCHING
              || gMarioState->action == ACT_JUMP_KICK || gMarioState->action == ACT_SLIDE_KICK)
@@ -308,6 +316,7 @@ void bhv_mario_update(void) {
         crystalThrown = FALSE;
         crystalTimer = 0;
     }
+    //crystal powers end
 }
 
 /**
