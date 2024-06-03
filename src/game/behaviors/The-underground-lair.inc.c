@@ -44,9 +44,9 @@ void crystal_shard(void) {
                 ATTACK_KICK_OR_TRIP | INT_STATUS_INTERACTED | INT_STATUS_WAS_ATTACKED;
             cur_obj_play_sound_2(SOUND_GENERAL_BREAK_BOX);
         }
-        if (o->oTimer > 105) {
-            obj_mark_for_deletion(o);
-        }
+    }
+    if (o->oTimer > 80) {
+        obj_mark_for_deletion(o);
     }
 }
 

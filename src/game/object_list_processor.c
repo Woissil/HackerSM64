@@ -266,6 +266,9 @@ void spawn_particle(u32 activeParticleFlag, ModelID16 model, const BehaviorScrip
 
 s32 crystalThrown = FALSE;
 s32 crystalTimer = 0;
+s32 targetSpawnedStar = FALSE;
+
+extern void spawn_default_star(f32 x, f32 y, f32 z);
 
 /**
  * Mario's primary behavior update function.
@@ -289,6 +292,12 @@ void bhv_mario_update(void) {
         }
 
         i++;
+    }
+
+    //target code
+    if (count_objects_with_behavior(bhvTargetBulseye) == 0 && !targetSpawnedStar && gCurrLevelNum == LEVEL_BOB && gCurrAreaIndex == 1) {
+        spawn_default_star(gMarioState->pos[0], gMarioState->pos[1] + 350, gMarioState->pos[2]);
+        targetSpawnedStar = TRUE;
     }
 
     // power up code
