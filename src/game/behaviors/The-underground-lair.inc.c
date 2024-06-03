@@ -27,8 +27,10 @@ void crystal_powerup_loop(void) {
         obj_set_model(gMarioState->marioObj, MODEL_CRYSTAL_MARIO);
         play_sound(SOUND_GENERAL_COLLECT_1UP, gGlobalSoundSource);
         gPowerup = POWERUP_CRYSTAL;
+        obj_mark_for_deletion(o); // don't forget this :)
     }
 }
+
 
 void crystal_shard_init(void) {
     obj_set_hitbox(o, &sPowerupHitbox);
