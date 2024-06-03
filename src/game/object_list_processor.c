@@ -299,11 +299,7 @@ void bhv_mario_update(void) {
     }
 
     // power up code
-
-    //general
-    if (gPowerup == POWERUP_NORMAL) {
-        obj_set_model(gMarioState->marioObj, MODEL_MARIO);
-    }
+    obj_set_model(gMarioObject, gPowerUpModelList[gPowerup]);
 
     //crystal powers
     if (gPowerup == POWERUP_CRYSTAL) {
