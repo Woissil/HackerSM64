@@ -131,6 +131,7 @@ void star_stuck_crystal(void) {
         starObj = spawn_star(starObj, o->oPosX, o->oPosY + 400, o->oPosZ);
         starObj->oBehParams2ndByte = SPAWN_STAR_ARC_CUTSCENE_BP_DEFAULT_STAR;
         starObj->oBehParams |= (1 << 24);
+        obj_scale(starObj, 2);
         tnt_exploded = FALSE;
         obj_mark_for_deletion(o);
     }
