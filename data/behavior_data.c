@@ -6240,3 +6240,21 @@ const BehaviorScript bhvTargetBulseye[] = {
     CALL_NATIVE(target_bulseye),
     END_LOOP(),
 };
+
+const BehaviorScript bhvStarStuckInCrystal[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    LOAD_COLLISION_DATA(star_stuck_in_crystal_collision),
+    BEGIN_LOOP(),
+    CALL_NATIVE(star_stuck_crystal),
+    END_LOOP(),
+};
+
+const BehaviorScript bhvTNT[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    OR_LONG(oFlags, (OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    CALL_NATIVE(tnt_init),
+    BEGIN_LOOP(),
+    CALL_NATIVE(tnt),
+    END_LOOP(),
+};

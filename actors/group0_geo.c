@@ -21,3 +21,6 @@
 #include "crystal/geo.inc.c"
 #include "crystal_powerup/geo.inc.c"
 #include "target_bulseye/geo.inc.c"
+#include "cave_goomba/geo.inc.c"
+#include "star_stuck_in_crystal/geo.inc.c"
+#include "tnt/geo.inc.c"

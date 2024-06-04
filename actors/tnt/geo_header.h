@@ -1,0 +1,17 @@
+extern const GeoLayout tnt_geo[];
+extern Lights1 tnt_mtl_75_0_0_31_f3d_lights;
+extern Lights1 tnt_mtl_51_51_47_59_f3d_lights;
+extern Lights1 tnt_mtl_25_25_25_58_f3d_lights;
+extern u8 tnt_CUT_DYNAMITE_BODY_ALB2_NXG_WIIU_TEXTURES_rgba16[];
+extern u8 tnt_CUT_DYNAMITE_BODY_ALB3_NXG_WIIU_TEXTURES_rgba16[];
+extern u8 tnt_CUT_DYNAMITE_BODY_ALB1_NXG_WIIU_TEXTURES_rgba16[];
+extern Vtx tnt_Bone_mesh_layer_1_vtx_0[128];
+extern Gfx tnt_Bone_mesh_layer_1_tri_0[];
+extern Vtx tnt_Bone_mesh_layer_1_vtx_1[32];
+extern Gfx tnt_Bone_mesh_layer_1_tri_1[];
+extern Vtx tnt_Bone_mesh_layer_1_vtx_2[90];
+extern Gfx tnt_Bone_mesh_layer_1_tri_2[];
+extern Gfx mat_tnt_mtl_75_0_0_31_f3d[];
+extern Gfx mat_tnt_mtl_51_51_47_59_f3d[];
+extern Gfx mat_tnt_mtl_25_25_25_58_f3d[];
+extern Gfx tnt_Bone_mesh_layer_1[];

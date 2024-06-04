@@ -23,6 +23,7 @@
 #include "profiling.h"
 
 #include "src/game/powerups.h"
+#include "src/game/print.h"
 
 /**
  * Flags controlling what debug info is displayed.
@@ -266,6 +267,7 @@ s32 crystalThrown = FALSE;
 s32 crystalTimer = 0;
 s32 targetSpawnedStar = FALSE;
 
+extern u8 tnt_collected;
 extern void spawn_default_star(f32 x, f32 y, f32 z);
 
 /**
@@ -296,6 +298,11 @@ void bhv_mario_update(void) {
     if (count_objects_with_behavior(bhvTargetBulseye) == 0 && !targetSpawnedStar && gCurrLevelNum == LEVEL_BOB && gCurrAreaIndex == 1) {
         spawn_default_star(gMarioState->pos[0], gMarioState->pos[1] + 350, gMarioState->pos[2]);
         targetSpawnedStar = TRUE;
+    }
+
+    //tnt code
+    if (tnt_collected) {
+        print_text_centered(320/2, 30, "Press L to Place");
     }
 
     // power up code

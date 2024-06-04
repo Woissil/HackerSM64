@@ -72,3 +72,66 @@ void target_bulseye(void) {
         obj_mark_for_deletion(o);
     }
 }
+
+static struct ObjectHitbox sTNTHitbox = {
+    /* interactType:      */ 0,
+    /* downOffset:        */ 0,
+    /* damageOrCoinValue: */ 0,
+    /* health:            */ 0,
+    /* numLootCoins:      */ 0,
+    /* radius:            */ 95,
+    /* height:            */ 95,
+    /* hurtboxRadius:     */ 0,
+    /* hurtboxHeight:     */ 0,
+};
+
+u8 tnt_exploded = FALSE;
+u8 tnt_collected = FALSE;
+u8 tnt_placed = FALSE;
+
+void tnt_init(void) {
+    obj_set_hitbox(o, &sTNTHitbox);
+}
+
+void tnt(void) {
+    if (detect_object_hitbox_overlap(o, gMarioState->marioObj) && !tnt_placed) {
+        tnt_collected = TRUE;
+        obj_set_model(o, MODEL_NONE);
+    }
+
+    if (tnt_collected) {
+        if (gMarioState->controller->buttonPressed & L_TRIG) {
+            obj_set_model(o, MODEL_TNT);
+            o->oPosX = gMarioState->pos[0] + (300 * sins(gMarioState->faceAngle[1]));
+            o->oPosZ = gMarioState->pos[2] + (300 * sins(gMarioState->faceAngle[1]));
+            o->oPosY = gMarioState->pos[1];
+            tnt_placed = TRUE;
+            tnt_collected = FALSE;
+        }
+    }
+
+    if (tnt_placed) {
+        o->oSubAction++;
+    }
+
+    if (o->oSubAction >= 60) {
+        tnt_exploded = TRUE;
+        tnt_placed = FALSE;
+        tnt_collected = FALSE;
+        cur_obj_play_sound_2(SOUND_GENERAL_BREAK_BOX);
+        obj_mark_for_deletion(o);
+    }
+    // more at mario update
+}
+
+void star_stuck_crystal(void) {
+    load_object_collision_model();
+    if (tnt_exploded) {
+        struct Object *starObj = NULL;
+        starObj = spawn_star(starObj, o->oPosX, o->oPosY + 400, o->oPosZ);
+        starObj->oBehParams2ndByte = SPAWN_STAR_ARC_CUTSCENE_BP_DEFAULT_STAR;
+        starObj->oBehParams |= (1 << 24);
+        tnt_exploded = FALSE;
+        obj_mark_for_deletion(o);
+    }
+}

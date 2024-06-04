@@ -543,5 +543,8 @@ extern const BehaviorScript bhvUnusedFakeStar[];
 extern const BehaviorScript bhvCrystalCap[];
 extern const BehaviorScript bhvCrystalShard[];
 extern const BehaviorScript bhvTargetBulseye[];
+extern const BehaviorScript bhvCaveGoomba[];
+extern const BehaviorScript bhvStarStuckInCrystal[];
+extern const BehaviorScript bhvTNT[];
 
 #endif // BEHAVIOR_DATA_H

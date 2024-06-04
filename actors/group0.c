@@ -36,3 +36,7 @@
 #include "crystal/model.inc.c"
 #include "crystal_powerup/model.inc.c"
 #include "target_bulseye/model.inc.c"
+#include "cave_goomba/model.inc.c"
+#include "star_stuck_in_crystal/model.inc.c"
+#include "star_stuck_in_crystal/collision.inc.c"
+#include "tnt/model.inc.c"

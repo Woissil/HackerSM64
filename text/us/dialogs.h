@@ -23,22 +23,12 @@ Hit all the Targets\n\
 To get a Special Reward!"))
 
 DEFINE_DIALOG(DIALOG_002, 1, 4, 95, 200, _("\
-Hey, you! It's dangerous\n\
-ahead, so listen up! Take\n\
-my advice.\n\
-\n\
-Cross the two\n\
-bridges ahead, then\n\
-watch for falling\n\
-water bombs.\n\
-The Big Bob-omb at the\n\
-top of the mountain is\n\
-very powerful--don't let\n\
-him grab you!\n\
-We're Bob-omb Buddies,\n\
-and we're on your side.\n\
-You can talk to us\n\
-whenever you'd like to!"))
+That Star seems to be\n\
+Stuck. How will we\n\
+Get it out?\n\
+Maybe with some TNT?\n\
+Surely There's one\n\
+In that Maze."))
 
 DEFINE_DIALOG(DIALOG_003, 1, 5, 95, 200, _("\
 Thank you, Mario! The Big\n\

@@ -341,4 +341,12 @@ extern const Gfx white_particle_small_unused_dl[];
 
 #include "target_bulseye/geo_header.h"
 
+#include "cave_goomba/geo_header.h"
+
+#include "star_stuck_in_crystal/geo_header.h"
+
+#include "star_stuck_in_crystal/collision_header.h"
+
+#include "tnt/geo_header.h"
+
 #endif
