@@ -31,20 +31,15 @@ Surely There's one\n\
 In that Maze."))
 
 DEFINE_DIALOG(DIALOG_003, 1, 5, 95, 200, _("\
-Thank you, Mario! The Big\n\
-Bob-omb is nothing but a\n\
-big dud now! But the\n\
-battle for the castle has\n\
-just begun.\n\
-Other enemies are holding\n\
-the other Power Stars. If\n\
-you recover more Stars,\n\
-you can open new doors\n\
-that lead to new worlds!\n\
-My Bob-omb Buddies are\n\
-waiting for you. Be sure\n\
-to talk to them--they'll\n\
-set up cannons for you."))
+Hey!\n\
+Did you know\n\
+If you Ground-Pound\n\
+And press A while landing\n\
+You would do a Triple-Jump!\n\
+And also!\n\
+Ground-Pound mid air\n\
+If you press B\n\
+You're gonna do a dive."))
 
 DEFINE_DIALOG(DIALOG_004, 1, 3, 95, 200, _("\
 We're peace-loving\n\

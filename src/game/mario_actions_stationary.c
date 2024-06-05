@@ -1021,6 +1021,11 @@ s32 act_ground_pound_land(struct MarioState *m) {
         return set_mario_action(m, ACT_BUTT_SLIDE, 0);
     }
 
+    if (m->input & INPUT_A_PRESSED) {
+        set_mario_action(m, ACT_TRIPLE_JUMP, 0);
+        m->vel[1] = 70.0f;
+    }
+
     landing_step(m, MARIO_ANIM_GROUND_POUND_LANDING, ACT_BUTT_SLIDE_STOP);
     return FALSE;
 }

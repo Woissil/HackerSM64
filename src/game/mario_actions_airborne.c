@@ -970,6 +970,12 @@ s32 act_ground_pound(struct MarioState *m) {
 #endif
     }
 
+    if (m->input & INPUT_B_PRESSED) {
+        mario_set_forward_vel(m, 20.0f);
+        m->vel[1] = 35.0f;
+        set_mario_action(m, ACT_DIVE, 0);
+    }
+
     return FALSE;
 }
 
