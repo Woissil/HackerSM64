@@ -776,3 +776,4 @@ UNUSED s32 debug_sequence_tracker(s16 debugInputSequence[]) {
 #include "behaviors/yoshi.inc.c"
 //customs
 #include "behaviors/The-underground-lair.inc.c"
+#include "behaviors/Plant-Realm.inc.c"

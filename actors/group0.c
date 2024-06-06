@@ -40,3 +40,4 @@
 #include "star_stuck_in_crystal/model.inc.c"
 #include "star_stuck_in_crystal/collision.inc.c"
 #include "tnt/model.inc.c"
+#include "peashooter/model.inc.c"

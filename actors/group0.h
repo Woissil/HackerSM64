@@ -349,4 +349,6 @@ extern const Gfx white_particle_small_unused_dl[];
 
 #include "tnt/geo_header.h"
 
+#include "peashooter/geo_header.h"
+
 #endif
