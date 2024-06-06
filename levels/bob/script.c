@@ -102,7 +102,7 @@ const LevelScript level_bob_entry[] = {
 		OBJECT(MODEL_WOODEN_SIGNPOST, -5166, 663, 1670, 0, 90, 0, (2 << 16), bhvMessagePanel),
 		OBJECT(MODEL_WOODEN_SIGNPOST, -197, 201, -2432, 0, -90, 0, (3 << 16), bhvMessagePanel),
 		OBJECT(MODEL_WOODEN_SIGNPOST, -2496, 201, 5009, 0, -180, 0, (4 << 16), bhvMessagePanel),
-		OBJECT(MODEL_WOODEN_SIGNPOST, -5313, 201, -6468, 0, -90, 0, (5 << 16), bhvMessagePanel),
+		OBJECT(MODEL_WOODEN_SIGNPOST, -5313, 201, -6468, 0, 0, 0, (5 << 16), bhvMessagePanel),
 		OBJECT(MODEL_STAR, -10722, 1805, 1183, 0, 0, 0, (2 << 24), bhvStar),
 		OBJECT(MODEL_STAR, -2353, 694, 10523, 0, 0, 0, (3 << 24), bhvStar),
 		OBJECT(MODEL_STAR_STUCK_IN_CRYSTAL, -6024, 630, 2445, 0, 0, 0, 0x00000000, bhvStarStuckInCrystal),
