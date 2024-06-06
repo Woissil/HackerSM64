@@ -73,6 +73,7 @@ const LevelScript level_main_scripts_entry[] = {
     LOAD_MODEL_FROM_GEO(MODEL_CAVE_GOOMBA,                   cave_goomba_geo),
     LOAD_MODEL_FROM_GEO(MODEL_STAR_STUCK_IN_CRYSTAL,                   star_stuck_in_crystal_geo),
     LOAD_MODEL_FROM_GEO(MODEL_TNT,                   tnt_geo),
+    LOAD_MODEL_FROM_GEO(MODEL_PEASHOOTER,                   peashooter_geo),
     LOAD_MODEL_FROM_GEO(MODEL_SMOKE,                   smoke_geo),
     LOAD_MODEL_FROM_GEO(MODEL_SPARKLES,                sparkles_geo),
     LOAD_MODEL_FROM_GEO(MODEL_BUBBLE,                  bubble_geo),

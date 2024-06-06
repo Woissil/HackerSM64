@@ -49,24 +49,11 @@ Jumping on the wrong one\n\
 Will make you fall."))
 
 DEFINE_DIALOG(DIALOG_005, 1, 3, 30, 200, _("\
-Hey, Mario! Is it true\n\
-that you beat the Big\n\
-Bob-omb? Cool!\n\
-You must be strong. And\n\
-pretty fast. So, how fast\n\
-are you, anyway?\n\
-Fast enough to beat me...\n\
-Koopa the Quick? I don't\n\
-think so. Just try me.\n\
-How about a race to the\n\
-mountaintop, where the\n\
-Big Bob-omb was?\n\
-Whaddya say? When I say\n\
-『Go,』 let the race begin!\n\
-\n\
-Ready....\n\
-\n\
-//Go!////Don't Go"))
+This the Pipe\n\
+To the Crystal King's\n\
+House, If you go There\n\
+You gotta defeat him\n\
+or else..."))
 
 DEFINE_DIALOG(DIALOG_006, 1, 3, 30, 200, _("\
 Hey!!! Don't try to " SCAM_ME

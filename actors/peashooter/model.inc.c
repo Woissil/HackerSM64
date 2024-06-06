@@ -1,10 +1,4 @@
-Lights1 peashooter_body_002_f3d_lights = gdSPDefLights1(
-	0x16, 0x7F, 0x21,
-	0x36, 0xFF, 0x4B, 0x49, 0x49, 0x49);
 
-Lights1 peashooter_eyes_002_f3d_lights = gdSPDefLights1(
-	0x7F, 0x7F, 0x7F,
-	0xFF, 0xFF, 0xFF, 0x49, 0x49, 0x49);
 
 Gfx peashooter_body_ia4_aligner[] = {gsSPEndDisplayList()};
 u8 peashooter_body_ia4[] = {
@@ -1519,7 +1513,8 @@ Gfx mat_peashooter_body_002_f3d[] = {
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsSPTexture(65535, 65535, 0, 0, 1),
-	gsSPSetLights1(peashooter_body_002_f3d_lights),
+    gsSPLightColor(LIGHT_1, 0x36ff4bff),
+    gsSPLightColor(LIGHT_2, 0x167f21ff),
 	gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, peashooter_body_ia4),
 	gsDPSetTile(G_IM_FMT_IA, G_IM_SIZ_16b, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
 	gsDPLoadBlock(7, 0, 0, 1023, 512),
@@ -1533,7 +1528,8 @@ Gfx mat_peashooter_eyes_002_f3d[] = {
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, TEXEL0, 0, ENVIRONMENT, 0, TEXEL0, 0, SHADE, 0, TEXEL0, 0, ENVIRONMENT, 0),
 	gsSPClearGeometryMode(G_CULL_BACK),
 	gsSPTexture(65535, 65535, 0, 0, 1),
-	gsSPSetLights1(peashooter_eyes_002_f3d_lights),
+    gsSPLightColor(LIGHT_1, 0xffffffff),
+    gsSPLightColor(LIGHT_2, 0x7f7f7fff),
 	gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, peashooter_eye_ia4),
 	gsDPSetTile(G_IM_FMT_IA, G_IM_SIZ_16b, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
 	gsDPLoadBlock(7, 0, 0, 1023, 512),
