@@ -1,10 +1,4 @@
-Lights1 bob_dl_f3dlite_material_002_lights = gdSPDefLights1(
-	0x38, 0x5, 0x4C,
-	0x77, 0x15, 0x9D, 0x49, 0x49, 0x49);
 
-Lights1 bob_dl_f3dlite_material_004_lights = gdSPDefLights1(
-	0x10, 0x0, 0x36,
-	0x2B, 0x0, 0x73, 0x49, 0x49, 0x49);
 
 Vtx bob_dl__009_geometry_001_mesh_layer_1_vtx_cull[8] = {
 	{{ {-110, -94, 151}, 0, {0, 0}, {0, 0, 0, 0} }},
@@ -3392,7 +3386,8 @@ Gfx mat_bob_dl_f3dlite_material_002[] = {
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsSPTexture(65535, 65535, 0, 0, 1),
-	gsSPSetLights1(bob_dl_f3dlite_material_002_lights),
+    gsSPLightColor(LIGHT_1, 0x77159dff),
+    gsSPLightColor(LIGHT_2, 0x38054cff),
 	gsDPSetTextureImage(G_IM_FMT_I, G_IM_SIZ_8b_LOAD_BLOCK, 1, bob_dl_wf_textures_0A800_rgba16_i8),
 	gsDPSetTile(G_IM_FMT_I, G_IM_SIZ_8b_LOAD_BLOCK, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
 	gsDPLoadBlock(7, 0, 0, 511, 512),
@@ -3405,7 +3400,8 @@ Gfx mat_bob_dl_f3dlite_material_004[] = {
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsSPTexture(65535, 65535, 0, 0, 1),
-	gsSPSetLights1(bob_dl_f3dlite_material_004_lights),
+    gsSPLightColor(LIGHT_1, 0x2b0073ff),
+    gsSPLightColor(LIGHT_2, 0x100036ff),
 	gsDPSetTextureImage(G_IM_FMT_I, G_IM_SIZ_8b_LOAD_BLOCK, 1, bob_dl_wf_textures_0A800_rgba16_i8),
 	gsDPSetTile(G_IM_FMT_I, G_IM_SIZ_8b_LOAD_BLOCK, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
 	gsDPLoadBlock(7, 0, 0, 511, 512),
