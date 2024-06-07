@@ -1,10 +1,5 @@
-Gfx jrb_dl_ccm_textures_08800_rgba16_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 jrb_dl_ccm_textures_08800_rgba16_rgba16[] = {
-	#include "levels/jrb/ccm_textures.08800.rgba16.inc.c"
-};
-
-Gfx jrb_dl_ccm_textures_06000_rgba16_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 jrb_dl_ccm_textures_06000_rgba16_rgba16[] = {
-	#include "levels/jrb/ccm_textures.06000.rgba16.inc.c"
+Gfx jrb_dl_PC_Computer___Geometry_Dash___Ground_1_i8_aligner[] = {gsSPEndDisplayList()};
+u8 jrb_dl_PC_Computer___Geometry_Dash___Ground_1_i8[] = {
+	#include "levels/jrb/PC_Computer_-_Geometry_Dash_-_Ground_1.i8.inc.c"
 };
 
