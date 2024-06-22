@@ -246,12 +246,6 @@ extern const Gfx dl_breath_meter_health_segments_end[];
 // sand
 extern const Gfx sand_seg3_dl_particle[];
 
-// star
-extern const GeoLayout star_geo[];
-extern const Gfx star_seg3_sub_dl_body[];
-extern const Gfx star_seg3_dl_body[];
-extern const Gfx star_seg3_sub_dl_eyes[];
-extern const Gfx star_seg3_dl_eyes[];
 
 // transparent_star
 extern const GeoLayout transparent_star_geo[];
@@ -293,5 +287,7 @@ extern const Gfx wooden_signpost_seg3_dl_0302DC40[];
 extern const Gfx wooden_signpost_seg3_dl_0302DCD0[];
 extern const Gfx wooden_signpost_seg3_dl_0302DD08[];
 extern const Collision wooden_signpost_seg3_collision_0302DD80[];
+
+#include "star/geo_header.h"
 
 #endif
