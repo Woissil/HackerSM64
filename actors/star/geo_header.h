@@ -1,7 +1,6 @@
 extern const GeoLayout star_geo[];
 extern Lights1 star_f3dlite_material_lights;
 extern Lights1 star_f3dlite_material_001_lights;
-extern u8 star_star_surface_rgba16_rgba16[];
 extern u8 star_star_eye_rgba16_ia8[];
 extern Vtx star_000_displaylist_mesh_layer_1_vtx_0[12];
 extern Gfx star_000_displaylist_mesh_layer_1_tri_0[];
