@@ -546,5 +546,6 @@ extern const BehaviorScript bhvTargetBulseye[];
 extern const BehaviorScript bhvCaveGoomba[];
 extern const BehaviorScript bhvStarStuckInCrystal[];
 extern const BehaviorScript bhvTNT[];
+extern const BehaviorScript bhvPropellerBox[];
 
 #endif // BEHAVIOR_DATA_H

@@ -560,6 +560,7 @@ void target_bulseye(void);
 void star_stuck_crystal(void);
 void tnt_init(void);
 void tnt(void);
+void propeller_loop(void);
 
 Gfx *geo_move_mario_part_from_parent(s32 callContext, UNUSED struct GraphNode *node, Mat4 mtx);
 

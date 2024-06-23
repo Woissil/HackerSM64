@@ -706,10 +706,12 @@ void initiate_painting_warp(void) {
 
 // make power ups disappear after warp.
 extern u8 gPowerup;
+extern u8 propeller_gotten;
 
 s16 level_trigger_warp(struct MarioState *m, s32 warpOp) {
     s32 fadeMusic = TRUE;
     gPowerup = 0;
+    propeller_gotten = FALSE;
 
     if (sDelayedWarpOp == WARP_OP_NONE) {
         m->invincTimer = -1;

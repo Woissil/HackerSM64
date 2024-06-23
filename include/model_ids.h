@@ -552,6 +552,7 @@
 #define MODEL_STAR_STUCK_IN_CRYSTAL 0xE9
 #define MODEL_TNT 0xEA
 #define MODEL_PEASHOOTER 0xEB
+#define MODEL_PROPELLER_BOX 0xEC
 
 #ifdef IA8_30FPS_COINS
 #define MODEL_SILVER_COIN                 0xE2        // silver_coin_geo

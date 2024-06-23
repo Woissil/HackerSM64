@@ -41,3 +41,6 @@
 #include "star_stuck_in_crystal/collision.inc.c"
 #include "tnt/model.inc.c"
 #include "peashooter/model.inc.c"
+#include "propeller_box/model.inc.c"
+#include "propeller_box/anims/data.inc.c"
+#include "propeller_box/anims/table.inc.c"

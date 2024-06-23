@@ -66,9 +66,15 @@ const LevelScript level_main_scripts_entry[] = {
     LOAD_RAW_WITH_CODE( /*seg*/ SEGMENT_BEHAVIOR_DATA,    _behaviorSegmentRomStart,     _behaviorSegmentRomEnd,   _behaviorSegmentBssStart,     _behaviorSegmentBssEnd),
     ALLOC_LEVEL_POOL(),
     LOAD_MODEL_FROM_GEO(MODEL_MARIO,                   mario_geo),
+    //crystals
     LOAD_MODEL_FROM_GEO(MODEL_CRYSTAL_MARIO,                   crystal_mario_geo),
     LOAD_MODEL_FROM_GEO(MODEL_CRYSTAl_SHARD,                   crystal_geo),
     LOAD_MODEL_FROM_GEO(MODEL_CRYSTAl_POWERUP,                   crystal_powerup_geo),
+    // crystals end
+
+    //properller
+    LOAD_MODEL_FROM_GEO(MODEL_PROPELLER_BOX, propeller_box_geo),
+    //end
     LOAD_MODEL_FROM_GEO(MODEL_TARGET_BULSEYE,                   target_bulseye_geo),
     LOAD_MODEL_FROM_GEO(MODEL_CAVE_GOOMBA,                   cave_goomba_geo),
     LOAD_MODEL_FROM_GEO(MODEL_STAR_STUCK_IN_CRYSTAL,                   star_stuck_in_crystal_geo),

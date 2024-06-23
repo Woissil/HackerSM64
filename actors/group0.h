@@ -351,4 +351,8 @@ extern const Gfx white_particle_small_unused_dl[];
 
 #include "peashooter/geo_header.h"
 
+#include "propeller_box/geo_header.h"
+
+
+#include "propeller_box/anim_header.h"
 #endif

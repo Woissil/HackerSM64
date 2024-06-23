@@ -6258,3 +6258,14 @@ const BehaviorScript bhvTNT[] = {
     CALL_NATIVE(tnt),
     END_LOOP(),
 };
+
+const BehaviorScript bhvPropellerBox[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    OR_LONG(oFlags, (OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    LOAD_ANIMATIONS(oAnimations, propeller_box_anims),
+    SET_HITBOX(90, 90),
+    SET_INT(oIntangibleTimer, 0),
+    BEGIN_LOOP(),
+    CALL_NATIVE(propeller_loop),
+    END_LOOP(),
+};
