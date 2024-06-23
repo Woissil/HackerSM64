@@ -644,6 +644,8 @@ s32 act_long_jump(struct MarioState *m) {
     return FALSE;
 }
 
+extern u8 propeller_gotten;
+
 s32 act_riding_shell_air(struct MarioState *m) {
     play_mario_sound(m, SOUND_ACTION_TERRAIN_JUMP, 0);
     set_mario_animation(m, MARIO_ANIM_JUMP_RIDING_SHELL);
@@ -687,10 +689,15 @@ s32 act_twirling(struct MarioState *m) {
     m->angleVel[1] = approach_s32_symmetric(m->angleVel[1], yawVelTarget, 0x200);
     m->twirlYaw += m->angleVel[1];
 
-    set_mario_animation(m, m->actionArg == 0 ? MARIO_ANIM_START_TWIRL : MARIO_ANIM_TWIRL);
-    if (is_anim_past_end(m)) {
-        m->actionArg = 1;
+    if (propeller_gotten) {
+        set_mario_animation(m, MARIO_ANIM_RUNNING);
+       } else {
+        set_mario_animation(m, m->actionArg == 0 ? MARIO_ANIM_START_TWIRL : MARIO_ANIM_TWIRL);
+          if (is_anim_past_end(m)) {
+             m->actionArg = 1;
+        }
     }
+
 
     if (startTwirlYaw > m->twirlYaw) {
         play_sound(SOUND_ACTION_TWIRL, m->marioObj->header.gfx.cameraToObject);
@@ -700,7 +707,11 @@ s32 act_twirling(struct MarioState *m) {
 
     switch (perform_air_step(m, 0)) {
         case AIR_STEP_LANDED:
+        if (!propeller_gotten) {
             set_mario_action(m, ACT_TWIRL_LAND, 0);
+        } else {
+            set_mario_action(m, ACT_IDLE, 0);
+        }
             break;
 
         case AIR_STEP_HIT_WALL:
@@ -712,7 +723,10 @@ s32 act_twirling(struct MarioState *m) {
             break;
     }
 
-    m->marioObj->header.gfx.angle[1] += m->twirlYaw;
+    
+    if (!propeller_gotten) {
+        m->marioObj->header.gfx.angle[1] += m->twirlYaw;
+    }
 #if ENABLE_RUMBLE
     reset_rumble_timers_slip();
 #endif
