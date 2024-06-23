@@ -44,3 +44,4 @@
 #include "propeller_box/model.inc.c"
 #include "propeller_box/anims/data.inc.c"
 #include "propeller_box/anims/table.inc.c"
+#include "icon_course1/model.inc.c"

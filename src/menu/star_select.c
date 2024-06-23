@@ -183,7 +183,7 @@ void bhv_act_selector_init(void) {
     }
 #endif
 
-    render_100_coin_star(stars);
+    //render_100_coin_star(stars);
 }
 
 /**
@@ -233,6 +233,10 @@ void bhv_act_selector_loop(void) {
 /**
  * Print the course number selected with the wood rgba16 course texture.
  */
+
+#include "actors/icon_course1/geo_header.h"
+#include "src/game/print.h"
+
 #if MULTILANG
 void print_course_number(s16 language) {
 #else
@@ -243,7 +247,12 @@ void print_course_number(void) {
     create_dl_translation_matrix(MENU_MTX_PUSH, 158.0f, 81.0f, 0.0f);
 
     // Full wood texture in JP & US, lower part of it on EU
-    gSPDisplayList(gDisplayListHead++, dl_menu_rgba16_wood_course);
+    if (gCurrLevelNum == LEVEL_BOB) {
+    gSPDisplayList(gDisplayListHead++, mat_icon_course1_f3dlite_material_001);
+	gSPDisplayList(gDisplayListHead++, icon_course1_Bone_mesh_layer_1_tri_0);
+	gSPDisplayList(gDisplayListHead++, mat_revert_icon_course1_f3dlite_material_001);
+    print_text_centered(160, 60, "Crystal realm");
+    }
 
 #if MULTILANG
     // Change upper part of the wood texture depending of the language defined
@@ -268,11 +277,11 @@ void print_course_number(void) {
 
     int_to_str(gCurrCourseNum, courseNum);
 
-    if (gCurrCourseNum < 10) { // 1 digit number
+    /*if (gCurrCourseNum < 10) { // 1 digit number
         print_hud_lut_string(HUD_LUT_GLOBAL, 152, 158, courseNum);
     } else { // 2 digit number
         print_hud_lut_string(HUD_LUT_GLOBAL, 143, 158, courseNum);
-    }
+    }*/
 
     gSPDisplayList(gDisplayListHead++, dl_rgba16_text_end);
 }
@@ -295,8 +304,8 @@ void print_act_selector_strings(void) {
     u8 *currLevelName;
     u8 **actNameTbl;
 #else
-    u8 **levelNameTbl = segmented_to_virtual(seg2_course_name_table);
-    u8 *currLevelName = segmented_to_virtual(levelNameTbl[COURSE_NUM_TO_INDEX(gCurrCourseNum)]);
+    //u8 **levelNameTbl = segmented_to_virtual(seg2_course_name_table);
+    //u8 *currLevelName = segmented_to_virtual(levelNameTbl[COURSE_NUM_TO_INDEX(gCurrCourseNum)]);
     u8 **actNameTbl = segmented_to_virtual(seg2_act_name_table);
 #endif
     u8 *selectedActName;
@@ -350,8 +359,8 @@ void print_act_selector_strings(void) {
 #if MULTILANG
     print_generic_string(get_str_x_pos_from_center(160, (currLevelName + 3), 10.0f), 33, currLevelName + 3);
 #else
-    lvlNameX = get_str_x_pos_from_center(160, currLevelName + 3, 10.0f);
-    print_generic_string(lvlNameX, 33, currLevelName + 3);
+    //lvlNameX = get_str_x_pos_from_center(160, currLevelName + 3, 10.0f);
+    //print_generic_string(lvlNameX, 33, currLevelName + 3);
 #endif
 
     gSPDisplayList(gDisplayListHead++, dl_ia_text_end);

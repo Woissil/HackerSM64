@@ -26,3 +26,4 @@
 #include "tnt/geo.inc.c"
 #include "peashooter/geo.inc.c"
 #include "propeller_box/geo.inc.c"
+#include "icon_course1/geo.inc.c"
