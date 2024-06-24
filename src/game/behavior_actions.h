@@ -564,6 +564,7 @@ void propeller_loop(void);
 void bhv_noteblock_loop(void);
 void bhv_noteblock_init(void);
 void chuckya_spawn_star(void);
+void spawnstar_target(void);
 
 Gfx *geo_move_mario_part_from_parent(s32 callContext, UNUSED struct GraphNode *node, Mat4 mtx);
 

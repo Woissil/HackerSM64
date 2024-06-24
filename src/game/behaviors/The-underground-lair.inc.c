@@ -91,6 +91,9 @@ u8 tnt_placed = FALSE;
 
 void tnt_init(void) {
     obj_set_hitbox(o, &sTNTHitbox);
+    tnt_exploded = FALSE;
+    tnt_placed = FALSE;
+    tnt_collected = FALSE;
 }
 
 void tnt(void) {
@@ -133,6 +136,15 @@ void star_stuck_crystal(void) {
         starObj->oBehParams |= (1 << 24);
         obj_scale(starObj, 2);
         tnt_exploded = FALSE;
+        obj_mark_for_deletion(o);
+    }
+}
+
+void spawnstar_target(void) {
+    if (!cur_obj_nearest_object_with_behavior(bhvTargetBulseye)) {
+        struct Object *targetstar = NULL;
+        targetstar = spawn_star(targetstar, gMarioState->pos[0], gMarioState->pos[1] + 210, gMarioState->pos[2]);
+        targetstar->oBehParams2ndByte = SPAWN_STAR_ARC_CUTSCENE_BP_DEFAULT_STAR;
         obj_mark_for_deletion(o);
     }
 }

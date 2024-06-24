@@ -294,12 +294,6 @@ void bhv_mario_update(void) {
         i++;
     }
 
-    //target code
-    if (count_objects_with_behavior(bhvTargetBulseye) == 0 && !targetSpawnedStar && gCurrLevelNum == LEVEL_BOB && gCurrAreaIndex == 1) {
-        spawn_default_star(gMarioState->pos[0], gMarioState->pos[1] + 350, gMarioState->pos[2]);
-        targetSpawnedStar = TRUE;
-    }
-
     //tnt code
     if (tnt_collected) {
         print_text_centered(320/2, 30, "Press L to Place");

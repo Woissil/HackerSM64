@@ -115,11 +115,12 @@ const LevelScript level_bob_entry[] = {
 		OBJECT(MODEL_TARGET_BULSEYE, 5410, 995, 1022, 0, 180, 0, (1 << 24), bhvTargetBulseye),
 		OBJECT(MODEL_TARGET_BULSEYE, 5397, 995, 3691, 0, 180, 0, (1 << 24), bhvTargetBulseye),
 		OBJECT(MODEL_TARGET_BULSEYE, 5412, 995, 2419, 0, 180, 0, (1 << 24), bhvTargetBulseye),
+		OBJECT(MODEL_NONE, 5412, 995, 2419, 0, 180, 0, (0 << 24), bhvTargetBulseyeStarSpawner),
 		OBJECT(MODEL_TNT, -6600, 663, 5989, 0, 90, 0, (2 << 16), bhvTNT),
 		OBJECT(MODEL_NONE, -5573, 310, -3983, 0, 90, 0, 0x000A0000, bhvSpinAirborneWarp),
 		TERRAIN(bob_area_1_collision),
 		MACRO_OBJECTS(bob_area_1_macro_objs),
-		SET_BACKGROUND_MUSIC(0x00, SEQ_LEVEL_GRASS),
+		SET_BACKGROUND_MUSIC(0x00, SEQ_CLOUDY_CLIMB),
 		TERRAIN_TYPE(TERRAIN_GRASS),
 		/* Fast64 begin persistent block [area commands] */
 		/* Fast64 end persistent block [area commands] */
@@ -133,7 +134,7 @@ const LevelScript level_bob_entry[] = {
 		OBJECT(MODEL_NONE, 4681, 310, 24, 0, 90, 0, 0x000A0000, bhvSpinAirborneWarp),
 		TERRAIN(bob_area_2_collision),
 		MACRO_OBJECTS(bob_area_2_macro_objs),
-		SET_BACKGROUND_MUSIC(0x00, SEQ_LEVEL_GRASS),
+		SET_BACKGROUND_MUSIC(0x00, SEQ_CLOUDY_CLIMB),
 		TERRAIN_TYPE(TERRAIN_GRASS),
 		/* Fast64 begin persistent block [area commands] */
 		/* Fast64 end persistent block [area commands] */

@@ -6289,3 +6289,11 @@ const BehaviorScript bhvChuckyaStarSpawner[] = {
         CALL_NATIVE(chuckya_spawn_star),
     END_LOOP(),
 };
+
+const BehaviorScript bhvTargetBulseyeStarSpawner[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    OR_LONG(oFlags, (OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    BEGIN_LOOP(),
+    CALL_NATIVE(spawnstar_target),
+    END_LOOP(),
+};
