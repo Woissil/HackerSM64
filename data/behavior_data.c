@@ -1753,6 +1753,7 @@ const BehaviorScript bhvBreakableBox[] = {
     OR_LONG(oFlags, (OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_DONT_CALC_COLL_DIST)),
     LOAD_COLLISION_DATA(breakable_box_seg8_collision),
     SET_FLOAT(oCollisionDistance, 1000),
+    SET_FLOAT(oDrawingDistance, 32000),
     CALL_NATIVE(bhv_init_room),
     BEGIN_LOOP(),
     CALL_NATIVE(bhv_breakable_box_loop),
@@ -6278,5 +6279,13 @@ const BehaviorScript bhvNoteBlock[] = {
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_noteblock_loop),
         CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
+const BehaviorScript bhvChuckyaStarSpawner[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    BEGIN_LOOP(),
+        CALL_NATIVE(chuckya_spawn_star),
     END_LOOP(),
 };

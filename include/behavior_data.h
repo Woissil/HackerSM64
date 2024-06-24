@@ -548,5 +548,6 @@ extern const BehaviorScript bhvStarStuckInCrystal[];
 extern const BehaviorScript bhvTNT[];
 extern const BehaviorScript bhvPropellerBox[];
 extern const BehaviorScript bhvNoteBlock[];
+extern const BehaviorScript bhvChuckyaStarSpawner[];
 
 #endif // BEHAVIOR_DATA_H

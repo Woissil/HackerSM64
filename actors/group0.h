@@ -361,4 +361,6 @@ extern const Gfx white_particle_small_unused_dl[];
 
 #include "noteblock/collision_header.h"
 
+#include "icon_course3/geo_header.h"
+
 #endif

@@ -47,3 +47,4 @@
 #include "icon_course1/model.inc.c"
 #include "noteblock/model.inc.c"
 #include "noteblock/collision.inc.c"
+#include "icon_course3/model.inc.c"

@@ -110,6 +110,9 @@ void render_100_coin_star(u8 stars) {
     }
 }
 
+#include "actors/icon_course1/geo_header.h"
+#include "actors/icon_course3/geo_header.h"
+
 /**
  * Act Selector Init Action
  * Checks how many stars has been obtained in a course, to render
@@ -117,6 +120,8 @@ void render_100_coin_star(u8 stars) {
  * checks of what star should be next in sInitSelectedActNum.
  */
 void bhv_act_selector_init(void) {
+    //gSPDisplayList(gDisplayListHead++,mat_icon_course3_f3dlite_material);
+	//gSPDisplayList(gDisplayListHead++,icon_course3_Bone_mesh_layer_1_tri_3);
     s16 i = 0;
     s32 selectorModelIDs[10];
     u8 stars = save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_NUM_TO_INDEX(gCurrCourseNum));
@@ -234,7 +239,6 @@ void bhv_act_selector_loop(void) {
  * Print the course number selected with the wood rgba16 course texture.
  */
 
-#include "actors/icon_course1/geo_header.h"
 #include "src/game/print.h"
 
 #if MULTILANG
@@ -252,6 +256,17 @@ void print_course_number(void) {
 	gSPDisplayList(gDisplayListHead++, icon_course1_Bone_mesh_layer_1_tri_0);
 	gSPDisplayList(gDisplayListHead++, mat_revert_icon_course1_f3dlite_material_001);
     print_text_centered(160, 60, "Crystal realm");
+    }
+
+    if (gCurrLevelNum == LEVEL_JRB) {
+	gSPDisplayList(gDisplayListHead++,mat_icon_course3_f3dlite_material_005);
+	gSPDisplayList(gDisplayListHead++,icon_course3_Bone_mesh_layer_1_tri_0);
+	gSPDisplayList(gDisplayListHead++,mat_revert_icon_course3_f3dlite_material_005);
+	gSPDisplayList(gDisplayListHead++,mat_icon_course3_f3dlite_material_006);
+	gSPDisplayList(gDisplayListHead++,icon_course3_Bone_mesh_layer_1_tri_1);
+	gSPDisplayList(gDisplayListHead++,mat_icon_course3_f3dlite_material_004);
+	gSPDisplayList(gDisplayListHead++,icon_course3_Bone_mesh_layer_1_tri_2);
+    print_text_centered(160, 60, "Grassy realm");
     }
 
 #if MULTILANG
