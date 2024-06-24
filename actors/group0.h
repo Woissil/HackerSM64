@@ -357,4 +357,8 @@ extern const Gfx white_particle_small_unused_dl[];
 #include "propeller_box/anim_header.h"
 #include "icon_course1/geo_header.h"
 
+#include "noteblock/geo_header.h"
+
+#include "noteblock/collision_header.h"
+
 #endif

@@ -45,3 +45,5 @@
 #include "propeller_box/anims/data.inc.c"
 #include "propeller_box/anims/table.inc.c"
 #include "icon_course1/model.inc.c"
+#include "noteblock/model.inc.c"
+#include "noteblock/collision.inc.c"

@@ -547,5 +547,6 @@ extern const BehaviorScript bhvCaveGoomba[];
 extern const BehaviorScript bhvStarStuckInCrystal[];
 extern const BehaviorScript bhvTNT[];
 extern const BehaviorScript bhvPropellerBox[];
+extern const BehaviorScript bhvNoteBlock[];
 
 #endif // BEHAVIOR_DATA_H

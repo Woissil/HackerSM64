@@ -6269,3 +6269,14 @@ const BehaviorScript bhvPropellerBox[] = {
     CALL_NATIVE(propeller_loop),
     END_LOOP(),
 };
+
+const BehaviorScript bhvNoteBlock[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    SET_HOME(),
+    LOAD_COLLISION_DATA(noteblock_collision),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_noteblock_loop),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};

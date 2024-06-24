@@ -144,6 +144,7 @@ const LevelScript level_wf_entry[] = {
         OBJECT(/*model*/ MODEL_NONE, /*pos*/ -2925, 2560,  -947, /*angle*/ 0, 19, 0, /*behParam*/ 0x000B0000, /*beh*/ bhvFadingWarp),
         OBJECT(/*model*/ MODEL_NONE, /*pos*/  2548, 1075, -3962, /*angle*/ 0, 51, 0, /*behParam*/ 0x000C0000, /*beh*/ bhvFadingWarp),
         OBJECT(/*model*/ MODEL_PROPELLER_BOX, /*pos*/  2750,  1340, -3400, /*angle*/ 0, 0, 0, /*behParam*/ 0, /*beh*/ bhvPropellerBox),
+        OBJECT(/*model*/ MODEL_NOTEBLOCK, /*pos*/  2750,  1400, -3400, /*angle*/ 0, 0, 0, /*behParam*/ 0, /*beh*/ bhvNoteBlock),
         WARP_NODE(/*id*/ 0x0A, /*destLevel*/ LEVEL_WF, /*destArea*/ 0x01, /*destNode*/ 0x0A, /*flags*/ WARP_NO_CHECKPOINT),
         WARP_NODE(/*id*/ 0x0B, /*destLevel*/ LEVEL_WF, /*destArea*/ 0x01, /*destNode*/ 0x0C, /*flags*/ WARP_NO_CHECKPOINT),
         WARP_NODE(/*id*/ 0x0C, /*destLevel*/ LEVEL_WF, /*destArea*/ 0x01, /*destNode*/ 0x0B, /*flags*/ WARP_NO_CHECKPOINT),

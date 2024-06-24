@@ -553,6 +553,7 @@
 #define MODEL_TNT 0xEA
 #define MODEL_PEASHOOTER 0xEB
 #define MODEL_PROPELLER_BOX 0xEC
+#define MODEL_NOTEBLOCK 0xED
 
 #ifdef IA8_30FPS_COINS
 #define MODEL_SILVER_COIN                 0xE2        // silver_coin_geo
