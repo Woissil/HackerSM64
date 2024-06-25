@@ -550,5 +550,9 @@ extern const BehaviorScript bhvPropellerBox[];
 extern const BehaviorScript bhvNoteBlock[];
 extern const BehaviorScript bhvChuckyaStarSpawner[];
 extern const BehaviorScript bhvTargetBulseyeStarSpawner[];
+extern const BehaviorScript bhvBreakBoxBoomerang[];
+extern const BehaviorScript bhvBoomerangFlower[];
+extern const BehaviorScript bhvBoomerangProjectile[];
+extern const BehaviorScript bhvBoomerangStarSpawner[];
 
 #endif // BEHAVIOR_DATA_H

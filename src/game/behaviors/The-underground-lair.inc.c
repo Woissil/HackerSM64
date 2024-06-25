@@ -27,6 +27,10 @@ void crystal_powerup_loop(void) {
         gPowerup = POWERUP_CRYSTAL;
         obj_mark_for_deletion(o); // don't forget this :)
     }
+
+    if (o->oTimer > 300) {
+        obj_flicker_and_disappear(o, 300);
+    }
 }
 
 void crystal_shard_init(void) {

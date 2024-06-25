@@ -267,6 +267,8 @@ s32 crystalThrown = FALSE;
 s32 crystalTimer = 0;
 s32 targetSpawnedStar = FALSE;
 
+u8 boomerangThrown = FALSE;
+
 extern u8 tnt_collected;
 extern void spawn_default_star(f32 x, f32 y, f32 z);
 
@@ -302,6 +304,10 @@ void bhv_mario_update(void) {
     // power up code
     obj_set_model(gMarioObject, gPowerUpModelList[gPowerup]);
 
+    if (gMarioState->hurtCounter != 0) {
+        gPowerup = 0;
+    }
+
     //crystal powers
     if (gPowerup == POWERUP_CRYSTAL) {
         if ((gMarioState->action == ACT_MOVE_PUNCHING || gMarioState->action == ACT_PUNCHING
@@ -321,6 +327,16 @@ void bhv_mario_update(void) {
         crystalTimer = 0;
     }
     //crystal powers end
+
+    //boomerang
+    if (gPowerup == POWERUP_BOOMERANG) {
+        if ((gMarioState->action == ACT_MOVE_PUNCHING || gMarioState->action == ACT_PUNCHING)) {
+            if (!boomerangThrown) {
+            spawn_object(gMarioState->marioObj, MODEL_BOOMERANG, bhvBoomerangProjectile);
+            boomerangThrown = TRUE;
+            }
+        }
+    }
 }
 
 /**

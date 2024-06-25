@@ -7,6 +7,7 @@ extern u8 gPowerUpModelList[];
 enum PowerUpID {
     POWERUP_NORMAL,
     POWERUP_CRYSTAL,
+    POWERUP_BOOMERANG,
     POWERUP_MAX,
 };
 

@@ -1,0 +1,11 @@
+extern const GeoLayout boomerang_projectile_geo[];
+extern Lights1 boomerang_projectile_f3dlite_material_001_lights;
+extern Lights1 boomerang_projectile_f3dlite_material_002_lights;
+extern Vtx boomerang_projectile_BoomerangFlower_mesh_layer_1_vtx_0[92];
+extern Gfx boomerang_projectile_BoomerangFlower_mesh_layer_1_tri_0[];
+extern Vtx boomerang_projectile_BoomerangFlower_mesh_layer_1_vtx_1[22];
+extern Gfx boomerang_projectile_BoomerangFlower_mesh_layer_1_tri_1[];
+extern Gfx mat_boomerang_projectile_f3dlite_material_001[];
+extern Gfx mat_revert_boomerang_projectile_f3dlite_material_001[];
+extern Gfx mat_boomerang_projectile_f3dlite_material_002[];
+extern Gfx boomerang_projectile_BoomerangFlower_mesh_layer_1[];

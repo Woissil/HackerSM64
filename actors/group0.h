@@ -363,4 +363,16 @@ extern const Gfx white_particle_small_unused_dl[];
 
 #include "icon_course3/geo_header.h"
 
+#include "appearing_bridge/geo_header.h"
+
+#include "appearing_bridge/collision_header.h"
+
+#include "boomerang_box/geo_header.h"
+
+#include "boomerang_mario/geo_header.h"
+
+#include "boomerang_flower/geo_header.h"
+
+#include "boomerang_projectile/geo_header.h"
+
 #endif

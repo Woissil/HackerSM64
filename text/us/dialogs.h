@@ -56,12 +56,10 @@ You gotta defeat him\n\
 or else..."))
 
 DEFINE_DIALOG(DIALOG_006, 1, 3, 30, 200, _("\
-Hey!!! Don't try to " SCAM_ME
-"You've gotta run\n\
-the whole course.\n\
-Later. Look me up when\n\
-you want to race for\n\
-real."))
+Hey! if you wanna\n\
+Break these Boxes\n\
+You gotta throw a\n\
+Boomerang at them!"))
 
 DEFINE_DIALOG(DIALOG_007, 1, 5, 30, 200, _("\
 Hufff...fff...pufff...\n\

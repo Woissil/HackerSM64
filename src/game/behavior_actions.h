@@ -565,6 +565,11 @@ void bhv_noteblock_loop(void);
 void bhv_noteblock_init(void);
 void chuckya_spawn_star(void);
 void spawnstar_target(void);
+void bhv_boomerang_box_loop(void);
+void boomerang_loop(void);
+void boomerang_init(void);
+void boomerangprojectile(void);
+void spawnstar_boomerangbox(void);
 
 Gfx *geo_move_mario_part_from_parent(s32 callContext, UNUSED struct GraphNode *node, Mat4 mtx);
 

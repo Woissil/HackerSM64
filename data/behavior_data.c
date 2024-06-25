@@ -6297,3 +6297,45 @@ const BehaviorScript bhvTargetBulseyeStarSpawner[] = {
     CALL_NATIVE(spawnstar_target),
     END_LOOP(),
 };
+
+const BehaviorScript bhvBoomerangStarSpawner[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    OR_LONG(oFlags, (OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    BEGIN_LOOP(),
+    CALL_NATIVE(spawnstar_boomerangbox),
+    END_LOOP(),
+};
+
+const BehaviorScript bhvBreakBoxBoomerang[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_LONG(oFlags, (OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_DONT_CALC_COLL_DIST)),
+    LOAD_COLLISION_DATA(breakable_box_seg8_collision),
+    SET_FLOAT(oCollisionDistance, 1000),
+    SET_FLOAT(oDrawingDistance, 32000),
+    CALL_NATIVE(bhv_init_room),
+    BEGIN_LOOP(),
+    CALL_NATIVE(bhv_boomerang_box_loop),
+    CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+    BREAK(),
+};
+
+const BehaviorScript bhvBoomerangFlower[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    OR_LONG(oFlags, (OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE
+                     | OBJ_FLAG_SILHOUETTE)),
+    CALL_NATIVE(boomerang_init),
+    BEGIN_LOOP(),
+    CALL_NATIVE(boomerang_loop),
+    END_LOOP(),
+};
+
+const BehaviorScript bhvBoomerangProjectile[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    OR_LONG(oFlags, (OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_MOVE_XZ_USING_FVEL)),
+    SET_HITBOX(50, 50),
+    SET_INT(oIntangibleTimer, 0),
+    BEGIN_LOOP(),
+    CALL_NATIVE(boomerangprojectile),
+    END_LOOP(),
+};

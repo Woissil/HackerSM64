@@ -29,3 +29,8 @@
 #include "icon_course1/geo.inc.c"
 #include "noteblock/geo.inc.c"
 #include "icon_course3/geo.inc.c"
+#include "appearing_bridge/geo.inc.c"
+#include "boomerang_box/geo.inc.c"
+#include "boomerang_mario/geo.inc.c"
+#include "boomerang_flower/geo.inc.c"
+#include "boomerang_projectile/geo.inc.c"

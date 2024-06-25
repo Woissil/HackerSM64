@@ -7,6 +7,7 @@ u8 gPowerup = 0;
 u8 gPowerUpModelList[POWERUP_MAX] = {
     [POWERUP_NORMAL] = MODEL_MARIO,
     [POWERUP_CRYSTAL] = MODEL_CRYSTAL_MARIO,
+    [POWERUP_BOOMERANG] = MODEL_BOOMERANG_MARIO,
 };
 
 /* Power-up Defines. Actual code at void bhv_mario_update(). */
