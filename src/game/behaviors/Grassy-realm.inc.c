@@ -2,6 +2,7 @@
 
 #define BOOMERANG_GOING 0
 #define BOOMERANG_COME_BACK 1
+#define BOOMERANG_STAY 2
 #define BOOMERANG_SPEED 60.0f
 
 void chuckya_spawn_star(void) {
@@ -65,6 +66,7 @@ void boomerang_loop(void) {
 extern u8 boomerangThrown;
 
 void boomerangprojectile(void) {
+    o->oGraphYOffset = 50.f;
     o->oFaceAngleYaw += (0x900 *4);
     switch (o->oAction) {
         case BOOMERANG_GOING:
@@ -74,9 +76,17 @@ void boomerangprojectile(void) {
         case BOOMERANG_COME_BACK:
             o->oForwardVel = 0.f;
             break;
+
+        case BOOMERANG_STAY:
+            o->oForwardVel = 0.f;
+            break;
     }
 
-    if (o->oTimer >= 30 && o->oAction != BOOMERANG_COME_BACK) {
+    if (o->oTimer >= 8 && o->oAction == BOOMERANG_GOING) {
+        o->oAction = BOOMERANG_STAY;
+    }
+
+    if (o->oTimer >= 50 && o->oAction == BOOMERANG_STAY) {
         o->oAction = BOOMERANG_COME_BACK;
     }
 
