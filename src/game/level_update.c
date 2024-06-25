@@ -347,7 +347,12 @@ void set_mario_initial_action(struct MarioState *m, u32 spawnType, u32 actionArg
     set_mario_initial_cap_powerup(m);
 }
 
+extern u8 gPowerup;
+extern u8 propeller_gotten;
+
 void init_mario_after_warp(void) {
+    gPowerup = 0;
+    propeller_gotten = FALSE;;
     struct ObjectWarpNode *spawnNode = area_get_warp_node(sWarpDest.nodeId);
     u32 marioSpawnType = get_mario_spawn_type(spawnNode->object);
 
@@ -705,8 +710,6 @@ void initiate_painting_warp(void) {
  */
 
 // make power ups disappear after warp.
-extern u8 gPowerup;
-extern u8 propeller_gotten;
 
 s16 level_trigger_warp(struct MarioState *m, s32 warpOp) {
     s32 fadeMusic = TRUE;
