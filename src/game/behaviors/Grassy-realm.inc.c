@@ -65,7 +65,7 @@ void boomerang_loop(void) {
 extern u8 boomerangThrown;
 
 void boomerangprojectile(void) {
-    o->oFaceAngleYaw += 0x900;
+    o->oFaceAngleYaw += (0x900 *4);
     switch (o->oAction) {
         case BOOMERANG_GOING:
             o->oForwardVel = BOOMERANG_SPEED;
