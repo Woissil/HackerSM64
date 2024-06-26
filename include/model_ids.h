@@ -559,6 +559,8 @@
 #define MODEL_BOOMERANG_MARIO 0xF1
 #define MODEL_BOOMERANG_FLOWER 0xF2
 #define MODEL_BOOMERANG 0xF3
+#define MODEL_COCONUT 0xF4
+#define MODEL_SKETCHY_KOOPA 0xF5
 
 #ifdef IA8_30FPS_COINS
 #define MODEL_SILVER_COIN                 0xE2        // silver_coin_geo

@@ -399,14 +399,15 @@ void render_hud_breath_meter(void) {
 }
 #endif
 
+extern u8 coconuts;
 
 /**
- * Renders the amount of lives Mario has.
+ * Renders the amount of coconuts mario has.
  */
-void render_hud_mario_lives(void) {
-    print_text(GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(22), HUD_TOP_Y, ","); // 'Mario Head' glyph
+void render_hud_mario_coconuts(void) {
+    print_text(GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(22), HUD_TOP_Y, "|"); // 'Beta key' glyph, which is replaced by Coconut glpyh.
     print_text(GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(38), HUD_TOP_Y, "*"); // 'X' glyph
-    print_text_fmt_int(GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(54), HUD_TOP_Y, "%d", gHudDisplay.lives);
+    print_text_fmt_int(GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(54), HUD_TOP_Y, "%d", coconuts);
 }
 
 #ifdef VANILLA_STYLE_CUSTOM_DEBUG
@@ -571,11 +572,11 @@ void render_hud(void) {
             render_hud_cannon_reticle();
         }
 
-#ifdef ENABLE_LIVES
-        if (hudDisplayFlags & HUD_DISPLAY_FLAG_LIVES) {
-            render_hud_mario_lives();
+        //this was lives but i removed them so now its coconut lmao
+
+        if (gCurrLevelNum == LEVEL_HMC && (hudDisplayFlags & HUD_DISPLAY_FLAG_LIVES)) {
+            render_hud_mario_coconuts();
         }
-#endif
 
         if (hudDisplayFlags & HUD_DISPLAY_FLAG_COIN_COUNT) {
             render_hud_coins();

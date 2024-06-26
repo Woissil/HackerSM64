@@ -287,6 +287,7 @@ const LevelScript script_func_global_10[] = {
 };
 
 const LevelScript script_func_global_11[] = {
+    LOAD_MODEL_FROM_GEO(MODEL_COCONUT, coconut_geo),
     LOAD_MODEL_FROM_GEO(MODEL_BIRDS,                   birds_geo),
     LOAD_MODEL_FROM_GEO(MODEL_PEACH,                   peach_geo),
     LOAD_MODEL_FROM_GEO(MODEL_YOSHI,                   yoshi_geo),
@@ -360,5 +361,13 @@ const LevelScript script_func_global_18[] = {
     LOAD_MODEL_FROM_GEO(MODEL_MR_I_BODY,               mr_i_geo),
     LOAD_MODEL_FROM_GEO(MODEL_DORRIE,                  dorrie_geo),
     LOAD_MODEL_FROM_GEO(MODEL_SNUFIT,                  snufit_geo),
+    RETURN(),
+};
+
+const LevelScript script_func_load_boomerangs[] = {
+	LOAD_MODEL_FROM_GEO(MODEL_BOOMERANG_BOX,               boomerang_box_geo),
+    LOAD_MODEL_FROM_GEO(MODEL_BOOMERANG_MARIO,               boomerang_mario_geo),
+    LOAD_MODEL_FROM_GEO(MODEL_BOOMERANG_FLOWER,               boomerang_flower_geo),
+    LOAD_MODEL_FROM_GEO(MODEL_BOOMERANG,               boomerang_projectile_geo),
     RETURN(),
 };

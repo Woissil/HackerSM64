@@ -67,7 +67,7 @@ This is a Great beach\n\
 Ain't it?\n\
 \n\
 Anyways, I need you\n\
-to collect some Coconuts!\n\
+to collect 4 Coconuts!\n\
 If you Collect all of em\n\
 Talk to me and I'll\n\
 give a star!"))
@@ -77,34 +77,15 @@ Thanks for collecting\n\
 The coconuts!!!!"))
 
 DEFINE_DIALOG(DIALOG_009, 1, 5, 30, 200, _("\
-Long time, no see! Wow,\n\
-have you gotten fast!\n\
-Have you been training\n\
-on the sly, or is it the\n\
-power of the Stars?\n\
-I've been feeling down\n\
-about losing the last\n\
-race. This is my home\n\
-course--how about a\n\
-rematch?\n\
-The goal is in\n\
-Windswept Valley.\n\
-Ready?\n\
-\n\
-//Go//// Don't Go"))
+Pssst...\n\
+Hey! I heared that you\n\
+are looking for Coconuts..\n\
+I can give ya some!"))
 
 DEFINE_DIALOG(DIALOG_010, 1, 4, 30, 200, _("\
-You've stepped on the\n\
-Wing Cap Switch. Wearing\n\
-the Wing Cap, you can\n\
-soar through the sky.\n\
-Now Wing Caps will pop\n\
-out of all the red blocks\n\
-you find.\n\
-\n\
-Would you like to Save?\n\
-\n\
-//Yes////No"))
+Thank you very much!\n\
+It was pleasure doing\n\
+The deal with you."))
 
 DEFINE_DIALOG(DIALOG_011, 1, 4, 30, 200, _("\
 You've just stepped on\n\

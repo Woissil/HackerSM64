@@ -12,6 +12,7 @@
 #include "levels/scripts.h"
 
 #include "actors/common1.h"
+#include "actors/group10.h"
 
 /* Fast64 begin persistent block [includes] */
 /* Fast64 end persistent block [includes] */
@@ -38,7 +39,8 @@ const LevelScript level_hmc_entry[] = {
 	MARIO(MODEL_MARIO, 0x00000001, bhvMario), 
 	JUMP_LINK(script_func_global_1), 
 	JUMP_LINK(script_func_global_11), 
-	JUMP_LINK(script_func_global_18), 
+	JUMP_LINK(script_func_load_boomerangs), 
+	LOAD_MODEL_FROM_GEO(MODEL_SKETCHY_KOOPA, sketchy_koopa_geo), 
 
 	/* Fast64 begin persistent block [level commands] */
 	/* Fast64 end persistent block [level commands] */
@@ -47,9 +49,18 @@ const LevelScript level_hmc_entry[] = {
 		WARP_NODE(0x0A, LEVEL_BOB, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xF0, LEVEL_BOB, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xF1, LEVEL_BOB, 0x01, 0x0A, WARP_NO_CHECKPOINT),
+		OBJECT(MODEL_BOOMERANG_BOX, 2762, 139, 10408, 0, 0, 0, 0x00000000, bhvBreakBoxBoomerang),
+		OBJECT(MODEL_EXCLAMATION_BOX, 1016, 622, 11314, 0, 0, 0, 0x00000000, bhvExclamationBox),
+		OBJECT(MODEL_COCONUT, -770, 207, 10853, 0, 0, 0, 0x00000000, bhvCoconut),
+		OBJECT(MODEL_COCONUT, 2762, 139, 10408, 0, 0, 0, 0x00000000, bhvCoconut),
+		OBJECT(MODEL_COCONUT, -3529, 837, 10810, 0, 0, 0, 0x00000000, bhvCoconut),
+		OBJECT(MODEL_NONE, -2955, 207, 10403, 0, 0, 0, 0x00000000, bhvCoinFormation),
+		OBJECT(MODEL_NONE, 182, 207, 10403, 0, 0, 0, 0x00000000, bhvCoinFormation),
 		OBJECT(MODEL_GOOMBA, 314, 250, 9786, 0, 0, 0, 0x00000000, bhvGoomba),
 		OBJECT(MODEL_GOOMBA, -314, 250, 10490, 0, 0, 0, 0x00000000, bhvGoomba),
 		OBJECT(MODEL_GOOMBA, -314, 250, 9845, 0, 0, 0, 0x00000000, bhvGoomba),
+		OBJECT(MODEL_GOOMBA, 2573, 183, 12734, 0, 0, 0, 0x00000000, bhvSketchyKoopa),
+		OBJECT(MODEL_STAR, -2725, 1153, 7284, 0, 0, 0, (1 << 24), bhvStar),
 		OBJECT(MODEL_YOSHI, 314, 201, 12874, 0, 0, 0, 0x00000000, bhvBeachYoshi),
 		OBJECT(MODEL_NONE, 0, 397, 13252, 0, 0, 0, 0x000A0000, bhvSpinAirborneWarp),
 		MARIO_POS(0x01, 0, 0, 397, 13252),

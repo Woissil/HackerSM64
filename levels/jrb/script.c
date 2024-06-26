@@ -42,10 +42,7 @@ const LevelScript level_jrb_entry[] = {
 	JUMP_LINK(script_func_global_1), 
 	JUMP_LINK(script_func_global_5), 
 	JUMP_LINK(script_func_global_14), 
-	LOAD_MODEL_FROM_GEO(MODEL_BOOMERANG_BOX,               boomerang_box_geo),
-    LOAD_MODEL_FROM_GEO(MODEL_BOOMERANG_MARIO,               boomerang_mario_geo),
-    LOAD_MODEL_FROM_GEO(MODEL_BOOMERANG_FLOWER,               boomerang_flower_geo),
-    LOAD_MODEL_FROM_GEO(MODEL_BOOMERANG,               boomerang_projectile_geo),
+    JUMP_LINK(script_func_load_boomerangs),
 	LOAD_MODEL_FROM_GEO(MODEL_NOTEBLOCK,               noteblock_geo),
 
 	/* Fast64 begin persistent block [level commands] */

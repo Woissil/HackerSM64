@@ -94,4 +94,8 @@ extern const Gfx yoshi_seg5_dl_05022408[];
 extern const Gfx yoshi_seg5_dl_05022608[];
 extern const struct Animation *const yoshi_seg5_anims_05024100[];
 
+#include "coconut/geo_header.h"
+
+#include "sketchy_koopa/geo_header.h"
+
 #endif

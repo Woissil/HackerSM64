@@ -555,5 +555,7 @@ extern const BehaviorScript bhvBoomerangFlower[];
 extern const BehaviorScript bhvBoomerangProjectile[];
 extern const BehaviorScript bhvBoomerangStarSpawner[];
 extern const BehaviorScript bhvBeachYoshi[];
+extern const BehaviorScript bhvCoconut[];
+extern const BehaviorScript bhvSketchyKoopa[];
 
 #endif // BEHAVIOR_DATA_H
