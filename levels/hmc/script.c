@@ -13,6 +13,7 @@
 
 #include "actors/common1.h"
 #include "actors/group10.h"
+#include "actors/group14.h"
 
 /* Fast64 begin persistent block [includes] */
 /* Fast64 end persistent block [includes] */
@@ -29,8 +30,8 @@ const LevelScript level_hmc_entry[] = {
 	LOAD_YAY0_TEXTURE(0x09, _cave_yay0SegmentRomStart, _cave_yay0SegmentRomEnd), 
 	LOAD_YAY0(0x05, _group10_yay0SegmentRomStart, _group10_yay0SegmentRomEnd), 
 	LOAD_RAW(0x0C, _group10_geoSegmentRomStart, _group10_geoSegmentRomEnd), 
-	LOAD_YAY0(0x06, _group17_yay0SegmentRomStart, _group17_yay0SegmentRomEnd), 
-	LOAD_RAW(0x0D, _group17_geoSegmentRomStart, _group17_geoSegmentRomEnd), 
+	LOAD_YAY0(0x06, _group14_yay0SegmentRomStart, _group14_yay0SegmentRomEnd), 
+	LOAD_RAW(0x0D, _group14_geoSegmentRomStart, _group14_geoSegmentRomEnd), 
 	LOAD_YAY0(0x08, _common0_yay0SegmentRomStart, _common0_yay0SegmentRomEnd), 
 	LOAD_RAW(0x0F, _common0_geoSegmentRomStart, _common0_geoSegmentRomEnd), 
 	LOAD_MIO0(0x7, _hmc_segment_7SegmentRomStart, _hmc_segment_7SegmentRomEnd), 
@@ -41,6 +42,8 @@ const LevelScript level_hmc_entry[] = {
 	JUMP_LINK(script_func_global_11), 
 	JUMP_LINK(script_func_load_boomerangs), 
 	LOAD_MODEL_FROM_GEO(MODEL_SKETCHY_KOOPA, sketchy_koopa_geo), 
+	LOAD_MODEL_FROM_GEO(MODEL_KOOPA_WITH_SHELL, koopa_with_shell_geo), 
+	LOAD_MODEL_FROM_GEO(MODEL_KOOPA_WITHOUT_SHELL, koopa_without_shell_geo), 
 
 	/* Fast64 begin persistent block [level commands] */
 	/* Fast64 end persistent block [level commands] */
@@ -56,9 +59,19 @@ const LevelScript level_hmc_entry[] = {
 		OBJECT(MODEL_COCONUT, -3529, 837, 10810, 0, 0, 0, 0x00000000, bhvCoconut),
 		OBJECT(MODEL_NONE, -2955, 207, 10403, 0, 0, 0, 0x00000000, bhvCoinFormation),
 		OBJECT(MODEL_NONE, 182, 207, 10403, 0, 0, 0, 0x00000000, bhvCoinFormation),
+		OBJECT(MODEL_NONE, 3029, 1462, 649, 0, 90, 0, 0x00000000, bhvCoinFormation),
 		OBJECT(MODEL_GOOMBA, 314, 250, 9786, 0, 0, 0, 0x00000000, bhvGoomba),
 		OBJECT(MODEL_GOOMBA, -314, 250, 10490, 0, 0, 0, 0x00000000, bhvGoomba),
 		OBJECT(MODEL_GOOMBA, -314, 250, 9845, 0, 0, 0, 0x00000000, bhvGoomba),
+		OBJECT(MODEL_GOOMBA, 3372, 250, 8035, 0, 0, 0, 0x00000000, bhvGoomba),
+		OBJECT(MODEL_KOOPA_WITH_SHELL, 3372, 653, 4342, 0, 0, 0, (1 << 16), bhvKoopa),
+		OBJECT(MODEL_KOOPA_WITH_SHELL, 3372, 1406, 2524, 0, 0, 0, (1 << 16), bhvKoopa),
+		OBJECT(MODEL_KOOPA_WITH_SHELL, 2944, 1500, -736, 0, 0, 0, (1 << 16), bhvKoopa),
+		OBJECT(MODEL_THI_WARP_PIPE, 2944, 1709, -3083, 0, 0, 0, 0x00000000, bhvWarpPipe),
+		OBJECT(MODEL_RED_COIN, 2644, 164, 8274, 0, 0, 0, 0x00000000, bhvRedCoin),
+		OBJECT(MODEL_NONE, 175, 413, 10651, 0, 0, 0, 0x00000000, bhvBowserCourseRedCoinStar),
+		OBJECT(MODEL_RED_COIN, 8, 372, 7307, 0, 0, 0, 0x00000000, bhvRedCoin),
+		OBJECT(MODEL_RED_COIN, 1541, 773, 2009, 0, 0, 0, 0x00000000, bhvRedCoin),
 		OBJECT(MODEL_GOOMBA, 2573, 183, 12734, 0, 0, 0, 0x00000000, bhvSketchyKoopa),
 		OBJECT(MODEL_STAR, -2725, 1153, 7284, 0, 0, 0, (1 << 24), bhvStar),
 		OBJECT(MODEL_YOSHI, 314, 201, 12874, 0, 0, 0, 0x00000000, bhvBeachYoshi),
