@@ -66,24 +66,12 @@ const LevelScript level_main_scripts_entry[] = {
     LOAD_RAW_WITH_CODE( /*seg*/ SEGMENT_BEHAVIOR_DATA,    _behaviorSegmentRomStart,     _behaviorSegmentRomEnd,   _behaviorSegmentBssStart,     _behaviorSegmentBssEnd),
     ALLOC_LEVEL_POOL(),
     LOAD_MODEL_FROM_GEO(MODEL_MARIO,                   mario_geo),
-    //crystals
-    LOAD_MODEL_FROM_GEO(MODEL_CRYSTAL_MARIO,                   crystal_mario_geo),
-    LOAD_MODEL_FROM_GEO(MODEL_CRYSTAl_SHARD,                   crystal_geo),
-    LOAD_MODEL_FROM_GEO(MODEL_CRYSTAl_POWERUP,                   crystal_powerup_geo),
-    // crystals end
-
+    //LOAD_MODEL_FROM_GEO(MODEL_YOSHI,                   yoshi_geo),
     //properller
     LOAD_MODEL_FROM_GEO(MODEL_PROPELLER_BOX, propeller_box_geo),
     //end
-    LOAD_MODEL_FROM_GEO(MODEL_TARGET_BULSEYE,                   target_bulseye_geo),
-    LOAD_MODEL_FROM_GEO(MODEL_CAVE_GOOMBA,                   cave_goomba_geo),
-    LOAD_MODEL_FROM_GEO(MODEL_STAR_STUCK_IN_CRYSTAL,                   star_stuck_in_crystal_geo),
-    LOAD_MODEL_FROM_GEO(MODEL_TNT,                   tnt_geo),
-    LOAD_MODEL_FROM_GEO(MODEL_PEASHOOTER,                   peashooter_geo),
-    LOAD_MODEL_FROM_GEO(MODEL_BOOMERANG_BOX,               boomerang_box_geo),
-    LOAD_MODEL_FROM_GEO(MODEL_BOOMERANG_MARIO,               boomerang_mario_geo),
-    LOAD_MODEL_FROM_GEO(MODEL_BOOMERANG_FLOWER,               boomerang_flower_geo),
-    LOAD_MODEL_FROM_GEO(MODEL_BOOMERANG,               boomerang_projectile_geo),
+    //LOAD_MODEL_FROM_GEO(MODEL_CAVE_GOOMBA,                   cave_goomba_geo),
+    
     LOAD_MODEL_FROM_GEO(MODEL_SMOKE,                   smoke_geo),
     LOAD_MODEL_FROM_GEO(MODEL_SPARKLES,                sparkles_geo),
     LOAD_MODEL_FROM_GEO(MODEL_BUBBLE,                  bubble_geo),
@@ -130,7 +118,7 @@ const LevelScript level_main_scripts_entry[] = {
     LOAD_MODEL_FROM_GEO(MODEL_DIRT_ANIMATION,          dirt_animation_geo),
     LOAD_MODEL_FROM_GEO(MODEL_CARTOON_STAR,            cartoon_star_geo),
     //MOPS
-    LOAD_MODEL_FROM_GEO(MODEL_NOTEBLOCK,               noteblock_geo),
+    //LOAD_MODEL_FROM_GEO(MODEL_NOTEBLOCK,               noteblock_geo),
 #ifdef IA8_30FPS_COINS
     LOAD_MODEL_FROM_GEO(MODEL_SILVER_COIN,             silver_coin_geo),
     LOAD_MODEL_FROM_GEO(MODEL_SILVER_COIN_NO_SHADOW,   silver_coin_no_shadow_geo),

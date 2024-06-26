@@ -61,7 +61,7 @@ Break these Boxes\n\
 You gotta throw a\n\
 Boomerang at them!"))
 
-DEFINE_DIALOG(DIALOG_007, 1, 5, 30, 250, _("\
+DEFINE_DIALOG(DIALOG_007, 1, 5, 30, 200, _("\
 Yo Mario!\n\
 This is a Great beach\n\
 Ain't it?\n\
@@ -69,21 +69,12 @@ Ain't it?\n\
 Anyways, I need you\n\
 to collect some Coconuts!\n\
 If you Collect all of em\n\
-Talk to me and I'll give a star!"))
+Talk to me and I'll\n\
+give a star!"))
 
 DEFINE_DIALOG(DIALOG_008, 1, 4, 30, 200, _("\
-BEWARE OF CHAIN CHOMP\n\
-Extreme Danger!\n\
-Get close and press [C]^\n\
-for a better look.\n\
-Scary, huh?\n\
-See the Red Coin on top\n\
-of the stake?\n\
-\n\
-When you collect eight of\n\
-them, a Power Star will\n\
-appear in the meadow\n\
-across the bridge."))
+Thanks for collecting\n\
+The coconuts!!!!"))
 
 DEFINE_DIALOG(DIALOG_009, 1, 5, 30, 200, _("\
 Long time, no see! Wow,\n\

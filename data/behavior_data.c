@@ -6339,3 +6339,17 @@ const BehaviorScript bhvBoomerangProjectile[] = {
     CALL_NATIVE(boomerangprojectile),
     END_LOOP(),
 };
+
+const BehaviorScript bhvBeachYoshi[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    SET_HITBOX(/*Radius*/ 100, /*Height*/ 200),
+    SET_INTERACT_TYPE(INTERACT_TEXT),
+    SET_INT(oInteractionSubtype, INT_SUBTYPE_NPC),
+    SET_INT(oWoodenPostTotalMarioAngle, 0),
+    SET_INT(oIntangibleTimer, 0),
+    LOAD_ANIMATIONS(oAnimations, yoshi_seg5_anims_05024100),
+    BEGIN_LOOP(),
+        CALL_NATIVE(beachyoshi_message),
+    END_LOOP(),
+};

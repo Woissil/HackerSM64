@@ -67,7 +67,7 @@ extern u8 boomerangThrown;
 
 void boomerangprojectile(void) {
     o->oGraphYOffset = 50.f;
-    o->oFaceAngleYaw += (0x900 *4);
+    o->oFaceAngleYaw += (0x900 * 4);
     switch (o->oAction) {
         case BOOMERANG_GOING:
             o->oForwardVel = BOOMERANG_SPEED;
@@ -105,14 +105,14 @@ void boomerangprojectile(void) {
     if (nearest_goomba && detect_object_hitbox_overlap(o, nearest_goomba)) {
         nearest_goomba->oInteractStatus =
             ATTACK_KICK_OR_TRIP | INT_STATUS_INTERACTED | INT_STATUS_WAS_ATTACKED;
-            o->oAction = BOOMERANG_COME_BACK;
+        o->oAction = BOOMERANG_COME_BACK;
     }
 
     struct Object *nearest_box = cur_obj_nearest_object_with_behavior(bhvBreakableBox);
     if (nearest_box && detect_object_hitbox_overlap(o, nearest_box)) {
         nearest_box->oInteractStatus =
             ATTACK_KICK_OR_TRIP | INT_STATUS_INTERACTED | INT_STATUS_WAS_ATTACKED;
-            o->oAction = BOOMERANG_COME_BACK;
+        o->oAction = BOOMERANG_COME_BACK;
     }
 }
 
