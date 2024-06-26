@@ -28,11 +28,12 @@
 
 #include "config.h"
 
+//not needed, you neec coconuts instead Lol!!!!
 #define TOAD_STAR_1_REQUIREMENT 12
 #define TOAD_STAR_2_REQUIREMENT 25
 #define TOAD_STAR_3_REQUIREMENT 35
 
-#define TOAD_STAR_1_DIALOG DIALOG_082
+#define TOAD_STAR_1_DIALOG DIALOG_007
 #define TOAD_STAR_2_DIALOG DIALOG_076
 #define TOAD_STAR_3_DIALOG DIALOG_083
 

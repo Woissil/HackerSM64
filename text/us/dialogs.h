@@ -61,12 +61,15 @@ Break these Boxes\n\
 You gotta throw a\n\
 Boomerang at them!"))
 
-DEFINE_DIALOG(DIALOG_007, 1, 5, 30, 200, _("\
-Hufff...fff...pufff...\n\
-Whoa! You...really...are...\n\
-fast! A human blur!\n\
-Here you go--you've won\n\
-it, fair and square!"))
+DEFINE_DIALOG(DIALOG_007, 1, 5, 30, 250, _("\
+Yo Mario!\n\
+This is a Great beach\n\
+Ain't it?\n\
+\n\
+Anyways, I need you\n\
+to collect some Coconuts!\n\
+If you Collect all of em\n\
+Talk to me and I'll give a star!"))
 
 DEFINE_DIALOG(DIALOG_008, 1, 4, 30, 200, _("\
 BEWARE OF CHAIN CHOMP\n\

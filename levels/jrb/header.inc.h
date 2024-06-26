@@ -2,6 +2,10 @@ extern const GeoLayout jrb_area_1_geo[];
 extern const GeoLayout jrb_area_1[];
 extern const Collision jrb_area_1_collision[];
 extern const MacroObject jrb_area_1_macro_objs[];
+#include "src/game/camera.h"
+
+extern struct CutsceneSplinePoint jrb_area_1_spline_focus[];
+extern struct CutsceneSplinePoint jrb_area_1_spline_NurbsCurve[];
 extern Lights1 jrb_dl_f3dlite_material_003_lights;
 extern Lights1 jrb_dl_f3dlite_material_001_lights;
 extern Lights1 jrb_dl_f3dlite_material_006_lights;
@@ -11,9 +15,9 @@ extern u8 jrb_dl_tempImgEd038C_ia16[];
 extern u8 jrb_dl__39AEB6DBCB410023D0DB4347EB009616_ci8[];
 extern u8 jrb_dl__39AEB6DBCB410023D0DB4347EB009616_pal_rgba16[];
 extern Vtx jrb_dl_Cube_mesh_layer_1_vtx_cull[8];
-extern Vtx jrb_dl_Cube_mesh_layer_1_vtx_0[75];
+extern Vtx jrb_dl_Cube_mesh_layer_1_vtx_0[82];
 extern Gfx jrb_dl_Cube_mesh_layer_1_tri_0[];
-extern Vtx jrb_dl_Cube_mesh_layer_1_vtx_1[169];
+extern Vtx jrb_dl_Cube_mesh_layer_1_vtx_1[170];
 extern Gfx jrb_dl_Cube_mesh_layer_1_tri_1[];
 extern Vtx jrb_dl_Cube_001_mesh_layer_1_vtx_cull[8];
 extern Vtx jrb_dl_Cube_001_mesh_layer_1_vtx_0[62];

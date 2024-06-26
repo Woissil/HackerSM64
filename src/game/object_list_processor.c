@@ -330,7 +330,7 @@ void bhv_mario_update(void) {
 
     //boomerang
     if (gPowerup == POWERUP_BOOMERANG) {
-        if ((gMarioState->action == ACT_MOVE_PUNCHING || gMarioState->action == ACT_PUNCHING)) {
+        if ((gMarioState->controller->buttonPressed & B_BUTTON && gMarioState->pos[1] == gMarioState->floorHeight)) {
             if (!boomerangThrown) {
             spawn_object(gMarioState->marioObj, MODEL_BOOMERANG, bhvBoomerangProjectile);
             boomerangThrown = TRUE;
