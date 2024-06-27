@@ -65,6 +65,7 @@ void slow_star_rotation(void) {
 }
 
 void bhv_spawned_star_loop(void) {
+    o->oInteractionSubtype = INT_SUBTYPE_NO_EXIT;
     if (o->oAction == SPAWN_STAR_POS_CUTSCENE_ACT_START) {
         if (o->oTimer == 0) {
             cutscene_object(CUTSCENE_STAR_SPAWN, o);

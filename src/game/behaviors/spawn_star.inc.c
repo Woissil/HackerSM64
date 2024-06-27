@@ -30,6 +30,7 @@ void bhv_collect_star_init(void) {
 }
 
 void bhv_collect_star_loop(void) {
+    o->oInteractionSubtype = INT_SUBTYPE_NO_EXIT;
     o->oFaceAngleYaw += 0x800;
 
     if (o->oInteractStatus & INT_STATUS_INTERACTED) {
@@ -63,6 +64,7 @@ void bhv_star_spawn_init(void) {
 }
 
 void bhv_star_spawn_loop(void) {
+    o->oInteractionSubtype = INT_SUBTYPE_NO_EXIT;
     switch (o->oAction) {
         case SPAWN_STAR_ARC_CUTSCENE_ACT_START:
             o->oFaceAngleYaw += 0x1000;
