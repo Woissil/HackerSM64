@@ -34,7 +34,7 @@ void bhv_boomerang_box_loop(void) {
                                         o)) {
         obj_explode_and_spawn_coins(46.0f, COIN_TYPE_YELLOW);
         create_sound_spawner(SOUND_GENERAL_BREAK_BOX);
-        cur_obj_nearest_object_with_behavior(bhvBoomerangProjectile)->oAction = BOOMERANG_COME_BACK;
+        
     }
 }
 
@@ -105,14 +105,12 @@ void boomerangprojectile(void) {
     if (nearest_goomba && detect_object_hitbox_overlap(o, nearest_goomba)) {
         nearest_goomba->oInteractStatus =
             ATTACK_KICK_OR_TRIP | INT_STATUS_INTERACTED | INT_STATUS_WAS_ATTACKED;
-        o->oAction = BOOMERANG_COME_BACK;
     }
 
     struct Object *nearest_box = cur_obj_nearest_object_with_behavior(bhvBreakableBox);
     if (nearest_box && detect_object_hitbox_overlap(o, nearest_box)) {
         nearest_box->oInteractStatus =
             ATTACK_KICK_OR_TRIP | INT_STATUS_INTERACTED | INT_STATUS_WAS_ATTACKED;
-        o->oAction = BOOMERANG_COME_BACK;
     }
 }
 
