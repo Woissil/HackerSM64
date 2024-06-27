@@ -44,14 +44,16 @@ const LevelScript level_hmc_entry[] = {
 	LOAD_MODEL_FROM_GEO(MODEL_SKETCHY_KOOPA, sketchy_koopa_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_KOOPA_WITH_SHELL, koopa_with_shell_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_KOOPA_WITHOUT_SHELL, koopa_without_shell_geo), 
+	LOAD_MODEL_FROM_GEO(MODEL_BARREL, barrel_geo), 
 
 	/* Fast64 begin persistent block [level commands] */
 	/* Fast64 end persistent block [level commands] */
 
 	AREA(1, hmc_area_1),
-		WARP_NODE(0x0A, LEVEL_BOB, 0x01, 0x0A, WARP_NO_CHECKPOINT),
+		WARP_NODE(0x0A, LEVEL_HMC, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xF0, LEVEL_CASTLE, 0x01, 0x32, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xF1, LEVEL_BOB, 0x01, 0x0A, WARP_NO_CHECKPOINT),
+		WARP_NODE(21, LEVEL_HMC, 0x02, 0x0A, WARP_NO_CHECKPOINT),
 		OBJECT(MODEL_BOOMERANG_BOX, 2762, 56, 10408, 0, 0, 0, 0x00000000, bhvBreakBoxBoomerang),
 		OBJECT(MODEL_EXCLAMATION_BOX, 1016, 622, 11314, 0, 0, 0, 0x00000000, bhvExclamationBox),
 		OBJECT(MODEL_COCONUT, -770, 207, 10853, 0, 0, 0, 0x00000000, bhvCoconut),
@@ -67,7 +69,7 @@ const LevelScript level_hmc_entry[] = {
 		OBJECT(MODEL_KOOPA_WITH_SHELL, 3372, 653, 4342, 0, 0, 0, (1 << 16), bhvKoopa),
 		OBJECT(MODEL_KOOPA_WITH_SHELL, 3372, 1406, 2524, 0, 0, 0, (1 << 16), bhvKoopa),
 		OBJECT(MODEL_KOOPA_WITH_SHELL, 2944, 1500, -736, 0, 0, 0, (1 << 16), bhvKoopa),
-		OBJECT(MODEL_THI_WARP_PIPE, 2944, 1709, -3083, 0, 0, 0, 0x00000000, bhvWarpPipe),
+		OBJECT(MODEL_THI_WARP_PIPE, 2944, 1709, -3083, 0, 0, 0, (21 << 16), bhvWarpPipe),
 		OBJECT(MODEL_RED_COIN, 2644, 164, 8274, 0, 0, 0, 0x00000000, bhvRedCoin),
 		OBJECT(MODEL_NONE, 175, 413, 10651, 0, 0, 0, (2 << 24), bhvBowserCourseRedCoinStar),
 		OBJECT(MODEL_RED_COIN, 8, 372, 7307, 0, 0, 0, 0x00000000, bhvRedCoin),
@@ -79,6 +81,23 @@ const LevelScript level_hmc_entry[] = {
 		OBJECT(MODEL_YOSHI, 314, 201, 12874, 0, 0, 0, 0x00000000, bhvBeachYoshi),
 		TERRAIN(hmc_area_1_collision),
 		MACRO_OBJECTS(hmc_area_1_macro_objs),
+		SET_BACKGROUND_MUSIC(0x00, SEQ_BEACHY_THEME),
+		TERRAIN_TYPE(TERRAIN_GRASS),
+		/* Fast64 begin persistent block [area commands] */
+		/* Fast64 end persistent block [area commands] */
+	END_AREA(),
+
+	AREA(2, hmc_area_2),
+		WARP_NODE(0x0A, LEVEL_HMC, 0x01, 21, WARP_NO_CHECKPOINT),
+		WARP_NODE(0xF0, LEVEL_CASTLE, 0x01, 0x32, WARP_NO_CHECKPOINT),
+		WARP_NODE(0xF1, LEVEL_BOB, 0x01, 0x0A, WARP_NO_CHECKPOINT),
+		OBJECT(MODEL_BARREL, -258, 135, 10377, 0, 0, 0, (2 << 16), bhvBeachBarrel),
+		OBJECT(MODEL_BARREL, 379, 135, 10377, 0, 0, 0, (4 << 16), bhvBeachBarrel),
+		OBJECT(MODEL_BARREL, 977, 135, 10377, 0, 0, 0, (3 << 16), bhvBeachBarrel),
+		OBJECT(MODEL_BARREL, 379, 135, 10897, 0, 0, 0, (1 << 16), bhvBeachBarrel),
+		OBJECT(MODEL_THI_WARP_PIPE, 0, 167, 13391, 0, -180, 0, 0x000A0000, bhvWarpPipe),
+		TERRAIN(hmc_area_2_collision),
+		MACRO_OBJECTS(hmc_area_2_macro_objs),
 		SET_BACKGROUND_MUSIC(0x00, SEQ_BEACHY_THEME),
 		TERRAIN_TYPE(TERRAIN_GRASS),
 		/* Fast64 begin persistent block [area commands] */

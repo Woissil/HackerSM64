@@ -98,4 +98,8 @@ extern const struct Animation *const yoshi_seg5_anims_05024100[];
 
 #include "sketchy_koopa/geo_header.h"
 
+#include "barrel/geo_header.h"
+
+#include "barrel/collision_header.h"
+
 #endif

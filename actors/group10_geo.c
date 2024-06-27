@@ -13,3 +13,4 @@
 
 #include "coconut/geo.inc.c"
 #include "sketchy_koopa/geo.inc.c"
+#include "barrel/geo.inc.c"

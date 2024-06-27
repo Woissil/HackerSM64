@@ -573,6 +573,7 @@ void spawnstar_boomerangbox(void);
 void beachyoshi_message(void);
 void coconut_code(void);
 void sketchy_koopa(void);
+void beachbarrel(void);
 
 Gfx *geo_move_mario_part_from_parent(s32 callContext, UNUSED struct GraphNode *node, Mat4 mtx);
 

@@ -72,3 +72,26 @@ void sketchy_koopa(void) {
         }
     }
 }
+
+struct ObjectHitbox sBeachBarrelHitbox = {
+    /* interactType:      */ INTERACT_BREAKABLE,
+    /* downOffset:        */ 0,
+    /* damageOrCoinValue: */ 0,
+    /* health:            */ 1,
+    /* numLootCoins:      */ 0,
+    /* radius:            */ 120,
+    /* height:            */ 160,
+    /* hurtboxRadius:     */ 120,
+    /* hurtboxHeight:     */ 160,
+};
+
+void beachbarrel(void) {
+    obj_set_hitbox(o, &sBeachBarrelHitbox);
+    if (cur_obj_was_attacked_or_ground_pounded()) {
+        spawn_object(o, MODEL_NONE, bhvTenCoinsSpawn);
+        spawn_triangle_break_particles(30, MODEL_DIRT_ANIMATION, 3.0f,
+                                       TINY_DIRT_PARTICLE_ANIM_STATE_YELLOW);
+        create_sound_spawner(SOUND_GENERAL_BREAK_BOX);
+        obj_mark_for_deletion(o);
+    }
+}

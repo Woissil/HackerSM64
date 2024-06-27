@@ -23,3 +23,5 @@ UNUSED static const u64 binid_2 = 2;
 
 #include "coconut/model.inc.c"
 #include "sketchy_koopa/model.inc.c"
+#include "barrel/model.inc.c"
+#include "barrel/collision.inc.c"

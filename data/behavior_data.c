@@ -6372,3 +6372,17 @@ const BehaviorScript bhvSketchyKoopa[] = {
         CALL_NATIVE(sketchy_koopa),
     END_LOOP(),
 };
+
+const BehaviorScript bhvBeachBarrel[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_LONG(oFlags, (OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_DONT_CALC_COLL_DIST)),
+    LOAD_COLLISION_DATA(barrel_collision),
+    SET_FLOAT(oCollisionDistance, 1000),
+    SET_FLOAT(oDrawingDistance, 32000),
+    CALL_NATIVE(bhv_init_room),
+    BEGIN_LOOP(),
+    CALL_NATIVE(beachbarrel),
+    CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+    BREAK(),
+};
