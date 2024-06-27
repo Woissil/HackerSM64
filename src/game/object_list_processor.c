@@ -271,6 +271,7 @@ u8 boomerangThrown = FALSE;
 
 extern u8 tnt_collected;
 extern void spawn_default_star(f32 x, f32 y, f32 z);
+extern u8 coconuts;
 
 /**
  * Mario's primary behavior update function.
@@ -299,6 +300,11 @@ void bhv_mario_update(void) {
     //tnt code
     if (tnt_collected) {
         print_text_centered(320/2, 30, "Press L to Place");
+    }
+
+    //coconuts
+    if (gCurrLevelNum != LEVEL_HMC) {
+        coconuts = 0;
     }
 
     // power up code

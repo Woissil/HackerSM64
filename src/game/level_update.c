@@ -351,13 +351,11 @@ void set_mario_initial_action(struct MarioState *m, u32 spawnType, u32 actionArg
 extern u8 gPowerup;
 extern u8 propeller_gotten;
 extern u8 boomerangThrown;
-extern u8 coconuts;
 
 void init_mario_after_warp(void) {
     gPowerup = 0;
     propeller_gotten = FALSE;;
     boomerangThrown = FALSE;
-    coconuts = 0;
     struct ObjectWarpNode *spawnNode = area_get_warp_node(sWarpDest.nodeId);
     u32 marioSpawnType = get_mario_spawn_type(spawnNode->object);
 
@@ -721,7 +719,6 @@ s16 level_trigger_warp(struct MarioState *m, s32 warpOp) {
     gPowerup = 0;
     propeller_gotten = FALSE;
     boomerangThrown = FALSE;
-    coconuts = 0;
 
     if (sDelayedWarpOp == WARP_OP_NONE) {
         m->invincTimer = -1;
