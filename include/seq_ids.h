@@ -47,6 +47,7 @@ enum SeqId {
     SEQ_EVENT_CUTSCENE_LAKITU,  // 0x22 (not in JP)
     SEQ_CLOUDY_CLIMB,  // 0x23
     SEQ_OVERWORLD_THEME,  // 0x24
+    SEQ_BEACHY_THEME,  // 0x25
     SEQ_COUNT,
 };
 
