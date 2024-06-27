@@ -28,7 +28,7 @@
 
 #include "config.h"
 
-//not needed, you neec coconuts instead Lol!!!!
+// not needed, you neec coconuts instead Lol!!!!
 #define TOAD_STAR_1_REQUIREMENT 12
 #define TOAD_STAR_2_REQUIREMENT 25
 #define TOAD_STAR_3_REQUIREMENT 35
@@ -126,14 +126,17 @@ static void toad_message_opaque(void) {
 }
 
 static void toad_message_talking(void) {
-    if (cur_obj_update_dialog_with_cutscene(MARIO_DIALOG_LOOK_DOWN,
-        DIALOG_FLAG_TURN_TO_MARIO, CUTSCENE_DIALOG, o->oToadMessageDialogId)) {
+    if (cur_obj_update_dialog_with_cutscene(MARIO_DIALOG_LOOK_DOWN, DIALOG_FLAG_TURN_TO_MARIO,
+                                            CUTSCENE_DIALOG, o->oToadMessageDialogId)) {
         o->oToadMessageRecentlyTalked = TRUE;
         o->oToadMessageState = TOAD_MESSAGE_FADING;
         switch (o->oToadMessageDialogId) {
-            case TOAD_STAR_1_DIALOG:
-                o->oToadMessageDialogId = TOAD_STAR_1_DIALOG_AFTER;
-                bhv_spawn_star_no_level_exit(STAR_BP_ACT_1);
+            case DIALOG_010:
+                gMarioState->numCoins -= 20;
+                gHudDisplay.coins = gMarioState->numCoins;
+                bhv_spawn_star_no_level_exit(STAR_BP_ACT_4);
+                spawn_mist_particles();
+                obj_mark_for_deletion(o);
                 break;
             case TOAD_STAR_2_DIALOG:
                 o->oToadMessageDialogId = TOAD_STAR_2_DIALOG_AFTER;
@@ -187,7 +190,8 @@ void bhv_toad_message_init(void) {
 #ifdef UNLOCK_ALL
     s32 starCount = 999;
 #else
-    s32 starCount = save_file_get_total_star_count(gCurrSaveFileNum - 1, COURSE_MIN - 1, COURSE_MAX - 1);
+    s32 starCount =
+        save_file_get_total_star_count(gCurrSaveFileNum - 1, COURSE_MIN - 1, COURSE_MAX - 1);
 #endif
     s32 dialogId = GET_BPARAM1(o->oBehParams);
     s32 enoughStars = TRUE;
@@ -251,9 +255,8 @@ void bhv_unlock_door_star_loop(void) {
     }
     switch (o->oUnlockDoorStarState) {
         case UNLOCK_DOOR_STAR_RISING:
-            o->oPosY += 3.4f; // Raise the star up in the air
-            o->oMoveAngleYaw +=
-                o->oUnlockDoorStarYawVel; // Apply yaw velocity
+            o->oPosY += 3.4f;                                      // Raise the star up in the air
+            o->oMoveAngleYaw += o->oUnlockDoorStarYawVel;          // Apply yaw velocity
             cur_obj_scale(o->oUnlockDoorStarTimer / 50.0f + 0.5f); // Scale the star to be bigger
             if (++o->oUnlockDoorStarTimer == 30) {
                 o->oUnlockDoorStarTimer = 0;
@@ -261,11 +264,10 @@ void bhv_unlock_door_star_loop(void) {
             }
             break;
         case UNLOCK_DOOR_STAR_WAITING:
-            o->oMoveAngleYaw +=
-                o->oUnlockDoorStarYawVel; // Apply yaw velocity
+            o->oMoveAngleYaw += o->oUnlockDoorStarYawVel; // Apply yaw velocity
             if (++o->oUnlockDoorStarTimer == 30) {
                 play_sound(SOUND_MENU_STAR_SOUND, o->header.gfx.cameraToObject); // Play final sound
-                cur_obj_hide(); // Hide the object
+                cur_obj_hide();                                                  // Hide the object
                 o->oUnlockDoorStarTimer = 0;
                 o->oUnlockDoorStarState++; // Sets state to UNLOCK_DOOR_STAR_SPAWNING_PARTICLES
             }
@@ -289,9 +291,8 @@ void bhv_unlock_door_star_loop(void) {
     // Checks if the angle has cycled back to 0.
     // This means that the code will execute when the star completes a full revolution.
     if (prevYaw > (s16) o->oMoveAngleYaw) {
-        play_sound(
-            SOUND_GENERAL_SHORT_STAR,
-            o->header.gfx.cameraToObject); // Play a sound every time the star spins once
+        play_sound(SOUND_GENERAL_SHORT_STAR,
+                   o->header.gfx.cameraToObject); // Play a sound every time the star spins once
     }
 }
 
@@ -331,7 +332,8 @@ Gfx *geo_mirror_mario_set_alpha(s32 callContext, struct GraphNode *node, UNUSED 
     s16 alpha;
 
     if (callContext == GEO_CONTEXT_RENDER) {
-        alpha = (bodyState->modelState & MODEL_STATE_ALPHA) ? (bodyState->modelState & MODEL_STATE_MASK) : 0xFF;
+        alpha = (bodyState->modelState & MODEL_STATE_ALPHA) ? (bodyState->modelState & MODEL_STATE_MASK)
+                                                            : 0xFF;
 #ifdef PUPPYCAM
         if (alpha > gPuppyCam.opacity) {
             alpha = gPuppyCam.opacity;
@@ -473,12 +475,14 @@ Gfx *geo_mario_hand_foot_scaler(s32 callContext, struct GraphNode *node, UNUSED 
     if (callContext == GEO_CONTEXT_RENDER) {
         scaleNode->scale = 1.0f;
         if (asGenerated->parameter == bodyState->punchState >> 6) {
-            if (sMarioAttackAnimCounter != gAreaUpdateCounter && (bodyState->punchState & PUNCH_STATE_TIMER_MASK) > 0) {
+            if (sMarioAttackAnimCounter != gAreaUpdateCounter
+                && (bodyState->punchState & PUNCH_STATE_TIMER_MASK) > 0) {
                 bodyState->punchState -= 1;
                 sMarioAttackAnimCounter = gAreaUpdateCounter;
             }
             scaleNode->scale =
-                gMarioAttackScaleAnimation[asGenerated->parameter * 6 + (bodyState->punchState & PUNCH_STATE_TIMER_MASK)]
+                gMarioAttackScaleAnimation[asGenerated->parameter * 6
+                                           + (bodyState->punchState & PUNCH_STATE_TIMER_MASK)]
                 / 10.0f;
         }
     }
@@ -511,7 +515,8 @@ Gfx *geo_switch_mario_cap_on_off(s32 callContext, struct GraphNode *node, UNUSED
         switchCase->selectedCase = bodyState->capState & MARIO_HAS_DEFAULT_CAP_OFF;
         while (next != node) {
             if (next->type == GRAPH_NODE_TYPE_TRANSLATION_ROTATION) {
-                COND_BIT((bodyState->capState & MARIO_HAS_WING_CAP_ON), next->flags, GRAPH_RENDER_ACTIVE);
+                COND_BIT((bodyState->capState & MARIO_HAS_WING_CAP_ON), next->flags,
+                         GRAPH_RENDER_ACTIVE);
             }
             next = next->next;
         }

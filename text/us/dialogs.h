@@ -83,9 +83,10 @@ are looking for Coconuts..\n\
 I can give ya some!"))
 
 DEFINE_DIALOG(DIALOG_010, 1, 4, 30, 200, _("\
-Thank you very much!\n\
-It was pleasure doing\n\
-The deal with you."))
+Yo Dude!\n\
+I have some stars in sale\n\
+I can give you one for\n\
+20 coins!"))
 
 DEFINE_DIALOG(DIALOG_011, 1, 4, 30, 200, _("\
 You've just stepped on\n\
