@@ -215,6 +215,15 @@ void coconut_goombaking(void) {
                 o->oSubAction = 0;
                 o->oAction = KING_COCONUT_STAY_IN_PLACE;
             }
+
+            if (cur_obj_nearest_object_with_behavior(bhvBoomerangProjectile)
+                && detect_object_hitbox_overlap(
+                    o, cur_obj_nearest_object_with_behavior(bhvBoomerangProjectile))) {
+                cur_obj_nearest_object_with_behavior(bhvBoomerangProjectile)->oAction = 1;
+                o->oSubAction = 0;
+                o->oHealth--;
+                o->oAction = KING_COCONUT_GOT_HIT;
+            }
             break;
 
         case KING_COCONUT_DEAD:
