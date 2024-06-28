@@ -227,6 +227,7 @@ void coconut_goombaking(void) {
             break;
 
         case KING_COCONUT_DEAD:
+            o->oForwardVel = 0;
             if (make_dialog_appear_mario(o->oBehParams2ndByte, 4, 162)) {
                 bhv_spawn_star_no_level_exit(STAR_BP_ACT_5);
                 cur_obj_play_sound_2(SOUND_OBJ_KING_WHOMP_DEATH);
