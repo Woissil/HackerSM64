@@ -2175,7 +2175,8 @@ void play_dialog_sound(u8 dialogID) {
     if (dialogID == DIALOG_010
      || dialogID == DIALOG_011
      || dialogID == DIALOG_012) {
-        play_puzzle_jingle();
+        //play_puzzle_jingle();
+        //NUH UH
     }
 }
 

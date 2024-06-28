@@ -559,5 +559,8 @@ extern const BehaviorScript bhvCoconut[];
 extern const BehaviorScript bhvSketchyKoopa[];
 extern const BehaviorScript bhvBeachBarrel[];
 extern const BehaviorScript bhvBeachWhomp[];
+extern const BehaviorScript bhvBeachBoatPoint[];
+extern const BehaviorScript bhvBeachBoat[];
+extern const BehaviorScript bhvCoconutKing[];
 
 #endif // BEHAVIOR_DATA_H

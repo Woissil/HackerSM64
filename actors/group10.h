@@ -102,4 +102,8 @@ extern const struct Animation *const yoshi_seg5_anims_05024100[];
 
 #include "barrel/collision_header.h"
 
+#include "beach_boat/geo_header.h"
+
+#include "beach_boat/collision_header.h"
+
 #endif

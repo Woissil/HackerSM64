@@ -14,3 +14,4 @@
 #include "coconut/geo.inc.c"
 #include "sketchy_koopa/geo.inc.c"
 #include "barrel/geo.inc.c"
+#include "beach_boat/geo.inc.c"

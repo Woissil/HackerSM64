@@ -6252,12 +6252,9 @@ const BehaviorScript bhvStarStuckInCrystal[] = {
 };
 
 const BehaviorScript bhvTNT[] = {
-    BEGIN(OBJ_LIST_LEVEL),
-    OR_LONG(oFlags, (OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
-    CALL_NATIVE(tnt_init),
-    BEGIN_LOOP(),
-    CALL_NATIVE(tnt),
-    END_LOOP(),
+    BEGIN(OBJ_LIST_LEVEL), OR_LONG(oFlags, (OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    CALL_NATIVE(tnt_init), BEGIN_LOOP(),
+    CALL_NATIVE(tnt),      END_LOOP(),
 };
 
 const BehaviorScript bhvPropellerBox[] = {
@@ -6277,8 +6274,8 @@ const BehaviorScript bhvNoteBlock[] = {
     SET_HOME(),
     LOAD_COLLISION_DATA(noteblock_collision),
     BEGIN_LOOP(),
-        CALL_NATIVE(bhv_noteblock_loop),
-        CALL_NATIVE(load_object_collision_model),
+    CALL_NATIVE(bhv_noteblock_loop),
+    CALL_NATIVE(load_object_collision_model),
     END_LOOP(),
 };
 
@@ -6286,7 +6283,7 @@ const BehaviorScript bhvChuckyaStarSpawner[] = {
     BEGIN(OBJ_LIST_SURFACE),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
     BEGIN_LOOP(),
-        CALL_NATIVE(chuckya_spawn_star),
+    CALL_NATIVE(chuckya_spawn_star),
     END_LOOP(),
 };
 
@@ -6342,12 +6339,13 @@ const BehaviorScript bhvBoomerangProjectile[] = {
 
 const BehaviorScript bhvBeachYoshi[] = {
     BEGIN(OBJ_LIST_LEVEL),
-    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW
+                    | OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
     SET_INT(oWoodenPostTotalMarioAngle, 0),
     SET_INT(oIntangibleTimer, 0),
     LOAD_ANIMATIONS(oAnimations, yoshi_seg5_anims_05024100),
     BEGIN_LOOP(),
-        CALL_NATIVE(beachyoshi_message),
+    CALL_NATIVE(beachyoshi_message),
     END_LOOP(),
 };
 
@@ -6361,7 +6359,8 @@ const BehaviorScript bhvCoconut[] = {
 
 const BehaviorScript bhvSketchyKoopa[] = {
     BEGIN(OBJ_LIST_PUSHABLE),
-    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW
+                    | OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
     SET_HITBOX(/*Radius*/ 80, /*Height*/ 90),
     SET_INTERACT_TYPE(INTERACT_TEXT),
     SET_INT(oInteractionSubtype, INT_SUBTYPE_NPC),
@@ -6369,7 +6368,7 @@ const BehaviorScript bhvSketchyKoopa[] = {
     SET_INT(oIntangibleTimer, 0),
     LOAD_ANIMATIONS(oAnimations, goomba_seg8_anims_0801DA4C),
     BEGIN_LOOP(),
-        CALL_NATIVE(sketchy_koopa),
+    CALL_NATIVE(sketchy_koopa),
     END_LOOP(),
 };
 
@@ -6401,4 +6400,38 @@ const BehaviorScript bhvBeachWhomp[] = {
     BEGIN_LOOP(),
     CALL_NATIVE(bhv_toad_message_loop),
     END_LOOP(),
+};
+
+const BehaviorScript bhvBeachBoatPoint[] = {
+    BEGIN(OBJ_LIST_GENACTOR),
+    OR_LONG(oFlags, (OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    BEGIN_LOOP(),
+    END_LOOP(),
+};
+
+const BehaviorScript bhvBeachBoat[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_LONG(oFlags, (OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_DONT_CALC_COLL_DIST)),
+    LOAD_COLLISION_DATA(beach_boat_collision),
+    SET_FLOAT(oCollisionDistance, 1000),
+    SET_FLOAT(oDrawingDistance, 32000),
+    CALL_NATIVE(bhv_init_room),
+    BEGIN_LOOP(),
+    CALL_NATIVE(beachboat_update),
+    CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+    BREAK(),
+};
+
+
+const BehaviorScript bhvCoconutKing[] = {
+    BEGIN(OBJ_LIST_PUSHABLE),
+    OR_INT(oFlags, (OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW)),
+    LOAD_ANIMATIONS(oAnimations, goomba_seg8_anims_0801DA4C),
+    DROP_TO_FLOOR(),
+    ANIMATE(0),
+    BEGIN_LOOP(),
+    CALL_NATIVE(coconut_goombaking),
+    END_LOOP(),
+    BREAK(),
 };

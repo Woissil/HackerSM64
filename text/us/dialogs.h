@@ -89,17 +89,10 @@ I can give you one for\n\
 20 coins!"))
 
 DEFINE_DIALOG(DIALOG_011, 1, 4, 30, 200, _("\
-You've just stepped on\n\
-the Metal Cap Switch!\n\
-The Metal Cap makes\n\
-Mario invincible.\n\
-Now Metal Caps will\n\
-pop out of all of the\n\
-green blocks you find.\n\
-\n\
-Would you like to Save?\n\
-\n\
-//Yes////No"))
+How Dare you!\n\
+You stole my Coconuts!\n\
+I'm gonna teach you\n\
+A lesson, Mario!"))
 
 DEFINE_DIALOG(DIALOG_012, 1, 4, 30, 200, _("\
 You've just stepped on\n\

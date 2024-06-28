@@ -785,7 +785,7 @@ static void treat_far_home_as_mario(f32 threshold) {
 #include "behaviors/haunted_chair.inc.c"
 #include "behaviors/mad_piano.inc.c"
 #include "behaviors/flying_bookend_switch.inc.c"
-
+#include "behaviors/beach-realm.inc.c"
 /**
  * Used by bowser, fly guy, piranha plant, and fire spitters.
  */
