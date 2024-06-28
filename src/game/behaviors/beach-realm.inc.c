@@ -137,6 +137,7 @@ void beachboat_update(void) {
 #define KING_COCONUT_STAY_IN_PLACE 1 // action that he throws coconuts at mario
 #define KING_COCONUT_GOT_HIT 2       // lmao
 #define KING_COCONUT_WALK 3
+#define KING_COCONUT_DEAD 4
 
 static struct ObjectHitbox coconutking_hitbox = {
     /* interactType:      */ INTERACT_DAMAGE,
@@ -163,8 +164,8 @@ void coconut_goombaking(void) {
             if (make_dialog_appear_mario(o->oBehParams2ndByte, 4, 162)) {
                 o->oGravity = 2.4f;
                 o->oFriction = 1.f;
-                o->oAction = KING_COCONUT_STAY_IN_PLACE;
                 obj_set_hitbox(o, &coconutking_hitbox);
+                o->oAction = KING_COCONUT_STAY_IN_PLACE;
             }
             break;
 
@@ -215,13 +216,21 @@ void coconut_goombaking(void) {
                 o->oAction = KING_COCONUT_STAY_IN_PLACE;
             }
             break;
+
+        case KING_COCONUT_DEAD:
+            if (make_dialog_appear_mario(o->oBehParams2ndByte, 4, 162)) {
+                bhv_spawn_star_no_level_exit(STAR_BP_ACT_5);
+                cur_obj_play_sound_2(SOUND_OBJ_KING_WHOMP_DEATH);
+                spawn_mist_particles_variable(0, 0, 100.0f);
+                spawn_triangle_break_particles(20, MODEL_DIRT_ANIMATION, 3.0f, 4);
+                stop_background_music(SEQUENCE_ARGS(4, SEQ_EVENT_BOSS));
+                obj_mark_for_deletion(o);
+            }
+            break;
     }
 
     if (o->oHealth <= 0) {
-        bhv_spawn_star_no_level_exit(STAR_BP_ACT_5);
-        cur_obj_play_sound_2(SOUND_OBJ_KING_WHOMP_DEATH);
-        spawn_mist_particles_variable(0, 0, 100.0f);
-        spawn_triangle_break_particles(20, MODEL_DIRT_ANIMATION, 3.0f, 4);
-        obj_mark_for_deletion(o);
+        o->oBehParams2ndByte = 12;
+        o->oAction = KING_COCONUT_DEAD;
     }
 }
