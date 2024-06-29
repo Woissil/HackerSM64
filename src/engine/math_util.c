@@ -200,30 +200,25 @@ void mtxf_rotate_zxy_and_translate_and_mul(Vec3s rot, Vec3f trans, Mat4 dest, Ma
 /// Build a matrix that rotates around the x axis, then the y axis, then the z axis, and then translates and multiplies.
 void mtxf_rotate_xyz_and_translate_and_mul(Vec3s rot, Vec3f trans, Mat4 dest, Mat4 src) {
     PUPPYPRINT_ADD_COUNTER(gPuppyCallCounter.matrix);
-    f32 sx = sins(rot[0]);
-    f32 cx = coss(rot[0]);
-    f32 sy = sins(rot[1]);
-    f32 cy = coss(rot[1]);
-    f32 sz = sins(rot[2]);
-    f32 cz = coss(rot[2]);
+    f32 sx = sins(rot[0]), cx = coss(rot[0]), sy = sins(rot[1]), cy = coss(rot[1]), sz = sins(rot[2]), cz = coss(rot[2]);
     Vec3f entry;
-    entry[0] = (cy * cz);
-    entry[1] = (cy * sz);
+
+    entry[0] = cy * cz;
+    entry[1] = cy * sz;
     entry[2] = -sy;
-    linear_mtxf_mul_vec3f(src, dest[0], entry);
-    f32 sxcz = (sx * cz);
-    f32 cxsz = (cx * sz);
-    entry[0] = ((sxcz * sy) - cxsz);
-    f32 sxsz = (sx * sz);
-    f32 cxcz = (cx * cz);
-    entry[1] = ((sxsz * sy) + cxcz);
-    entry[2] = (sx * cy);
-    linear_mtxf_mul_vec3f(src, dest[1], entry);
-    entry[0] = ((cxcz * sy) + sxsz);
-    entry[1] = ((cxsz * sy) - sxcz);
-    entry[2] = (cx * cy);
-    linear_mtxf_mul_vec3f(src, dest[2], entry);
-    linear_mtxf_mul_vec3f(src, dest[3], trans);
+    linear_mtxf_mul_vec3(src, dest[0], entry);
+
+    entry[0] = (sx * cz) * sy - cx * sz;
+    entry[1] = (sx * sz) * sy + cx * cz;
+    entry[2] = sx * cy;
+    linear_mtxf_mul_vec3(src, dest[1], entry);
+
+    entry[0] = (cx * cz) * sy + sx * sz;
+    entry[1] = (cx * sz) * sy - sx * cz;
+    entry[2] = cx * cy;
+    linear_mtxf_mul_vec3(src, dest[2], entry);
+
+    linear_mtxf_mul_vec3(src, dest[3], trans);
     vec3f_add(dest[3], src[3]);
     MTXF_END(dest);
 }
@@ -237,36 +232,28 @@ void mtxf_rotate_xyz_and_translate_and_mul(Vec3s rot, Vec3f trans, Mat4 dest, Ma
 void mtxf_lookat(Mat4 mtx, Vec3f from, Vec3f to, s16 roll) {
     PUPPYPRINT_ADD_COUNTER(gPuppyCallCounter.matrix);
     Vec3f colX, colY, colZ;
-    f32 dx = (to[0] - from[0]);
-    f32 dz = (to[2] - from[2]);
-    f32 invLength = sqrtf(sqr(dx) + sqr(dz));
-    invLength = -(1.0f / MAX(invLength, NEAR_ZERO));
-    dx *= invLength;
-    dz *= invLength;
+    f32 dx = to[0] - from[0], dz = to[2] - from[2];
+    f32 invLength = -(1.0f / MAX(sqrtf(sqr(dx) + sqr(dz)), NEAR_ZERO));
     f32 sr  = sins(roll);
-    colY[1] = coss(roll);
-    colY[0] = ( sr * dz);
-    colY[2] = (-sr * dx);
+    f32 sr_dz = sr * dz;
+    f32 sr_dx = -sr * dx;
+
     vec3f_diff(colZ, from, to); // to & from are swapped
     vec3f_normalize(colZ);
-    vec3f_cross(colX, colY, colZ);
-    vec3f_normalize(colX);
+    Vec3f temp = {sr_dz, coss(roll), sr_dx};
+    vec3f_cross(colX, temp, colZ);
     vec3f_cross(colY, colZ, colX);
-    vec3f_normalize(colY);
-    mtx[0][0] = colX[0];
-    mtx[1][0] = colX[1];
-    mtx[2][0] = colX[2];
-    mtx[0][1] = colY[0];
-    mtx[1][1] = colY[1];
-    mtx[2][1] = colY[2];
-    mtx[0][2] = colZ[0];
-    mtx[1][2] = colZ[1];
-    mtx[2][2] = colZ[2];
+
+    mtx[0][0] = colX[0]; mtx[1][0] = colX[1]; mtx[2][0] = colX[2];
+    mtx[0][1] = colY[0]; mtx[1][1] = colY[1]; mtx[2][1] = colY[2];
+    mtx[0][2] = colZ[0]; mtx[1][2] = colZ[1]; mtx[2][2] = colZ[2];
     mtx[3][0] = -vec3f_dot(from, colX);
     mtx[3][1] = -vec3f_dot(from, colY);
     mtx[3][2] = -vec3f_dot(from, colZ);
+
     MTXF_END(mtx);
 }
+
 
 /**
  * Set 'dest' to a transformation matrix that turns an object to face the camera.
@@ -277,37 +264,28 @@ void mtxf_lookat(Mat4 mtx, Vec3f from, Vec3f to, s16 roll) {
  */
 void mtxf_billboard(Mat4 dest, Mat4 mtx, Vec3f position, Vec3f scale, s16 angle) {
     PUPPYPRINT_ADD_COUNTER(gPuppyCallCounter.matrix);
-    s32 i;
-    f32 sx = scale[0];
-    f32 sy = scale[1];
-    f32 sz = scale[2];
     Mat4* cameraMat = &gCameraTransform;
-    for (i = 0; i < 3; i++) {
-        for (int j = 0; j < 3; j++) {
-            dest[i][j] = (*cameraMat)[j][i];
-        }
+
+    // Copy and scale in one loop
+    for (int i = 0; i < 3; i++) {
+        dest[i][0] = (*cameraMat)[0][i] * scale[i];
+        dest[i][1] = (*cameraMat)[1][i] * scale[i];
+        dest[i][2] = (*cameraMat)[2][i] * scale[i];
         dest[i][3] = 0.0f;
     }
+
     if (angle != 0x0) {
-        float m00 = dest[0][0];
-        float m01 = dest[0][1];
-        float m02 = dest[0][2];
-        float m10 = dest[1][0];
-        float m11 = dest[1][1];
-        float m12 = dest[1][2];
         float cosa = coss(angle);
         float sina = sins(angle);
-        dest[0][0] = cosa * m00 + sina * m10; 
-        dest[0][1] = cosa * m01 + sina * m11; 
-        dest[0][2] = cosa * m02 + sina * m12;
-        dest[1][0] = -sina * m00 + cosa * m10;
-        dest[1][1] = -sina * m01 + cosa * m11;
-        dest[1][2] = -sina * m02 + cosa * m12;
-    }
-    for (i = 0; i < 3; i++) {
-        dest[0][i] *= sx;
-        dest[1][i] *= sy;
-        dest[2][i] *= sz;
+        float nsina = -sina; // calculate -sina once
+
+        for (int i = 0; i < 3; i++) {
+            float m0 = dest[0][i];
+            float m1 = dest[1][i];
+
+            dest[0][i] = cosa * m0 + sina * m1;
+            dest[1][i] = nsina * m0 + cosa * m1;
+        }
     }
 
     // Translation = input translation + position
