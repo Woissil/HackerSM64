@@ -1090,14 +1090,12 @@ float Q_rsqrt(float number)
 /// Scale vector 'dest' so it has length 1
 void *vec3f_normalize(Vec3f dest) {
     f32 size = sqrtf(dest[0] * dest[0] + dest[1] * dest[1] + dest[2] * dest[2]);
-    register f32 invsqrt;
+    register f32 invsqrt = Q_rsqrt(dest[0] * dest[0] + dest[1] * dest[1] + dest[2] * dest[2]);
+    register s32 i;
     if (size > 0.01f) {
-
-        invsqrt = Q_rsqrt(dest[0] * dest[0] + dest[1] * dest[1] + dest[2] * dest[2]);
-
-        dest[0] *= invsqrt;
-        dest[1] *= invsqrt;
-        dest[2] *= invsqrt;
+        for (i = 0; i < 3; i++) {
+            dest[i] *= invsqrt;
+        }
     } else {
         dest[0] = 0;
         dest[1] = 1;
