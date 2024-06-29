@@ -801,55 +801,38 @@ s32 anim_spline_poll(Vec3f result) {
  * @param length returns the distance from the starting point to the hit position.
  * @return s32 TRUE if the ray intersects a surface.
  */
-s32 ray_surface_intersect(Vec3f orig, Vec3f dir, f32 dir_length, struct Surface *surface, Vec3f hit_pos, f32 *length) {
-    // Ignore certain surface types.
+s32 ray_surface_intersect(Vec3f orig, Vec3f dir, f32 dir_length, struct Surface *surface, Vec3f hit_pos, f32 *length) { // mental health = 0 rn
     if ((surface->type == SURFACE_INTANGIBLE) || (surface->flags & SURFACE_FLAG_NO_CAM_COLLISION)) return FALSE;
-    // Convert the vertices to Vec3f.
-    Vec3f v0, v1, v2;
+
+    Vec3f v0, v1, v2, e1, e2, h, s, q, add_dir;
     vec3s_to_vec3f(v0, surface->vertex1);
     vec3s_to_vec3f(v1, surface->vertex2);
     vec3s_to_vec3f(v2, surface->vertex3);
-    // Make 'e1' (edge 1) the vector from vertex 0 to vertex 1.
-    Vec3f e1;
+
     vec3f_diff(e1, v1, v0);
-    // Make 'e2' (edge 2) the vector from vertex 0 to vertex 2.
-    Vec3f e2;
     vec3f_diff(e2, v2, v0);
-    // Make 'h' the cross product of 'dir' and edge 2.
-    Vec3f h;
     vec3f_cross(h, dir, e2);
-    // Determine the cos(angle) difference between ray and surface normals.
+
     f32 det = vec3f_dot(e1, h);
-    // Check if we're perpendicular or pointing away from the surface.
     if (det < NEAR_ZERO) return FALSE;
-    // Check if we're making contact with the surface.
-    // Make f the inverse of the cos(angle) between ray and surface normals.
-    f32 f = 1.0f / det; // invDet
-    // Make 's' the vector from vertex 0 to 'orig'.
-    Vec3f s;
+
+    f32 f = 1.0f / det;
     vec3f_diff(s, orig, v0);
-    // Make 'u' the cos(angle) between vectors 's' and normals, divided by 'det'.
+
     f32 u = f * vec3f_dot(s, h);
-    // Check if 'u' is within bounds.
     if ((u < 0.0f) || (u > 1.0f)) return FALSE;
-    // Make 'q' the cross product of 's' and edge 1.
-    Vec3f q;
+
     vec3f_cross(q, s, e1);
-    // Make 'v' the cos(angle) between the ray and 'q', divided by 'det'.
+
     f32 v = f * vec3f_dot(dir, q);
-    // Check if 'v' is within bounds.
     if ((v < 0.0f) || ((u + v) > 1.0f)) return FALSE;
-    // Get the length between our origin and the surface contact point.
-    // Make '*length' the cos(angle) betqwwn edge 2 and 'q', divided by 'det'.
+
     *length = f * vec3f_dot(e2, q);
-    // Check if the length to the hit point is shorter than the ray length.
     if ((*length <= NEAR_ZERO) || (*length > dir_length)) return FALSE;
-    // Successful contact.
-    // Make 'add_dir' into 'dir' scaled by 'length'.
-    Vec3f add_dir;
+
     vec3_scale_dest(add_dir, dir, *length);
-    // Make 'hit_pos' into the sum of 'orig' and 'add_dir'.
     vec3f_sum(hit_pos, orig, add_dir);
+
     return TRUE;
 }
 
@@ -858,22 +841,16 @@ void find_surface_on_ray_list(struct SurfaceNode *list, Vec3f orig, Vec3f dir, f
     f32 length;
     Vec3f chk_hit_pos;
     f32 top, bottom;
-    PUPPYPRINT_GET_SNAPSHOT();
+
     // Get upper and lower bounds of ray
-    if (dir[1] >= 0.0f) {
-        // Ray is upwards.
-        top    = orig[1] + (dir[1] * dir_length);
-        bottom = orig[1];
-    } else {
-        // Ray is downwards.
-        top    = orig[1];
-        bottom = orig[1] + (dir[1] * dir_length);
-    }
+    top    = orig[1] + ((dir[1] >= 0.0f) ? dir[1] * dir_length : 0.0f);
+    bottom = orig[1] + ((dir[1] < 0.0f) ? dir[1] * dir_length : 0.0f);
 
     // Iterate through every surface of the list
     for (; list != NULL; list = list->next) {
         // Reject surface if out of vertical bounds
         if ((list->surface->lowerY > top) || (list->surface->upperY < bottom)) continue;
+
         // Check intersection between the ray and this surface
         hit = ray_surface_intersect(orig, dir, dir_length, list->surface, chk_hit_pos, &length);
         if (hit && (length <= *max_length)) {
@@ -882,7 +859,6 @@ void find_surface_on_ray_list(struct SurfaceNode *list, Vec3f orig, Vec3f dir, f
             *max_length = length;
         }
     }
-    profiler_collision_update(first);
 }
 
 void find_surface_on_ray_cell(s32 cellX, s32 cellZ, Vec3f orig, Vec3f normalized_dir, f32 dir_length, struct Surface **hit_surface, Vec3f hit_pos, f32 *max_length, s32 flags) {
