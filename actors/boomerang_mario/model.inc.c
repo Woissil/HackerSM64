@@ -8021,8 +8021,8 @@ Gfx mat_boomerang_mario_body_v3[] = {
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, SHADE, TEXEL0_ALPHA, SHADE, 0, 0, 0, ENVIRONMENT, TEXEL0, SHADE, TEXEL0_ALPHA, SHADE, 0, 0, 0, ENVIRONMENT),
 	gsSPTexture(65535, 65535, 0, 0, 1),
-    gsSPLightColor(LIGHT_1, 0xffff),
-    gsSPLightColor(LIGHT_2, 0x7fff),
+    gsSPLightColor(LIGHT_1, 0x43ffff),
+    gsSPLightColor(LIGHT_2, 0x2a7fff),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, boomerang_mario_mario_button_rgba16),
 	gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
 	gsDPLoadBlock(7, 0, 0, 1023, 256),
@@ -8087,8 +8087,8 @@ Gfx mat_boomerang_mario_cap_v3[] = {
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, SHADE, TEXEL0_ALPHA, SHADE, 0, 0, 0, ENVIRONMENT, TEXEL0, SHADE, TEXEL0_ALPHA, SHADE, 0, 0, 0, ENVIRONMENT),
 	gsSPTexture(65535, 65535, 0, 0, 1),
-    gsSPLightColor(LIGHT_1, 0xff0000ff),
-    gsSPLightColor(LIGHT_2, 0x7f0000ff),
+    gsSPLightColor(LIGHT_1, 0xff4148ff),
+    gsSPLightColor(LIGHT_2, 0x7f0004ff),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, boomerang_mario_mario_cap_rgba16),
 	gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
 	gsDPLoadBlock(7, 0, 0, 1023, 256),
@@ -8129,8 +8129,8 @@ Gfx mat_boomerang_mario_hair_v3_001[] = {
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT, 0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT),
 	gsSPTexture(65535, 65535, 0, 0, 1),
-    gsSPLightColor(LIGHT_1, 0x730600ff),
-    gsSPLightColor(LIGHT_2, 0x360100ff),
+    gsSPLightColor(LIGHT_1, 0x832d1fff),
+    gsSPLightColor(LIGHT_2, 0x3e110aff),
 	gsSPEndDisplayList(),
 };
 
@@ -8284,8 +8284,8 @@ Gfx mat_boomerang_mario_gloves_v3_001[] = {
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT, 0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT),
 	gsSPTexture(65535, 65535, 0, 0, 1),
-    gsSPLightColor(LIGHT_1, 0xffffffff),
-    gsSPLightColor(LIGHT_2, 0x7f7f7fff),
+    gsSPLightColor(LIGHT_1, 0xc5d9ffff),
+    gsSPLightColor(LIGHT_2, 0x616c7fff),
 	gsSPEndDisplayList(),
 };
 
@@ -8302,8 +8302,8 @@ Gfx mat_boomerang_mario_shoes_v3_001[] = {
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT, 0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT),
 	gsSPTexture(65535, 65535, 0, 0, 1),
-    gsSPLightColor(LIGHT_1, 0x2b00b7ff),
-    gsSPLightColor(LIGHT_2, 0x100059ff),
+    gsSPLightColor(LIGHT_1, 0x43ffff),
+    gsSPLightColor(LIGHT_2, 0x1d7fff),
 	gsSPEndDisplayList(),
 };
 
