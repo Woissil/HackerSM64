@@ -841,16 +841,22 @@ void find_surface_on_ray_list(struct SurfaceNode *list, Vec3f orig, Vec3f dir, f
     f32 length;
     Vec3f chk_hit_pos;
     f32 top, bottom;
-
+    PUPPYPRINT_GET_SNAPSHOT();
     // Get upper and lower bounds of ray
-    top    = orig[1] + ((dir[1] >= 0.0f) ? dir[1] * dir_length : 0.0f);
-    bottom = orig[1] + ((dir[1] < 0.0f) ? dir[1] * dir_length : 0.0f);
+    if (dir[1] >= 0.0f) {
+        // Ray is upwards.
+        top    = orig[1] + (dir[1] * dir_length);
+        bottom = orig[1];
+    } else {
+        // Ray is downwards.
+        top    = orig[1];
+        bottom = orig[1] + (dir[1] * dir_length);
+    }
 
     // Iterate through every surface of the list
     for (; list != NULL; list = list->next) {
         // Reject surface if out of vertical bounds
         if ((list->surface->lowerY > top) || (list->surface->upperY < bottom)) continue;
-
         // Check intersection between the ray and this surface
         hit = ray_surface_intersect(orig, dir, dir_length, list->surface, chk_hit_pos, &length);
         if (hit && (length <= *max_length)) {
@@ -859,6 +865,7 @@ void find_surface_on_ray_list(struct SurfaceNode *list, Vec3f orig, Vec3f dir, f
             *max_length = length;
         }
     }
+    profiler_collision_update(first);
 }
 
 void find_surface_on_ray_cell(s32 cellX, s32 cellZ, Vec3f orig, Vec3f normalized_dir, f32 dir_length, struct Surface **hit_surface, Vec3f hit_pos, f32 *max_length, s32 flags) {
