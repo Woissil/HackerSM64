@@ -459,14 +459,7 @@ ALWAYS_INLINE s32 roundf(f32 in) {
 
 #define vec3f_cross vec3_cross
 
-// Scale vector 'v' so it has length 1
-#define vec3_normalize(v) {                       \
-    f32 _v_invmag = vec3_mag((v));                 \
-    _v_invmag = (1.0f / MAX(_v_invmag, NEAR_ZERO)); \
-    vec3_scale((v), _v_invmag);                    \
-}
-
-#define vec3f_normalize vec3_normalize
+void *vec3f_normalize(Vec3f dest);
 
 // If the magnitude of vector 'v' is greater than 'max', scale it down to 'max'
 #define vec3_set_max_dist(v, max) { \

@@ -1069,3 +1069,38 @@ OPTIMIZE_OS void mtxf_to_mtx_fast(s16* dst, float* src) {
     //  to set the top half.
     dst[15] = 1;
 }
+
+float Q_rsqrt(float number)
+{
+  long i;
+  float x2, y;
+  const float threehalfs = 1.5F;
+
+  x2 = number * 0.5F;
+  y  = number;
+  i  = * ( long * ) &y;                       // evil floating point bit level hacking
+  i  = 0x5f3759df - ( i >> 1 );               // what the fuck?
+  y  = * ( float * ) &i;
+  y  = y * ( threehalfs - ( x2 * y * y ) );   // 1st iteration
+  // y  = y * ( threehalfs - ( x2 * y * y ) );   // 2nd iteration, this can be removed
+
+  return y;
+}
+
+/// Scale vector 'dest' so it has length 1
+void *vec3f_normalize(Vec3f dest) {
+    f32 size = sqrtf(dest[0] * dest[0] + dest[1] * dest[1] + dest[2] * dest[2]);
+    register f32 invsqrt;
+    if (size > 0.01f) {
+
+        invsqrt = Q_rsqrt(dest[0] * dest[0] + dest[1] * dest[1] + dest[2] * dest[2]);
+
+        dest[0] *= invsqrt;
+        dest[1] *= invsqrt;
+        dest[2] *= invsqrt;
+    } else {
+        dest[0] = 0;
+        dest[1] = 1;
+        dest[2] = 0;
+    }
+}
