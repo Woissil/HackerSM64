@@ -107,15 +107,11 @@ void mtxf_identity(Mat4 mtx) {
 /// Set dest to a translation matrix of vector b.
 void mtxf_translate(Mat4 dest, Vec3f b) {
     PUPPYPRINT_ADD_COUNTER(gPuppyCallCounter.matrix);
-    s32 i;
-    f32 *pen;
-    for (pen = ((f32 *) dest + 1), i = 0; i < 12; pen++, i++) {
-        *pen = 0;
-    }
-    for (pen = (f32 *) dest, i = 0; i < 4; pen += 5, i++) {
-        *((u32 *) pen) = FLOAT_ONE;
-    }
-    vec3f_copy(&dest[3][0], &b[0]);
+    memset(dest, 0, sizeof(float) * 16);
+    dest[0][0] = dest[4][4] = dest[8][8] = FLOAT_ONE;
+    dest[3][0] = b[0];
+    dest[3][1] = b[1];
+    dest[3][2] = b[2];
 }
 
 /// Build a matrix that rotates around the z axis, then the x axis, then the y axis, and then translates.
@@ -432,26 +428,18 @@ void mtxf_align_terrain_triangle(Mat4 mtx, Vec3f pos, s16 yaw, f32 radius) {
  */
 void mtxf_mul(Mat4 dest, Mat4 a, Mat4 b) {
     PUPPYPRINT_ADD_COUNTER(gPuppyCallCounter.matrix);
-    Vec3f entry;
-    f32 *temp  = (f32 *)a;
-    f32 *temp2 = (f32 *)dest;
-    f32 *temp3;
-    s32 i;
-    for (i = 0; i < 16; i++) {
-        vec3_copy(entry, temp);
-        for (temp3 = (f32 *)b; (i & 3) != 3; i++) {
-            *temp2 = ((entry[0] * temp3[0])
-                    + (entry[1] * temp3[4])
-                    + (entry[2] * temp3[8]));
-            temp2++;
-            temp3++;
+    f32 *a_ptr = (f32 *)a;
+    f32 *b_ptr = (f32 *)b;
+    f32 *dest_ptr = (f32 *)dest;
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++) {
+            dest_ptr[i * 4 + j] = a_ptr[i * 4 + 0] * b_ptr[j * 4 + 0] +
+                                   a_ptr[i * 4 + 1] * b_ptr[j * 4 + 1] +
+                                   a_ptr[i * 4 + 2] * b_ptr[j * 4 + 2];
         }
-        *temp2 = 0;
-        temp += 4;
-        temp2++;
     }
     vec3f_add(&dest[3][0], &b[3][0]);
-    ((u32 *) dest)[15] = FLOAT_ONE;
+    ((u32 *)dest)[15] = FLOAT_ONE;
 }
 
 /**
@@ -479,23 +467,26 @@ void mtxf_scale_vec3f(Mat4 dest, Mat4 mtx, Vec3f s) {
 #define MATENTRY(a, b)                          \
     ((s16 *) mtx)[a     ] = (((s32) b) >> 16);  \
     ((s16 *) mtx)[a + 16] = (((s32) b) & 0xFFFF);
-void mtxf_rotate_xy(Mtx *mtx, s16 angle) {
-    PUPPYPRINT_ADD_COUNTER(gPuppyCallCounter.matrix);
-    s32 i = (coss(angle) * 0x10000);
-    s32 j = (sins(angle) * 0x10000);
-    f32 *temp = (f32 *)mtx;
-    s32 k;
-    for (k = 0; k < 16; k++) {
-        *temp = 0;
-        temp++;
-    }
-    MATENTRY(0,  i)
-    MATENTRY(1,  j)
-    MATENTRY(4, -j)
-    MATENTRY(5,  i)
-    ((s16 *) mtx)[10] = 1;
-    ((s16 *) mtx)[15] = 1;
-}
+ 
+void mtxf_rotate_xy(Mtx *mtx, s16 angle) {  
+    PUPPYPRINT_ADD_COUNTER(gPuppyCallCounter.matrix);  
+  
+    // Calculate sine and cosine of the angle  
+    s32 i = (coss(angle) * 0x10000);  
+    s32 j = (sins(angle) * 0x10000);  
+  
+    // Initialize the matrix elements to zero  
+    memset(mtx, 0, sizeof(Mtx));  
+  
+    // Set the rotation matrix elements  
+    MATENTRY(0, i);  
+    MATENTRY(1, j);  
+    MATENTRY(4, -j);  
+    MATENTRY(5, i);  
+    ((s16 *) mtx)[10] = 1;  
+    ((s16 *) mtx)[15] = 1;  
+} 
+
 
 /**
  * Similar to approach_s32, but converts to s16 and allows for overflow between 32767 and -32768

@@ -83,7 +83,7 @@
 /**
  * Includes vanilla debug functionality.
  */
-// #define VANILLA_DEBUG
+#define VANILLA_DEBUG
 
 /**
  * Forces a crash when the game starts. Useful for debugging the crash screen.
