@@ -475,15 +475,14 @@ Bool32 approach_s16_bool(s16 *current, s16 target, s16 inc, s16 dec) {
     return (*current != target);
 }
 s16 approach_s16(s16 current, s16 target, s16 inc, s16 dec) {
-    s16 dist = (target - current);
-    if (dist >= 0) { // target >= current
-        current = ((dist >  inc) ? (current + inc) : target);
-    } else { // target < current
-        current = ((dist < -dec) ? (current - dec) : target);
+    s16 dist = target - current;
+    if (dist >= 0) {
+        current = (dist > inc) ? (current + inc) : target;
+    } else {
+        current = (dist < -dec) ? (current - dec) : target;
     }
     return current;
 }
-
 /**
  * Return the value 'current' after it tries to approach target, going up at
  * most 'inc' and going down at most 'dec'.

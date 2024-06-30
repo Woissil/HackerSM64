@@ -3907,24 +3907,14 @@ s32 camera_approach_s16_symmetric_bool(s16 *current, s16 target, s16 increment) 
 
 s32 camera_approach_s16_symmetric(s16 current, s16 target, s16 increment) {
     s16 dist = target - current;
-
     if (increment < 0) {
-        increment = -1 * increment;
+        increment = -increment;
+        dist = -dist;
     }
-    if (dist > 0) {
-        dist -= increment;
-        if (dist >= 0) {
-            current = target - dist;
-        } else {
-            current = target;
-        }
+    if (dist > increment) {
+        current = target - increment;
     } else {
-        dist += increment;
-        if (dist <= 0) {
-            current = target - dist;
-        } else {
-            current = target;
-        }
+        current = target;
     }
     return current;
 }
