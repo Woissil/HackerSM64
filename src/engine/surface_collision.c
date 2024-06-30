@@ -16,33 +16,19 @@
 
 static s32 check_wall_vw(f32 d00, f32 d01, f32 d11, f32 d20, f32 d21, f32 invDenom) {
     f32 v = ((d11 * d20) - (d01 * d21)) * invDenom;
-    if (v < 0.0f || v > 1.0f) {
-        return TRUE;
-    }
-
     f32 w = ((d00 * d21) - (d01 * d20)) * invDenom;
-    if (w < 0.0f || w > 1.0f || v + w > 1.0f) {
-        return TRUE;
-    }
-
-    return FALSE;
+    return (v < 0.0f || v > 1.0f || w < 0.0f || w > 1.0f || v + w > 1.0f);
 }
 
 s32 check_wall_edge(Vec3f vert, Vec3f v2, f32 *d00, f32 *d01, f32 *invDenom, f32 *offset, f32 margin_radius) {
     if (FLT_IS_NONZERO(vert[1])) {
         f32 v = (v2[1] / vert[1]);
-        if (v < 0.0f || v > 1.0f) {
-            return TRUE;
-        }
-
         *d00 = ((vert[0] * v) - v2[0]);
         *d01 = ((vert[2] * v) - v2[2]);
         *invDenom = sqrtf(sqr(*d00) + sqr(*d01));
         *offset = (*invDenom - margin_radius);
-
         return (*offset > 0.0f);
     }
-
     return TRUE;
 }
 
