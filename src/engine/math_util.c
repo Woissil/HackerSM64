@@ -12,6 +12,8 @@
 #include "config.h"
 #include "config/config_world.h"
 
+#include "MEMSETEXTERN.h"
+
 
 Vec3f gVec3fX    = {  1.0f,  0.0f,  0.0f };
 Vec3f gVec3fY    = {  0.0f,  1.0f,  0.0f };
@@ -233,7 +235,6 @@ void mtxf_lookat(Mat4 mtx, Vec3f from, Vec3f to, s16 roll) {
     PUPPYPRINT_ADD_COUNTER(gPuppyCallCounter.matrix);
     Vec3f colX, colY, colZ;
     f32 dx = to[0] - from[0], dz = to[2] - from[2];
-    f32 invLength = -(1.0f / MAX(sqrtf(sqr(dx) + sqr(dz)), NEAR_ZERO));
     f32 sr  = sins(roll);
     f32 sr_dz = sr * dz;
     f32 sr_dx = -sr * dx;
@@ -510,13 +511,8 @@ Bool32 approach_f32_bool(f32 *current, f32 target, f32 inc, f32 dec) {
     return !(*current == target);
 }
 f32 approach_f32(f32 current, f32 target, f32 inc, f32 dec) {
-    f32 dist = (target - current);
-    if (dist >= 0.0f) { // target >= current
-        current = ((dist >  inc) ? (current + inc) : target);
-    } else { // target < current
-        current = ((dist < -dec) ? (current - dec) : target);
-    }
-    return current;
+    f32 dist = target - current;
+    return dist >= 0.0f ? (dist > inc ? current + inc : target) : (dist < -dec ? current - dec : target);
 }
 
 s32 approach_f32_signed(f32 *current, f32 target, f32 inc) {
@@ -577,16 +573,15 @@ s16 approach_s16_asymptotic_bool(s16 *current, s16 target, s16 divisor) {
  * Note: last parameter is the reciprocal of what it would be in the f32 functions
  */
 s16 approach_s16_asymptotic(s16 current, s16 target, s16 divisor) {
-    s16 temp = current;
     if (divisor == 0) {
-        current = target;
-    } else {
-        temp -= target;
-        temp -= (temp / divisor);
-        temp += target;
-        current = temp;
+        return target;
     }
-    return current;
+
+    s32 temp = (s32)current - (s32)target;
+    temp /= divisor;
+    temp += (s32)target;
+
+    return (s16)temp;
 }
 
 s16 abs_angle_diff(s16 a0, s16 a1) {
