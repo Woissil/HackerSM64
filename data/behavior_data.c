@@ -6368,7 +6368,7 @@ const BehaviorScript bhvSketchyKoopa[] = {
     SET_INT(oInteractionSubtype, INT_SUBTYPE_NPC),
     SET_INT(oWoodenPostTotalMarioAngle, 0),
     SET_INT(oIntangibleTimer, 0),
-    LOAD_ANIMATIONS(oAnimations, goomba_seg8_anims_0801DA4C),
+    LOAD_ANIMATIONS(oAnimations, koopa_seg6_anims_06011364),
     BEGIN_LOOP(),
     CALL_NATIVE(sketchy_koopa),
     END_LOOP(),

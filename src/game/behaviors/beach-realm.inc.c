@@ -39,8 +39,9 @@ void beachyoshi_message(void) {
 // kinda different from the yoshi
 
 void sketchy_koopa(void) {
-    cur_obj_init_animation(0);
+    cur_obj_init_animation(0x9);
     if (o->oTimer == 0) {
+        obj_scale(o, 3);
         o->oBehParams2ndByte = 9;
     }
 

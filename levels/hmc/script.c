@@ -77,7 +77,7 @@ const LevelScript level_hmc_entry[] = {
 		OBJECT(MODEL_NONE, 175, 413, 10651, 0, 0, 0, (2 << 24), bhvBowserCourseRedCoinStar),
 		OBJECT(MODEL_RED_COIN, 8, 372, 7307, 0, 0, 0, 0x00000000, bhvRedCoin),
 		OBJECT(MODEL_RED_COIN, 1541, 605, 2009, 0, 0, 0, 0x00000000, bhvRedCoin),
-		OBJECT(MODEL_GOOMBA, 2573, 183, 12734, 0, 0, 0, 0x00000000, bhvSketchyKoopa),
+		OBJECT(MODEL_SKETCHY_KOOPA, 2573, 183, 12734, 0, 0, 0, 0x00000000, bhvSketchyKoopa),
 		OBJECT(MODEL_STAR, -2725, 1153, 7284, 0, 0, 0, (1 << 24), bhvStar),
 		OBJECT(MODEL_NONE, 0, 397, 13252, 0, 0, 0, 0x000A0000, bhvSpinAirborneWarp),
 		MARIO_POS(0x01, 0, 0, 397, 13252),
