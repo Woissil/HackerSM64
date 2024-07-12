@@ -577,6 +577,7 @@ void beachbarrel(void);
 void beachboat_moving(void);
 void beachboat_update(void);
 void coconut_goombaking(void);
+void beachwhomp(void);
 
 Gfx *geo_move_mario_part_from_parent(s32 callContext, UNUSED struct GraphNode *node, Mat4 mtx);
 

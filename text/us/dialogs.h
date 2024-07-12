@@ -86,7 +86,10 @@ DEFINE_DIALOG(DIALOG_010, 1, 4, 30, 200, _("\
 Yo Dude!\n\
 I have some stars in sale\n\
 I can give you one for\n\
-20 coins!"))
+20 coins!\n\
+\n\
+Deal?\n\
+//Yes////No"))
 
 DEFINE_DIALOG(DIALOG_011, 1, 4, 30, 200, _("\
 How Dare you!\n\
@@ -100,11 +103,7 @@ I guess you deserve\n\
 Those coconuts then."))
 
 DEFINE_DIALOG(DIALOG_013, 1, 5, 30, 200, _("\
-You've collected 100\n\
-coins! Mario gains more\n\
-power from the castle.\n\
-Do you want to Save?\n\
-//Yes////No"))
+Nah. You're broke."))
 
 DEFINE_DIALOG(DIALOG_014, 1, 4, 30, 200, _("\
 Wow! Another Power Star!\n\

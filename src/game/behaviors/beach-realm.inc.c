@@ -23,24 +23,15 @@ void beachyoshi_message(void) {
     }
 
     o->oMoveAngleYaw = approach_s16_symmetric(o->oMoveAngleYaw, o->oAngleToMario, 0x200);
-    if (o->oAction == 3) {
-
+    if (o->oAction == 0 && o->oInteractStatus & INT_STATUS_INTERACTED) {
         if (make_dialog_appear_mario(o->oBehParams2ndByte, 4, 162)) {
-            o->oAction = 2;
+            o->oInteractStatus = 0;
             if (o->oBehParams2ndByte == 8) {
                 // spawn a star
                 bhv_spawn_star_no_level_exit(STAR_BP_ACT_1);
                 spawn_mist_particles();
                 obj_mark_for_deletion(o);
             }
-        }
-    } else if (o->oAction == 2) {
-        if (o->oDistanceToMario > 550.f) {
-            o->oAction = 0;
-        }
-    } else {
-        if (o->oDistanceToMario < 155.f) {
-            o->oAction = 3;
         }
     }
 }
@@ -54,21 +45,13 @@ void sketchy_koopa(void) {
     }
 
     o->oMoveAngleYaw = approach_s16_symmetric(o->oMoveAngleYaw, o->oAngleToMario, 0x200);
-    if (o->oAction == 3) {
-
+    if (o->oAction == 0 && o->oInteractStatus & INT_STATUS_INTERACTED) {
         if (make_dialog_appear_mario(o->oBehParams2ndByte, 4, 162)) {
-            play_sound(SOUND_GENERAL_COLLECT_1UP, gGlobalSoundSource);
+            o->oInteractStatus = 0;
+            play_sound(SOUND_GENERAL_BIG_POUND, gGlobalSoundSource);
             coconuts++;
             spawn_mist_particles();
             obj_mark_for_deletion(o);
-        }
-    } else if (o->oAction == 2) {
-        if (o->oDistanceToMario > 550.f) {
-            o->oAction = 0;
-        }
-    } else {
-        if (o->oDistanceToMario < 155.f) {
-            o->oAction = 3;
         }
     }
 }
@@ -133,11 +116,11 @@ void beachboat_update(void) {
 
 /// coconut king
 
-#define KING_COCONUT_TALKING 0       // talking
-#define KING_COCONUT_STAY_IN_PLACE 1 // action that he throws coconuts at mario
-#define KING_COCONUT_GOT_HIT 2       // got hit
-#define KING_COCONUT_WALK 3   /// walking
-#define KING_COCONUT_DEAD 4 //deaded, dont spawn star thp
+#define KING_COCONUT_TALKING 0         // talking
+#define KING_COCONUT_STAY_IN_PLACE 1   // action that he throws coconuts at mario
+#define KING_COCONUT_GOT_HIT 2         // got hit
+#define KING_COCONUT_WALK 3            /// walking
+#define KING_COCONUT_DEAD 4            // deaded, dont spawn star thp
 #define KING_COCONUT_WAIT_SPAWN_STAR 5 // wait 32 frames then spawn stae
 
 static struct ObjectHitbox coconutking_hitbox = {
@@ -253,5 +236,37 @@ void coconut_goombaking(void) {
         o->oBehParams2ndByte = 12;
         o->oOpacity = 34;
         o->oAction = KING_COCONUT_DEAD;
+    }
+}
+
+#define m gMarioState
+
+void beachwhomp(void) {
+    cur_obj_init_animation(0);
+
+    o->oMoveAngleYaw = approach_s16_symmetric(o->oMoveAngleYaw, o->oAngleToMario, 0x200);
+    if (o->oAction == 0 && o->oInteractStatus & INT_STATUS_INTERACTED) {
+        s32 response = make_dialog_appear_mario(o->oBehParams2ndByte, 4, 163);
+        if (response == DIALOG_RESPONSE_YES) {
+            if (m->numCoins >= 20) {
+                bhv_spawn_star_no_level_exit(STAR_BP_ACT_4);
+                spawn_mist_particles();
+                obj_mark_for_deletion(o);
+            }
+
+            if (m->numCoins < 20) {
+                o->oInteractStatus = INT_STATUS_HIT_MINE;
+            }
+        }
+
+        if (response == DIALOG_RESPONSE_NO) {
+            o->oInteractStatus = 0;
+        }
+    }
+
+    if (o->oInteractStatus == INT_STATUS_HIT_MINE) {
+        if (make_dialog_appear_mario(13, 4, 162)) {
+            o->oInteractStatus = 0;
+        }
     }
 }

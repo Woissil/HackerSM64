@@ -98,7 +98,7 @@ const LevelScript level_hmc_entry[] = {
 		OBJECT(MODEL_BARREL, 379, 135, 10377, 0, 0, 0, (4 << 16), bhvBeachBarrel),
 		OBJECT(MODEL_BARREL, 977, 135, 10377, 0, 0, 0, (3 << 16), bhvBeachBarrel),
 		OBJECT(MODEL_BARREL, 379, 135, 10897, 0, 0, 0, (1 << 16), bhvBeachBarrel),
-		OBJECT(MODEL_WHOMP, 379, 135, 9348, 0, 0, 0, (10 << 24), bhvBeachWhomp),
+		OBJECT(MODEL_WHOMP, 379, 135, 9348, 0, 0, 0, (10 << 16), bhvBeachWhomp),
 		OBJECT(MODEL_THI_WARP_PIPE, 0, 167, 13391, 0, -180, 0, 0x000A0000, bhvWarpPipe),
 		TERRAIN(hmc_area_2_collision),
 		MACRO_OBJECTS(hmc_area_2_macro_objs),

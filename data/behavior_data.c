@@ -6341,8 +6341,10 @@ const BehaviorScript bhvBeachYoshi[] = {
     BEGIN(OBJ_LIST_LEVEL),
     OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW
                     | OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
-    SET_INT(oWoodenPostTotalMarioAngle, 0),
     SET_INT(oIntangibleTimer, 0),
+    SET_HITBOX(/*Radius*/ 160, /*Height*/ 150),
+    SET_INTERACT_TYPE(INTERACT_TEXT),
+    SET_INT(oInteractionSubtype, INT_SUBTYPE_NPC),
     LOAD_ANIMATIONS(oAnimations, yoshi_seg5_anims_05024100),
     BEGIN_LOOP(),
     CALL_NATIVE(beachyoshi_message),
@@ -6387,18 +6389,17 @@ const BehaviorScript bhvBeachBarrel[] = {
 };
 
 const BehaviorScript bhvBeachWhomp[] = {
-    BEGIN(OBJ_LIST_GENACTOR),
+    BEGIN(OBJ_LIST_LEVEL),
     OR_INT(oFlags, (OBJ_FLAG_PERSISTENT_RESPAWN | OBJ_FLAG_COMPUTE_DIST_TO_MARIO
                     | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
     LOAD_ANIMATIONS(oAnimations, whomp_seg6_anims_06020A04),
     ANIMATE(WHOMP_ANIM_WALK),
-    SET_INTERACT_TYPE(INTERACT_TEXT),
-    SET_HITBOX(/*Radius*/ 80, /*Height*/ 100),
+    SET_HITBOX(/*Radius*/ 80, /*Height*/ 200),
     SET_INT(oIntangibleTimer, 0),
-    CALL_NATIVE(bhv_init_room),
-    CALL_NATIVE(bhv_toad_message_init),
+    SET_INTERACT_TYPE(INTERACT_TEXT),
+    SET_INT(oInteractionSubtype, INT_SUBTYPE_NPC),
     BEGIN_LOOP(),
-    CALL_NATIVE(bhv_toad_message_loop),
+    CALL_NATIVE(beachwhomp),
     END_LOOP(),
 };
 

@@ -4,6 +4,7 @@ const GeoLayout hmc_area_3_geo[] = {
 	GEO_NODE_START(),
 	GEO_OPEN_NODE(),
 		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, 750, 72, -620, hmc_dl_Cube_017_mesh_layer_1),
+		GEO_TRANSLATE_NODE_WITH_DL(LAYER_TRANSPARENT, 848, -50, -2220, hmc_dl_Plane_004_mesh_layer_5),
 		GEO_TRANSLATE_ROTATE_WITH_DL(LAYER_OPAQUE, -1111, 101, -1988, 90, 0, 0, hmc_dl_TREP_018_mesh_layer_1),
 		GEO_TRANSLATE_ROTATE_WITH_DL(LAYER_OPAQUE, 2564, 77, -782, 90, 0, 0, hmc_dl_TREP_019_mesh_layer_1),
 	GEO_CLOSE_NODE(),
