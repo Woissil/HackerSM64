@@ -459,7 +459,14 @@ ALWAYS_INLINE s32 roundf(f32 in) {
 
 #define vec3f_cross vec3_cross
 
-void *vec3f_normalize(Vec3f dest);
+// Scale vector 'v' so it has length 1
+#define vec3_normalize(v) {                       \
+    f32 _v_invmag = vec3_mag((v));                 \
+    _v_invmag = (1.0f / MAX(_v_invmag, NEAR_ZERO)); \
+    vec3_scale((v), _v_invmag);                    \
+}
+
+#define vec3f_normalize vec3_normalize
 
 // If the magnitude of vector 'v' is greater than 'max', scale it down to 'max'
 #define vec3_set_max_dist(v, max) { \
@@ -633,7 +640,7 @@ void mtxf_shadow(Mat4 dest, Vec3f upDir, Vec3f pos, Vec3f scale, s16 yaw);
 void mtxf_align_terrain_normal(Mat4 dest, Vec3f upDir, Vec3f pos, s16 yaw);
 void mtxf_align_terrain_triangle(Mat4 mtx, Vec3f pos, s16 yaw, f32 radius);
 void mtxf_mul(Mat4 dest, Mat4 a, Mat4 b);
-void mtxf_scale_vec3f(Mat4 dest, Mat4 mtx, Vec3f s);
+void mtxf_scale_vec3f(Mat4 dest, Mat4 mtx, register Vec3f s);
 void mtxf_mul_vec3s(Mat4 mtx, Vec3s b);
 
 extern void mtxf_to_mtx_fast(s16 *dest, float *src);
@@ -662,7 +669,9 @@ s32 approach_f32_signed(f32 *current, f32 target, f32 inc);
 s32 approach_f32_asymptotic_bool(f32 *current, f32 target, f32 multiplier);
 f32 approach_f32_asymptotic(f32 current, f32 target, f32 multiplier);
 s16 approach_s16_asymptotic_bool(s16 *current, s16 target, s16 divisor);
+s16 approach_s16_asymptotic_bool_fix(s16 *current, s16 target, s16 divisor);
 s16 approach_s16_asymptotic(s16 current, s16 target, s16 divisor);
+s16 approach_s16_asymptotic_fix(s16 current, s16 target, s16 divisor);
 s16 abs_angle_diff(s16 a0, s16 a1);
 s16 atan2s(f32 y, f32 x);
 f32 atan2f(f32 a, f32 b);

@@ -12,8 +12,6 @@
 #include "config.h"
 #include "config/config_world.h"
 
-#include "MEMSETEXTERN.h"
-
 
 Vec3f gVec3fX    = {  1.0f,  0.0f,  0.0f };
 Vec3f gVec3fY    = {  0.0f,  1.0f,  0.0f };
@@ -109,11 +107,15 @@ void mtxf_identity(Mat4 mtx) {
 /// Set dest to a translation matrix of vector b.
 void mtxf_translate(Mat4 dest, Vec3f b) {
     PUPPYPRINT_ADD_COUNTER(gPuppyCallCounter.matrix);
-    memset(dest, 0, sizeof(float) * 16);
-    dest[0][0] = dest[4][4] = dest[8][8] = FLOAT_ONE;
-    dest[3][0] = b[0];
-    dest[3][1] = b[1];
-    dest[3][2] = b[2];
+    s32 i;
+    f32 *pen;
+    for (pen = ((f32 *) dest + 1), i = 0; i < 12; pen++, i++) {
+        *pen = 0;
+    }
+    for (pen = (f32 *) dest, i = 0; i < 4; pen += 5, i++) {
+        *((u32 *) pen) = FLOAT_ONE;
+    }
+    vec3f_copy(&dest[3][0], &b[0]);
 }
 
 /// Build a matrix that rotates around the z axis, then the x axis, then the y axis, and then translates.
@@ -202,25 +204,30 @@ void mtxf_rotate_zxy_and_translate_and_mul(Vec3s rot, Vec3f trans, Mat4 dest, Ma
 /// Build a matrix that rotates around the x axis, then the y axis, then the z axis, and then translates and multiplies.
 void mtxf_rotate_xyz_and_translate_and_mul(Vec3s rot, Vec3f trans, Mat4 dest, Mat4 src) {
     PUPPYPRINT_ADD_COUNTER(gPuppyCallCounter.matrix);
-    f32 sx = sins(rot[0]), cx = coss(rot[0]), sy = sins(rot[1]), cy = coss(rot[1]), sz = sins(rot[2]), cz = coss(rot[2]);
+    f32 sx = sins(rot[0]);
+    f32 cx = coss(rot[0]);
+    f32 sy = sins(rot[1]);
+    f32 cy = coss(rot[1]);
+    f32 sz = sins(rot[2]);
+    f32 cz = coss(rot[2]);
     Vec3f entry;
-
-    entry[0] = cy * cz;
-    entry[1] = cy * sz;
+    entry[0] = (cy * cz);
+    entry[1] = (cy * sz);
     entry[2] = -sy;
-    linear_mtxf_mul_vec3(src, dest[0], entry);
-
-    entry[0] = (sx * cz) * sy - cx * sz;
-    entry[1] = (sx * sz) * sy + cx * cz;
-    entry[2] = sx * cy;
-    linear_mtxf_mul_vec3(src, dest[1], entry);
-
-    entry[0] = (cx * cz) * sy + sx * sz;
-    entry[1] = (cx * sz) * sy - sx * cz;
-    entry[2] = cx * cy;
-    linear_mtxf_mul_vec3(src, dest[2], entry);
-
-    linear_mtxf_mul_vec3(src, dest[3], trans);
+    linear_mtxf_mul_vec3f(src, dest[0], entry);
+    f32 sxcz = (sx * cz);
+    f32 cxsz = (cx * sz);
+    entry[0] = ((sxcz * sy) - cxsz);
+    f32 sxsz = (sx * sz);
+    f32 cxcz = (cx * cz);
+    entry[1] = ((sxsz * sy) + cxcz);
+    entry[2] = (sx * cy);
+    linear_mtxf_mul_vec3f(src, dest[1], entry);
+    entry[0] = ((cxcz * sy) + sxsz);
+    entry[1] = ((cxsz * sy) - sxcz);
+    entry[2] = (cx * cy);
+    linear_mtxf_mul_vec3f(src, dest[2], entry);
+    linear_mtxf_mul_vec3f(src, dest[3], trans);
     vec3f_add(dest[3], src[3]);
     MTXF_END(dest);
 }
@@ -234,27 +241,36 @@ void mtxf_rotate_xyz_and_translate_and_mul(Vec3s rot, Vec3f trans, Mat4 dest, Ma
 void mtxf_lookat(Mat4 mtx, Vec3f from, Vec3f to, s16 roll) {
     PUPPYPRINT_ADD_COUNTER(gPuppyCallCounter.matrix);
     Vec3f colX, colY, colZ;
-    f32 dx = to[0] - from[0], dz = to[2] - from[2];
+    f32 dx = (to[0] - from[0]);
+    f32 dz = (to[2] - from[2]);
+    f32 invLength = sqrtf(sqr(dx) + sqr(dz));
+    invLength = -(1.0f / MAX(invLength, NEAR_ZERO));
+    dx *= invLength;
+    dz *= invLength;
     f32 sr  = sins(roll);
-    f32 sr_dz = sr * dz;
-    f32 sr_dx = -sr * dx;
-
+    colY[1] = coss(roll);
+    colY[0] = ( sr * dz);
+    colY[2] = (-sr * dx);
     vec3f_diff(colZ, from, to); // to & from are swapped
     vec3f_normalize(colZ);
-    Vec3f temp = {sr_dz, coss(roll), sr_dx};
-    vec3f_cross(colX, temp, colZ);
+    vec3f_cross(colX, colY, colZ);
+    vec3f_normalize(colX);
     vec3f_cross(colY, colZ, colX);
-
-    mtx[0][0] = colX[0]; mtx[1][0] = colX[1]; mtx[2][0] = colX[2];
-    mtx[0][1] = colY[0]; mtx[1][1] = colY[1]; mtx[2][1] = colY[2];
-    mtx[0][2] = colZ[0]; mtx[1][2] = colZ[1]; mtx[2][2] = colZ[2];
+    vec3f_normalize(colY);
+    mtx[0][0] = colX[0];
+    mtx[1][0] = colX[1];
+    mtx[2][0] = colX[2];
+    mtx[0][1] = colY[0];
+    mtx[1][1] = colY[1];
+    mtx[2][1] = colY[2];
+    mtx[0][2] = colZ[0];
+    mtx[1][2] = colZ[1];
+    mtx[2][2] = colZ[2];
     mtx[3][0] = -vec3f_dot(from, colX);
     mtx[3][1] = -vec3f_dot(from, colY);
     mtx[3][2] = -vec3f_dot(from, colZ);
-
     MTXF_END(mtx);
 }
-
 
 /**
  * Set 'dest' to a transformation matrix that turns an object to face the camera.
@@ -406,38 +422,27 @@ void mtxf_align_terrain_triangle(Mat4 mtx, Vec3f pos, s16 yaw, f32 radius) {
  * then a.
  */
 void mtxf_mul(Mat4 dest, Mat4 a, Mat4 b) {
-    PUPPYPRINT_ADD_COUNTER(gPuppyCallCounter.matrix);
-    f32 *a_ptr = (f32 *)a;
-    f32 *b_ptr = (f32 *)b;
-    f32 *dest_ptr = (f32 *)dest;
     for (int i = 0; i < 4; i++) {
-        for (int j = 0; j < 4; j++) {
-            dest_ptr[i * 4 + j] = a_ptr[i * 4 + 0] * b_ptr[j * 4 + 0] +
-                                   a_ptr[i * 4 + 1] * b_ptr[j * 4 + 1] +
-                                   a_ptr[i * 4 + 2] * b_ptr[j * 4 + 2];
+        for (int j = 0; j < 3; j++) {
+            dest[i][j] = a[i][0] * b[0][j] + a[i][1] * b[1][j] + a[i][2] * b[2][j];
+            if (i == 3)
+                dest[i][j] += b[3][j];
         }
     }
-    vec3f_add(&dest[3][0], &b[3][0]);
-    ((u32 *)dest)[15] = FLOAT_ONE;
 }
 
 /**
  * Set matrix 'dest' to 'mtx' scaled by vector s
  */
-void mtxf_scale_vec3f(Mat4 dest, Mat4 mtx, Vec3f s) {
-    PUPPYPRINT_ADD_COUNTER(gPuppyCallCounter.matrix);
-    f32 *temp  = (f32 *)dest;
-    f32 *temp2 = (f32 *)mtx;
+void mtxf_scale_vec3f(Mat4 dest, Mat4 mtx, register Vec3f s) {
     s32 i;
-
-    for (i = 0; i < 4; i++) {
-        temp[ 0] = temp2[ 0] * s[0];
-        temp[ 4] = temp2[ 4] * s[1];
-        temp[ 8] = temp2[ 8] * s[2];
-        temp[12] =  temp2[12];
-        temp++;
-        temp2++;
+    for (i = 0; i < 3; i++) {
+        dest[i][0] = mtx[i][0] * s[i];
+        dest[i][1] = mtx[i][1] * s[i];
+        dest[i][2] = mtx[i][2] * s[i];
+        dest[3][i] = mtx[3][i];
     }
+    //  vec3f_copy(dest[3], mtx[3]);
 }
 
 /**
@@ -446,26 +451,23 @@ void mtxf_scale_vec3f(Mat4 dest, Mat4 mtx, Vec3f s) {
 #define MATENTRY(a, b)                          \
     ((s16 *) mtx)[a     ] = (((s32) b) >> 16);  \
     ((s16 *) mtx)[a + 16] = (((s32) b) & 0xFFFF);
- 
-void mtxf_rotate_xy(Mtx *mtx, s16 angle) {  
-    PUPPYPRINT_ADD_COUNTER(gPuppyCallCounter.matrix);  
-  
-    // Calculate sine and cosine of the angle  
-    s32 i = (coss(angle) * 0x10000);  
-    s32 j = (sins(angle) * 0x10000);  
-  
-    // Initialize the matrix elements to zero  
-    memset(mtx, 0, sizeof(Mtx));  
-  
-    // Set the rotation matrix elements  
-    MATENTRY(0, i);  
-    MATENTRY(1, j);  
-    MATENTRY(4, -j);  
-    MATENTRY(5, i);  
-    ((s16 *) mtx)[10] = 1;  
-    ((s16 *) mtx)[15] = 1;  
-} 
-
+void mtxf_rotate_xy(Mtx *mtx, s16 angle) {
+    PUPPYPRINT_ADD_COUNTER(gPuppyCallCounter.matrix);
+    s32 i = (coss(angle) * 0x10000);
+    s32 j = (sins(angle) * 0x10000);
+    f32 *temp = (f32 *)mtx;
+    s32 k;
+    for (k = 0; k < 16; k++) {
+        *temp = 0;
+        temp++;
+    }
+    MATENTRY(0,  i)
+    MATENTRY(1,  j)
+    MATENTRY(4, -j)
+    MATENTRY(5,  i)
+    ((s16 *) mtx)[10] = 1;
+    ((s16 *) mtx)[15] = 1;
+}
 
 /**
  * Similar to approach_s32, but converts to s16 and allows for overflow between 32767 and -32768
@@ -475,14 +477,15 @@ Bool32 approach_s16_bool(s16 *current, s16 target, s16 inc, s16 dec) {
     return (*current != target);
 }
 s16 approach_s16(s16 current, s16 target, s16 inc, s16 dec) {
-    s16 dist = target - current;
-    if (dist >= 0) {
-        current = (dist > inc) ? (current + inc) : target;
-    } else {
-        current = (dist < -dec) ? (current - dec) : target;
+    s16 dist = (target - current);
+    if (dist >= 0) { // target >= current
+        current = ((dist >  inc) ? (current + inc) : target);
+    } else { // target < current
+        current = ((dist < -dec) ? (current - dec) : target);
     }
     return current;
 }
+
 /**
  * Return the value 'current' after it tries to approach target, going up at
  * most 'inc' and going down at most 'dec'.
@@ -510,8 +513,13 @@ Bool32 approach_f32_bool(f32 *current, f32 target, f32 inc, f32 dec) {
     return !(*current == target);
 }
 f32 approach_f32(f32 current, f32 target, f32 inc, f32 dec) {
-    f32 dist = target - current;
-    return dist >= 0.0f ? (dist > inc ? current + inc : target) : (dist < -dec ? current - dec : target);
+    f32 dist = (target - current);
+    if (dist >= 0.0f) { // target >= current
+        current = ((dist >  inc) ? (current + inc) : target);
+    } else { // target < current
+        current = ((dist < -dec) ? (current - dec) : target);
+    }
+    return current;
 }
 
 s32 approach_f32_signed(f32 *current, f32 target, f32 inc) {
@@ -567,20 +575,34 @@ s16 approach_s16_asymptotic_bool(s16 *current, s16 target, s16 divisor) {
     return (*current != target);
 }
 
+// Fixes the above function so that the target value can actually be reached.
+s16 approach_s16_asymptotic_bool_fix(s16 *current, s16 target, s16 divisor) {
+    s8 sign = signum_positive(target - *current);
+    approach_s16_asymptotic_bool(current, target + divisor * sign - sign, divisor);
+    return (*current == target);
+}
+
 /**
  * Approaches an s16 value in the same fashion as approach_f32_asymptotic, returns the new value.
  * Note: last parameter is the reciprocal of what it would be in the f32 functions
  */
 s16 approach_s16_asymptotic(s16 current, s16 target, s16 divisor) {
+    s16 temp = current;
     if (divisor == 0) {
-        return target;
+        current = target;
+    } else {
+        temp -= target;
+        temp -= (temp / divisor);
+        temp += target;
+        current = temp;
     }
+    return current;
+}
 
-    s32 temp = (s32)current - (s32)target;
-    temp /= divisor;
-    temp += (s32)target;
-
-    return (s16)temp;
+// Fixes the above function so that the target value can actually be reached.
+s16 approach_s16_asymptotic_fix(s16 current, s16 target, s16 divisor) {
+    s8 sign = signum_positive(target - current);
+    return approach_s16_asymptotic(current, target + divisor * sign - sign, divisor);
 }
 
 s16 abs_angle_diff(s16 a0, s16 a1) {
@@ -795,38 +817,55 @@ s32 anim_spline_poll(Vec3f result) {
  * @param length returns the distance from the starting point to the hit position.
  * @return s32 TRUE if the ray intersects a surface.
  */
-s32 ray_surface_intersect(Vec3f orig, Vec3f dir, f32 dir_length, struct Surface *surface, Vec3f hit_pos, f32 *length) { // mental health = 0 rn
+s32 ray_surface_intersect(Vec3f orig, Vec3f dir, f32 dir_length, struct Surface *surface, Vec3f hit_pos, f32 *length) {
+    // Ignore certain surface types.
     if ((surface->type == SURFACE_INTANGIBLE) || (surface->flags & SURFACE_FLAG_NO_CAM_COLLISION)) return FALSE;
-
-    Vec3f v0, v1, v2, e1, e2, h, s, q, add_dir;
+    // Convert the vertices to Vec3f.
+    Vec3f v0, v1, v2;
     vec3s_to_vec3f(v0, surface->vertex1);
     vec3s_to_vec3f(v1, surface->vertex2);
     vec3s_to_vec3f(v2, surface->vertex3);
-
+    // Make 'e1' (edge 1) the vector from vertex 0 to vertex 1.
+    Vec3f e1;
     vec3f_diff(e1, v1, v0);
+    // Make 'e2' (edge 2) the vector from vertex 0 to vertex 2.
+    Vec3f e2;
     vec3f_diff(e2, v2, v0);
+    // Make 'h' the cross product of 'dir' and edge 2.
+    Vec3f h;
     vec3f_cross(h, dir, e2);
-
+    // Determine the cos(angle) difference between ray and surface normals.
     f32 det = vec3f_dot(e1, h);
+    // Check if we're perpendicular or pointing away from the surface.
     if (det < NEAR_ZERO) return FALSE;
-
-    f32 f = 1.0f / det;
+    // Check if we're making contact with the surface.
+    // Make f the inverse of the cos(angle) between ray and surface normals.
+    f32 f = 1.0f / det; // invDet
+    // Make 's' the vector from vertex 0 to 'orig'.
+    Vec3f s;
     vec3f_diff(s, orig, v0);
-
+    // Make 'u' the cos(angle) between vectors 's' and normals, divided by 'det'.
     f32 u = f * vec3f_dot(s, h);
+    // Check if 'u' is within bounds.
     if ((u < 0.0f) || (u > 1.0f)) return FALSE;
-
+    // Make 'q' the cross product of 's' and edge 1.
+    Vec3f q;
     vec3f_cross(q, s, e1);
-
+    // Make 'v' the cos(angle) between the ray and 'q', divided by 'det'.
     f32 v = f * vec3f_dot(dir, q);
+    // Check if 'v' is within bounds.
     if ((v < 0.0f) || ((u + v) > 1.0f)) return FALSE;
-
+    // Get the length between our origin and the surface contact point.
+    // Make '*length' the cos(angle) betqwwn edge 2 and 'q', divided by 'det'.
     *length = f * vec3f_dot(e2, q);
+    // Check if the length to the hit point is shorter than the ray length.
     if ((*length <= NEAR_ZERO) || (*length > dir_length)) return FALSE;
-
+    // Successful contact.
+    // Make 'add_dir' into 'dir' scaled by 'length'.
+    Vec3f add_dir;
     vec3_scale_dest(add_dir, dir, *length);
+    // Make 'hit_pos' into the sum of 'orig' and 'add_dir'.
     vec3f_sum(hit_pos, orig, add_dir);
-
     return TRUE;
 }
 
@@ -1023,37 +1062,4 @@ OPTIMIZE_OS void mtxf_to_mtx_fast(s16* dst, float* src) {
     // The low half was already set to zero in the loop, so we only need
     //  to set the top half.
     dst[15] = 1;
-}
-
-float Q_rsqrt(float number)
-{
-  long i;
-  float x2, y;
-  const float threehalfs = 1.5F;
-
-  x2 = number * 0.5F;
-  y  = number;
-  i  = * ( long * ) &y;                       // evil floating point bit level hacking
-  i  = 0x5f3759df - ( i >> 1 );               // what the fuck?
-  y  = * ( float * ) &i;
-  y  = y * ( threehalfs - ( x2 * y * y ) );   // 1st iteration
-  // y  = y * ( threehalfs - ( x2 * y * y ) );   // 2nd iteration, this can be removed
-
-  return y;
-}
-
-/// Scale vector 'dest' so it has length 1
-void *vec3f_normalize(Vec3f dest) {
-    f32 size = sqrtf(dest[0] * dest[0] + dest[1] * dest[1] + dest[2] * dest[2]);
-    register f32 invsqrt = Q_rsqrt(dest[0] * dest[0] + dest[1] * dest[1] + dest[2] * dest[2]);
-    register s32 i;
-    if (size > 0.01f) {
-        for (i = 0; i < 3; i++) {
-            dest[i] *= invsqrt;
-        }
-    } else {
-        dest[0] = 0;
-        dest[1] = 1;
-        dest[2] = 0;
-    }
 }
