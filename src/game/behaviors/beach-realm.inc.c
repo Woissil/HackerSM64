@@ -252,11 +252,15 @@ void beachwhomp(void) {
             if (m->numCoins >= 20) {
                 bhv_spawn_star_no_level_exit(STAR_BP_ACT_4);
                 spawn_mist_particles();
-                obj_mark_for_deletion(o);
+                cur_obj_become_intangible();
+                cur_obj_hide();
+                m->numCoins -= 20;
+                gHudDisplay.coins = m->numCoins;
+                o->oInteractStatus = 0;
             }
 
             if (m->numCoins < 20) {
-                o->oInteractStatus = INT_STATUS_HIT_MINE;
+                o->oInteractStatus = 0;
             }
         }
 

@@ -106,13 +106,8 @@ DEFINE_DIALOG(DIALOG_013, 1, 5, 30, 200, _("\
 Nah. You're broke."))
 
 DEFINE_DIALOG(DIALOG_014, 1, 4, 30, 200, _("\
-Wow! Another Power Star!\n\
-Mario gains more courage\n\
-from the power of the\n\
-castle.\n\
-Do you want to Save?\n\
-\n\
-//You Bet//Not Now"))
+Thank you for buying\n\
+a star!"))
 
 DEFINE_DIALOG(DIALOG_015, 1, 4, 30, 200, _("\
 You can punch enemies to\n\
