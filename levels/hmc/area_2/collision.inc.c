@@ -825,6 +825,6 @@ const Collision hmc_area_2_collision[] = {
 	COL_TRI(311, 249, 248),
 	COL_TRI_STOP(),
 	COL_WATER_BOX_INIT(1),
-	COL_WATER_BOX(0x00, -6017, 3893, 7643, 17553, -446),
+	COL_WATER_BOX(0x00, -6017, 3893, 7643, 17553, -41),
 	COL_END()
 };
