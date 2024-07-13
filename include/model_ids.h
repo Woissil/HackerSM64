@@ -564,6 +564,8 @@
 #define MODEL_BARREL 0xF6
 #define MODEL_BEACH_BOAT 0xF7
 #define MODEL_CATAQUACK 0xF8
+#define MODEL_SHYGUY_EENEMY 0xF9
+#define MODEL_BLUECUBE 0xFA
 
 #ifdef IA8_30FPS_COINS
 #define MODEL_SILVER_COIN                 0xE2        // silver_coin_geo

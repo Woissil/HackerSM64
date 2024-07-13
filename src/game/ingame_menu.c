@@ -1093,6 +1093,11 @@ void handle_special_dialog_text(s16 dialogID) { // dialog ID tables, in order
             return;
         }
     }
+
+    if (dialogID == DIALOG_015) {
+        seq_player_unlower_volume(SEQ_PLAYER_LEVEL, 60);
+        play_music(SEQ_PLAYER_LEVEL, SEQUENCE_ARGS(4, SEQ_BLUE_CUBE), 0);
+    }
 }
 
 s16 gMenuMode = MENU_MODE_NONE;

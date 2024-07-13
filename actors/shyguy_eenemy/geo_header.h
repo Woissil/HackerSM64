@@ -1,0 +1,13 @@
+extern const GeoLayout shyguy_eenemy_geo[];
+extern Lights1 shyguy_eenemy_shyguy_tex_f3d_lights;
+extern u8 shyguy_eenemy_shyguy_tex_rgba16[];
+extern Vtx shyguy_eenemy_body_mesh_layer_1_vtx_0[202];
+extern Gfx shyguy_eenemy_body_mesh_layer_1_tri_0[];
+extern Vtx shyguy_eenemy_leftshoe_mesh_layer_1_vtx_0[31];
+extern Gfx shyguy_eenemy_leftshoe_mesh_layer_1_tri_0[];
+extern Vtx shyguy_eenemy_rightshoe_mesh_layer_1_vtx_0[31];
+extern Gfx shyguy_eenemy_rightshoe_mesh_layer_1_tri_0[];
+extern Gfx mat_shyguy_eenemy_shyguy_tex_f3d[];
+extern Gfx shyguy_eenemy_body_mesh_layer_1[];
+extern Gfx shyguy_eenemy_leftshoe_mesh_layer_1[];
+extern Gfx shyguy_eenemy_rightshoe_mesh_layer_1[];

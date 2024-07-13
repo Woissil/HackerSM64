@@ -130,4 +130,12 @@ extern const Gfx white_particle_small_unused_dl[];
 
 #include "mario/geo_header.h"
 
+#include "shyguy_eenemy/geo_header.h"
+
+
+#include "shyguy_eenemy/anim_header.h"
+#include "bluecube/geo_header.h"
+
+#include "bluecube/collision_header.h"
+
 #endif

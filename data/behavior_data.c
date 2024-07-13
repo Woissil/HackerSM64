@@ -6451,3 +6451,27 @@ const BehaviorScript bhvCataquack[] = {
     CALL_NATIVE(cataquack),
     END_LOOP(),
 };
+
+const BehaviorScript bhvShyguy[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    OR_INT(oFlags, (OBJ_FLAG_PERSISTENT_RESPAWN | OBJ_FLAG_COMPUTE_DIST_TO_MARIO
+                    | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO)),
+    LOAD_ANIMATIONS(oAnimations, shyguy_eenemy_anims),
+    ANIMATE(0),
+    SET_HITBOX(/*Radius*/ 80, /*Height*/ 90),
+    SET_INT(oIntangibleTimer, 0),
+    SET_INTERACT_TYPE(INTERACT_TEXT),
+    SET_INT(oInteractionSubtype, INT_SUBTYPE_NPC),
+    BEGIN_LOOP(),
+    CALL_NATIVE(shyguynpc),
+    END_LOOP(),
+};
+
+const BehaviorScript bhvBlueCube[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    LOAD_COLLISION_DATA(bluecube_collision),
+    BEGIN_LOOP(),
+    CALL_NATIVE(bluecube),
+    END_LOOP(),
+};

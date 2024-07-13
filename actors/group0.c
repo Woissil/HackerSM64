@@ -54,3 +54,8 @@
 #include "boomerang_mario/model.inc.c"
 #include "boomerang_flower/model.inc.c"
 #include "boomerang_projectile/model.inc.c"
+#include "shyguy_eenemy/model.inc.c"
+#include "shyguy_eenemy/anims/data.inc.c"
+#include "shyguy_eenemy/anims/table.inc.c"
+#include "bluecube/model.inc.c"
+#include "bluecube/collision.inc.c"

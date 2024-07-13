@@ -48,6 +48,7 @@ enum SeqId {
     SEQ_CLOUDY_CLIMB,  // 0x23
     SEQ_OVERWORLD_THEME,  // 0x24
     SEQ_BEACHY_THEME,  // 0x25
+    SEQ_BLUE_CUBE,  // 0x26
     SEQ_COUNT,
 };
 

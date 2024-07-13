@@ -34,7 +34,6 @@ void bhv_boomerang_box_loop(void) {
                                         o)) {
         obj_explode_and_spawn_coins(46.0f, COIN_TYPE_YELLOW);
         create_sound_spawner(SOUND_GENERAL_BREAK_BOX);
-        
     }
 }
 
@@ -121,5 +120,52 @@ void spawnstar_boomerangbox(void) {
         boomstar->oBehParams2ndByte = SPAWN_STAR_ARC_CUTSCENE_BP_DEFAULT_STAR;
         boomstar->oBehParams |= (4 << 24);
         obj_mark_for_deletion(o);
+    }
+}
+
+// stop_background_music(SEQUENCE_ARGS(4, SEQ_EVENT_BOSS));
+
+#define cubetime 900
+
+void shyguynpc(void) {
+    cur_obj_init_animation(0);
+    if (o->oTimer == 0) {
+        o->oBehParams2ndByte = 15;
+    }
+
+    o->oMoveAngleYaw = approach_s16_symmetric(o->oMoveAngleYaw, o->oAngleToMario, 0x200);
+    if (o->oAction == 0 && o->oInteractStatus & INT_STATUS_INTERACTED) {
+        if (make_dialog_appear_mario(o->oBehParams2ndByte, 4, 162)) {
+            o->oInteractStatus = 0;
+            SET_BPARAM4(o->oBehParams, 2);
+        }
+    }
+}
+
+void bluecube(void) {
+    struct Object *nearshyg = cur_obj_nearest_object_with_behavior(bhvShyguy);
+    if (nearshyg && (GET_BPARAM4(nearshyg->oBehParams) == 2)) {
+        o->oAction = 1;
+    }
+
+    switch (o->oAction) {
+        case 0:
+            cur_obj_hide();
+            break;
+
+        case 1:
+            o->oSubAction++;
+            if (o->oSubAction < cubetime) {
+                cur_obj_unhide();
+                load_object_collision_model();
+            }
+
+            if (o->oSubAction > cubetime) {
+                SET_BPARAM4(nearshyg->oBehParams, 1);
+                o->oAction = 0;
+                o->oSubAction = 0;
+                stop_background_music(SEQUENCE_ARGS(4, SEQ_BLUE_CUBE));
+            }
+            break;
     }
 }

@@ -34,3 +34,5 @@
 #include "boomerang_mario/geo.inc.c"
 #include "boomerang_flower/geo.inc.c"
 #include "boomerang_projectile/geo.inc.c"
+#include "shyguy_eenemy/geo.inc.c"
+#include "bluecube/geo.inc.c"
