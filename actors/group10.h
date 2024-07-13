@@ -106,4 +106,10 @@ extern const struct Animation *const yoshi_seg5_anims_05024100[];
 
 #include "beach_boat/collision_header.h"
 
+#include "cataquack/geo_header.h"
+
+
+#include "cataquack/anim_header.h"
+#include "cataquackred/geo_header.h"
+
 #endif

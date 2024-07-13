@@ -563,6 +563,7 @@
 #define MODEL_SKETCHY_KOOPA 0xF5
 #define MODEL_BARREL 0xF6
 #define MODEL_BEACH_BOAT 0xF7
+#define MODEL_CATAQUACK 0xF8
 
 #ifdef IA8_30FPS_COINS
 #define MODEL_SILVER_COIN                 0xE2        // silver_coin_geo

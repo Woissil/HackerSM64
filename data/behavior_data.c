@@ -6436,3 +6436,18 @@ const BehaviorScript bhvCoconutKing[] = {
     END_LOOP(),
     BREAK(),
 };
+
+const BehaviorScript bhvCataquack[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    OR_INT(oFlags, (OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW)),
+    SET_INT(oIntangibleTimer, 0),
+    SET_HITBOX(100, 170),
+    SET_INT(oDamageOrCoinValue, 1),
+    SET_INT(oInteractType, INTERACT_DAMAGE),
+    LOAD_ANIMATIONS(oAnimations, cataquack_anims),
+    SET_FLOAT(oGraphYOffset, 165),
+    SET_HOME(),
+    BEGIN_LOOP(),
+    CALL_NATIVE(cataquack),
+    END_LOOP(),
+};

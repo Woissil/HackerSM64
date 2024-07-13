@@ -1,0 +1,13 @@
+extern const GeoLayout cataquack_geo[];
+extern Lights1 cataquack_poihana_all_f3d_lights;
+extern u8 cataquack_poihana_all_0_rgba16[];
+extern Vtx cataquack_poihana_head_mesh_layer_1_vtx_0[170];
+extern Gfx cataquack_poihana_head_mesh_layer_1_tri_0[];
+extern Vtx cataquack_poihana_lag_r_mesh_layer_1_vtx_0[57];
+extern Gfx cataquack_poihana_lag_r_mesh_layer_1_tri_0[];
+extern Vtx cataquack_poihana_leg_l_mesh_layer_1_vtx_0[57];
+extern Gfx cataquack_poihana_leg_l_mesh_layer_1_tri_0[];
+extern Gfx mat_cataquack_poihana_all_f3d[];
+extern Gfx cataquack_poihana_head_mesh_layer_1[];
+extern Gfx cataquack_poihana_lag_r_mesh_layer_1[];
+extern Gfx cataquack_poihana_leg_l_mesh_layer_1[];

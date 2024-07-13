@@ -275,3 +275,50 @@ void beachwhomp(void) {
         }
     }
 }
+
+#define cataquack_walk 0
+#define cataquack_charge 1
+
+#define cataquack_max_dist 550.0f
+#define cataquack_max_dist_for_walk_again 1000.0f
+
+void cataquack(void) {
+    object_step();
+
+    switch (o->oAction) {
+        case cataquack_walk:
+            o->oSubAction++;
+            o->oForwardVel = 4.f;
+            o->oFriction = 1.35f;
+            o->oGravity = 2.5f;
+            cur_obj_init_animation_with_accel_and_sound(1, 3);
+            cur_obj_rotate_yaw_toward(cur_obj_angle_to_home(), 0x220);
+
+            if (o->oDistanceToMario < cataquack_max_dist) {
+                o->oAction = cataquack_charge;
+                o->oSubAction = 0;
+            }
+            break;
+
+        case cataquack_charge:
+            cur_obj_init_animation_with_accel_and_sound(1, 4);
+            cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x250);
+            o->oForwardVel = 14.f;
+            if (o->oDistanceToMario > cataquack_max_dist_for_walk_again) {
+                o->oAction = cataquack_walk;
+                o->oSubAction = 0;
+            }
+            break;
+    }
+
+    if (o->oInteractStatus != 0) {
+        m->action = ACT_SHOT_FROM_CANNON;
+        m->vel[1] = 40;
+        m->forwardVel = -1.2f;
+        o->oF4++;
+        if (o->oF4 > 20) {
+            o->oInteractStatus = 0;
+            o->oF4 = 0;
+        }
+    }
+}

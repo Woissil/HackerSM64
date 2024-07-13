@@ -27,3 +27,7 @@ UNUSED static const u64 binid_2 = 2;
 #include "barrel/collision.inc.c"
 #include "beach_boat/model.inc.c"
 #include "beach_boat/collision.inc.c"
+#include "cataquack/model.inc.c"
+#include "cataquack/anims/data.inc.c"
+#include "cataquack/anims/table.inc.c"
+#include "cataquackred/model.inc.c"
