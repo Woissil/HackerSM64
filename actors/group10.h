@@ -112,4 +112,8 @@ extern const struct Animation *const yoshi_seg5_anims_05024100[];
 #include "cataquack/anim_header.h"
 #include "cataquackred/geo_header.h"
 
+#include "pianta/geo_header.h"
+
+
+#include "pianta/anim_header.h"
 #endif

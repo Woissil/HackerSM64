@@ -8,7 +8,7 @@ COURSE_ACTS(COURSE_WF, _(" 2 WHOMP'S FORTRESS"),
 
 COURSE_ACTS(COURSE_JRB, _(" 3 GRASSY REALM"),
        _("IN THE DISTANCE")    , _("NOTEBLOCKS!") , _("DESTROYING CHUCKYAS"),
-       _("IN THE BOXES")  , _("BOOMERANGS")     , _("-"))
+       _("IN THE BOXES")  , _("BOOMERANGS")     , _("SHYGUY MISSION"))
 
 COURSE_ACTS(COURSE_CCM, _(" 4 COOL, COOL MOUNTAIN"),
        _("SLIP SLIDIN' AWAY")             , _("LI'L PENGUIN LOST")             , _("BIG PENGUIN RACE"),

@@ -17,3 +17,4 @@
 #include "beach_boat/geo.inc.c"
 #include "cataquack/geo.inc.c"
 #include "cataquackred/geo.inc.c"
+#include "pianta/geo.inc.c"

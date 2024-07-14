@@ -565,4 +565,6 @@ extern const BehaviorScript bhvCoconutKing[];
 extern const BehaviorScript bhvCataquack[];
 extern const BehaviorScript bhvShyguy[];
 extern const BehaviorScript bhvBlueCube[];
+extern const BehaviorScript bhvPianta[];
+
 #endif // BEHAVIOR_DATA_H

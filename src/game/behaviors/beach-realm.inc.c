@@ -322,3 +322,16 @@ void cataquack(void) {
         }
     }
 }
+
+void pianta_beach(void) {
+    if (o->oTimer == 0) {
+        o->oBehParams2ndByte = 16;
+    }
+
+    o->oMoveAngleYaw = approach_s16_symmetric(o->oMoveAngleYaw, o->oAngleToMario, 0x256);
+    if (o->oAction == 0 && o->oInteractStatus & INT_STATUS_INTERACTED) {
+        if (make_dialog_appear_mario(o->oBehParams2ndByte, 2, 162)) {
+            o->oInteractStatus = 0;
+        }
+    }
+}

@@ -116,9 +116,13 @@ These obstacles, you'll\n\
 Get an Awesome star!"))
 
 DEFINE_DIALOG(DIALOG_016, 1, 3, 30, 200, _("\
-Hop on the shiny shell and\n\
-ride wherever you want to\n\
-go! Shred those enemies!"))
+Hey mario!\n\
+You see that Pipe?\n\
+It's the Pipe to the\n\
+Coconut King's mansion.\n\
+He stole my Bananas!\n\
+Please go defeat him.\n\
+He's Very evil."))
 
 DEFINE_DIALOG(DIALOG_017, 1, 4, 30, 200, _("\
 I'm the Big Bob-omb, lord\n\

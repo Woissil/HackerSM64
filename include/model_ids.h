@@ -566,6 +566,7 @@
 #define MODEL_CATAQUACK 0xF8
 #define MODEL_SHYGUY_EENEMY 0xF9
 #define MODEL_BLUECUBE 0xFA
+#define MODEL_PIANTA 0xFB
 
 #ifdef IA8_30FPS_COINS
 #define MODEL_SILVER_COIN                 0xE2        // silver_coin_geo

@@ -31,3 +31,6 @@ UNUSED static const u64 binid_2 = 2;
 #include "cataquack/anims/data.inc.c"
 #include "cataquack/anims/table.inc.c"
 #include "cataquackred/model.inc.c"
+#include "pianta/model.inc.c"
+#include "pianta/anims/data.inc.c"
+#include "pianta/anims/table.inc.c"

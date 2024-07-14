@@ -581,6 +581,7 @@ void beachwhomp(void);
 void cataquack(void) ;
 void shyguynpc(void);
 void bluecube(void);
+void pianta_beach(void);
 
 Gfx *geo_move_mario_part_from_parent(s32 callContext, UNUSED struct GraphNode *node, Mat4 mtx);
 
