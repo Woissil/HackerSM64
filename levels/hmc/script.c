@@ -76,7 +76,7 @@ const LevelScript level_hmc_entry[] = {
 		OBJECT(MODEL_KOOPA_WITH_SHELL, 3372, 485, 4342, 0, 0, 0, (1 << 16), bhvKoopa),
 		OBJECT(MODEL_KOOPA_WITH_SHELL, 3372, 1238, 2524, 0, 0, 0, (1 << 16), bhvKoopa),
 		OBJECT(MODEL_KOOPA_WITH_SHELL, 2944, 1332, -736, 0, 0, 0, (1 << 16), bhvKoopa),
-		OBJECT(MODEL_PIANTA, 5711, 116, 10403, 0, 90, 0, 0x00000000, bhvPianta),
+		OBJECT(MODEL_PIANTA, 5711, 88, 10403, 0, 90, 0, 0x00000000, bhvPianta),
 		OBJECT(MODEL_THI_WARP_PIPE, 2944, 1541, -3083, 0, 0, 0, (21 << 16), bhvWarpPipe),
 		OBJECT(MODEL_THI_WARP_PIPE, 10523, 41, -10398, 0, 0, 0, (22 << 16), bhvWarpPipe),
 		OBJECT(MODEL_RED_COIN, 2644, 87, 8274, 0, 0, 0, 0x00000000, bhvRedCoin),

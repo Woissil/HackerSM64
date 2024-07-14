@@ -6482,7 +6482,7 @@ const BehaviorScript bhvPianta[] = {
                     | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO)),
     LOAD_ANIMATIONS(oAnimations, pianta_anims),
     ANIMATE(0),
-    SET_HITBOX(/*Radius*/ 100, /*Height*/ 100),
+    SET_HITBOX(/*Radius*/ 155, /*Height*/ 130),
     SET_INT(oIntangibleTimer, 0),
     SET_INTERACT_TYPE(INTERACT_TEXT),
     SET_INT(oInteractionSubtype, INT_SUBTYPE_NPC),
