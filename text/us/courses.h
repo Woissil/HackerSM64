@@ -21,7 +21,7 @@ COURSE_ACTS(COURSE_BBH, _(" 5 BIG BOO'S HAUNT"),
 //  Tropical Island
 COURSE_ACTS(COURSE_HMC, _(" 6 BEACH REALM"),
        _("COLLECT THE COCONUTS")  , _("STAR ON THE PLATFORM")       , _("8 RED COINS"),
-       _("FIND THE BEACH WHOMP")     , _("KING AT THE ISLAND")     , _("-"))
+       _("FIND THE BEACH WHOMP")     , _("KING AT THE ISLAND")     , _("ON THE TALL PILLARS"))
 
 COURSE_ACTS(COURSE_LLL, _(" 7 LETHAL LAVA LAND"),
        _("BOIL THE BIG BULLY")            , _("BULLY THE BULLIES")             , _("8-COIN PUZZLE WITH 15 PIECES"),

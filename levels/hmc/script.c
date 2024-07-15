@@ -59,6 +59,7 @@ const LevelScript level_hmc_entry[] = {
 		WARP_NODE(21, LEVEL_HMC, 0x02, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(22, LEVEL_HMC, 0x03, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(25, LEVEL_HMC, 0x01, 25, WARP_NO_CHECKPOINT),
+		WARP_NODE(27, LEVEL_HMC, 0x04, 0x0A, WARP_NO_CHECKPOINT),
 		OBJECT(MODEL_BARREL, -624, 204, 11244, 0, 0, 0, (2 << 16), bhvBeachBarrel),
 		OBJECT(MODEL_BARREL, 2587, 52, 7581, 0, 0, 0, (2 << 16), bhvBeachBarrel),
 		OBJECT(MODEL_BOOMERANG_BOX, 2762, 56, 10408, 0, 0, 0, 0x00000000, bhvBreakBoxBoomerang),
@@ -81,6 +82,7 @@ const LevelScript level_hmc_entry[] = {
 		OBJECT(MODEL_PIANTA, 5711, 88, 10403, 0, 90, 0, 0x00000000, bhvPianta),
 		OBJECT(MODEL_THI_WARP_PIPE, 2944, 1541, -3083, 0, 0, 0, (21 << 16), bhvWarpPipe),
 		OBJECT(MODEL_THI_WARP_PIPE, 10523, 41, -10398, 0, 0, 0, (22 << 16), bhvWarpPipe),
+		OBJECT(MODEL_THI_WARP_PIPE, -1379, 1058, 4820, 0, 0, 0, (27 << 16), bhvWarpPipe),
 		OBJECT(MODEL_RED_COIN, 2644, 87, 8274, 0, 0, 0, 0x00000000, bhvRedCoin),
 		OBJECT(MODEL_NONE, 175, 413, 10651, 0, 0, 0, (2 << 24), bhvBowserCourseRedCoinStar),
 		OBJECT(MODEL_RED_COIN, 8, 372, 7307, 0, 0, 0, 0x00000000, bhvRedCoin),
@@ -124,6 +126,21 @@ const LevelScript level_hmc_entry[] = {
 		OBJECT(MODEL_EXCLAMATION_BOX, -546, 462, -3098, 0, 0, 0, 0x00000000, bhvExclamationBox),
 		TERRAIN(hmc_area_3_collision),
 		MACRO_OBJECTS(hmc_area_3_macro_objs),
+		SET_BACKGROUND_MUSIC(0x00, SEQ_BEACHY_THEME),
+		TERRAIN_TYPE(TERRAIN_GRASS),
+		/* Fast64 begin persistent block [area commands] */
+		/* Fast64 end persistent block [area commands] */
+	END_AREA(),
+
+	AREA(4, hmc_area_4),
+		WARP_NODE(0x0A, LEVEL_HMC, 0x04, 0x0A, WARP_NO_CHECKPOINT),
+		WARP_NODE(0xF0, LEVEL_CASTLE, 0x01, 0x32, WARP_NO_CHECKPOINT),
+		WARP_NODE(0xF1, LEVEL_HMC, 0x01, 27, WARP_NO_CHECKPOINT),
+		OBJECT(MODEL_CATAQUACK, -8761, 64, 761, 0, 0, 0, (1 << 16), bhvCataquack),
+		OBJECT(MODEL_NONE, 35, 314, -48, 0, 0, 0, (10 << 16), bhvSpinAirborneWarp),
+		OBJECT(MODEL_STAR, -13004, 462, 5800, 0, 0, 0, (5 << 24), bhvStar),
+		TERRAIN(hmc_area_4_collision),
+		MACRO_OBJECTS(hmc_area_4_macro_objs),
 		SET_BACKGROUND_MUSIC(0x00, SEQ_BEACHY_THEME),
 		TERRAIN_TYPE(TERRAIN_GRASS),
 		/* Fast64 begin persistent block [area commands] */
