@@ -5,7 +5,7 @@ include util.mk
 # Default target
 default: all
 
-TARGET_STRING := sm64
+TARGET_STRING := sjb64-redone-2.0
 
 # Preprocessor definitions
 DEFINES :=
