@@ -6074,4 +6074,24 @@ const BehaviorScript bhvIntroScene[] = {
     END_LOOP(),
 };
 
+const BehaviorScript bhvVine[] = {
+    BEGIN(OBJ_LIST_GENACTOR),
+    OR_INT(oFlags, (OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    SET_FLOAT(oGraphYOffset, 1000),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_vine_loop),
+    END_LOOP(),
+};
+
+extern void bhv_spin_flower();
+const BehaviorScript bhvSpinFlower[] = {
+        BEGIN(OBJ_LIST_SURFACE),
+        OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+        SET_FLOAT(oDrawingDistance, 20000),
+        SET_HOME(),
+        BEGIN_LOOP(),
+            CALL_NATIVE(bhv_spin_flower),
+        END_LOOP(),
+};
+
 

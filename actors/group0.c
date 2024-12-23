@@ -30,3 +30,8 @@
 #include "src/s2d_engine/s2d_config.h"
 #include FONT_C_FILE
 #endif
+
+#include "vine/collision.inc.c"
+#include "vine/model.inc.c"
+#include "spin_flower/collision.inc.c"
+#include "spin_flower/model.inc.c"

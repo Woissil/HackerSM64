@@ -572,4 +572,7 @@
 #define MODEL_VCUTM_WARP_PIPE                     MODEL_LEVEL_GEOMETRY_16   // warp_pipe_geo
 #define MODEL_CASTLE_GROUNDS_WARP_PIPE            MODEL_LEVEL_GEOMETRY_16   // warp_pipe_geo
 
+#define MODEL_SPIN_FLOWER                 0xE4        // spin_flower_geo
+#define MODEL_VINE                        0xE5        // vine_geo
+
 #endif // MODEL_IDS_H
