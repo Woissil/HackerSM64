@@ -37,27 +37,26 @@ void calcMarioVinePos() {
 extern Vec3f joinPosition[6][4];
 
 void bhv_vine_loop(void) {
-    cur_obj_set_model(MODEL_VINE);
     s32 i;
-    s16 *trans;
+    s16 *transformers;
     f32 speedScale = 1.f;
+    struct MarioState *m = gMarioState;
     o->oAnimState = o->oBehParams2ndByte;
-
     switch (o->oAction) {
         case 0:
-            if ((random_u16() & 0x3F) == 0) {
-                o->oAngleVelPitch += (random_u16() % 200) - 100;
+            if ((!random_u16() & 0x3F)) {
+                o->oAngleVelPitch += (random_u16() & 200) - 100;
             }
             if (o->oTimer > 20) {
                 if ((lateral_dist_between_objects(o, gMarioState->marioObj) < 100.f)
                     && (gMarioState->pos[1] + 100.f > o->oPosY)
                     && (gMarioState->pos[1] < o->oPosY + 1000.f)) {
-                    if ((gMarioState->action & ACT_ID_MASK) >= 0x080 && (gMarioState->action & ACT_ID_MASK) < 0x0A0) {
+                    if ((m->action & ACT_ID_MASK) >= 0x080 && (m->action & ACT_ID_MASK) < 0x0A0) {
                         o->oAction++;
                         gMarioState->action = ACT_HANG_VINE;
                         gMarioState->usedObj = o;
                         o->oAngleVelPitch = -gMarioState->forwardVel / 0.01581917687f / 2.f;
-                        play_sound(SOUND_MARIO_WHOA, gMarioState->marioObj->header.gfx.cameraToObject);
+                        play_sound(SOUND_MARIO_WHOA, m->marioObj->header.gfx.cameraToObject);
                     }
                 }
             }
@@ -76,26 +75,35 @@ void bhv_vine_loop(void) {
             if (gMarioState->controller->buttonPressed & A_BUTTON) {
                 o->oAction = 0;
                 gMarioState->action = ACT_TRIPLE_JUMP;
-                play_sound(SOUND_MARIO_YAHOO_WAHA_YIPPEE, gMarioState->marioObj->header.gfx.cameraToObject);
+                play_sound(SOUND_MARIO_YAHOO_WAHA_YIPPEE + ((gAudioRandom % 5) << 16),
+                           m->marioObj->header.gfx.cameraToObject);
                 gMarioState->vel[1] =
                     o->oAngleVelPitch * coss(o->oMoveAnglePitch - 0x4000) * 0.01581917687f * 2.5f
                     + 25.f;
                 gMarioState->forwardVel = o->oAngleVelPitch * sins(o->oMoveAnglePitch - 0x4000)
                                           * 0.01581917687f * 2.5f * 1.2f;
             }
-            if (absi(o->oAngleVelPitch) > 0x400) {
-                o->oOpacity = 1;
-            } else if (absi(o->oAngleVelPitch) < 0x200) {
-                o->oOpacity = 0;
+            switch (o->oOpacity) {
+                case 0:
+                    if (absi(o->oAngleVelPitch) > 0x400) {
+                        o->oOpacity++;
+                        cur_obj_play_sound_2(SOUND_GENERAL_VANISH_SFX);
+                    }
+                    break;
+                case 1:
+                    if (absi(o->oAngleVelPitch) < 0x200) {
+                        o->oOpacity = 0;
+                    }
+                    break;
             }
             break;
     }
 
     cur_obj_init_animation(o->oBehParams2ndByte);
 
-    trans = segmented_to_virtual(o->header.gfx.animInfo.curAnim->values);
+    transformers = segmented_to_virtual(o->header.gfx.animInfo.curAnim->values);
     for (i = 0; i < 5; i++) {
-        trans[3 + i * 3] = o->oMoveAnglePitch / 5;
+        transformers[3 + i * 3] = o->oMoveAnglePitch / 5;
     }
     o->oAngleVelPitch -= o->oMoveAnglePitch / 64;
     o->oAngleVelPitch *= .99f;

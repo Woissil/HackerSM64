@@ -551,6 +551,12 @@ void bhv_dust_smoke_loop(void);
 void bhv_yoshi_loop(void);
 void bhv_volcano_trap_loop(void);
 void bhv_vine_loop(void);
+void bhv_falling_object_loop(void);
+void bhv_falling_object_init(void);
+void bhv_up_down_object_init(void);
+void bhv_up_down_object_loop(void);
+void bhv_conveyor_init(void);
+void bhv_conveyor_loop(void);
 
 Gfx *geo_move_mario_part_from_parent(s32 callContext, UNUSED struct GraphNode *node, Mat4 mtx);
 

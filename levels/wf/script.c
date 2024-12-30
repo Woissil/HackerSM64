@@ -12,6 +12,7 @@
 #include "levels/scripts.h"
 
 #include "actors/common1.h"
+#include "actors/common0.h"
 #include "actors/group0.h"
 #include "make_const_nonconst.h"
 #include "levels/wf/header.h"
@@ -67,7 +68,7 @@ const LevelScript level_wf_entry[] = {
 	LOAD_MODEL_FROM_GEO(MODEL_WF_TOWER_DOOR, wf_geo_000BE0), 
 	LOAD_MODEL_FROM_GEO(MODEL_WF_KICKABLE_BOARD_FELLED, wf_geo_000BC8), 
 	LOAD_MODEL_FROM_GEO(MODEL_SPIN_FLOWER, spin_flower_geo), 
-	LOAD_MODEL_FROM_GEO(MODEL_VINE, vine_geo), 
+	LOAD_MODEL_FROM_GEO(MODEL_VINE, swingvine_geo), 
 	/* Fast64 begin persistent block [level commands] */
 	/* Fast64 end persistent block [level commands] */
 

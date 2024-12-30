@@ -10,20 +10,22 @@ static struct ObjectHitbox sSpinFlowerObject = {
     /* hurtboxHeight:     */ 0,
 };
 
-void bhv_spin_flower(void) {
+void bhv_spin_flower(void) { // peak brooo
     cur_obj_set_model(MODEL_SPIN_FLOWER);
     o->oAngleVelYaw = 0x200;
     cur_obj_rotate_face_angle_using_vel();
     obj_set_hitbox(o, &sSpinFlowerObject);
+
     if (obj_check_if_collided_with_object(o, gMarioObject)) {
-        if (gMarioStates[0].controller->buttonDown & A_BUTTON){
-                gMarioStates[0].vel[1] = o->oBehParams2ndByte;
+        if (gMarioStates[0].controller->buttonDown & A_BUTTON) {
+            gMarioStates[0].vel[1] = o->oBehParams2ndByte;
         } else {
-            gMarioStates[0].vel[1] = o->oBehParams2ndByte/2;
+            gMarioStates[0].vel[1] = o->oBehParams2ndByte / 2;
         }
-        set_mario_action(gMarioState,ACT_TWIRLING,0);
+        set_mario_action(gMarioState, ACT_TWIRLING, 0);
     }
 }
+
 
 void bhv_moving_gray_platform(void) {
     switch (o->oAction) {
@@ -48,3 +50,4 @@ void bhv_moving_gray_platform(void) {
         break;
     }
 }
+

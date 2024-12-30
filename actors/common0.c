@@ -79,3 +79,8 @@ UNUSED static const u64 binid_17 = 17;
 
 #include "koopa_shell/model.inc.c"
 UNUSED static const u64 binid_18 = 18;
+
+#include "swingvine/model.inc.c"
+#include "swingvine/anims/data.inc.c"
+#include "swingvine/anims/table.inc.c"
+UNUSED static const u64 binid_19 = 19;

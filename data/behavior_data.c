@@ -6077,6 +6077,7 @@ const BehaviorScript bhvIntroScene[] = {
 const BehaviorScript bhvVine[] = {
     BEGIN(OBJ_LIST_GENACTOR),
     OR_INT(oFlags, (OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    LOAD_ANIMATIONS(oAnimations, swingVine_anims),
     SET_FLOAT(oGraphYOffset, 1000),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_vine_loop),
@@ -6094,4 +6095,35 @@ const BehaviorScript bhvSpinFlower[] = {
         END_LOOP(),
 };
 
+const BehaviorScript bhvConveyor[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, (OBJ_FLAG_MOVE_XZ_USING_FVEL | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    // LOAD_COLLISION_DATA(conveyor_collision),
+    SET_HOME(),
+    CALL_NATIVE(bhv_conveyor_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_conveyor_loop),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
 
+const BehaviorScript bhvUpDownObject[] = {
+    BEGIN(OBJ_LIST_DEFAULT),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    // LOAD_COLLISION_DATA(upndown_collision),
+    CALL_NATIVE(bhv_up_down_object_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_up_down_object_loop),
+    END_LOOP(),
+};
+
+const BehaviorScript bhvFallingObject[] = {
+    BEGIN(OBJ_LIST_GENACTOR),
+    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    SET_OBJ_PHYSICS(/*Wall hitbox radius*/ 50, /*Gravity*/ -400, /*Bounciness*/ 0, /*Drag strength*/ 1000, /*Friction*/ 1000, /*Buoyancy*/ 200, /*Unused*/ 0, 0),
+    SET_HOME(),
+    CALL_NATIVE(bhv_falling_object_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_falling_object_loop),
+    END_LOOP(),
+};
