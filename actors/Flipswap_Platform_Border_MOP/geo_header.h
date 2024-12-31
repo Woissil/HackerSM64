@@ -1,0 +1,9 @@
+extern const GeoLayout Flipswap_Platform_Border_MOP_geo[];
+extern u8 Flipswap_Platform_Border_MOP_Flipswap_Platform_MOP_0x5f8780_rgba16_ci4[];
+extern u8 Flipswap_Platform_Border_MOP_Flipswap_Platform_MOP_0x5f8780_rgba16_pal_rgba16[];
+extern Vtx Flipswap_Platform_Border_MOP_Cube_001_mesh_layer_1_vtx_cull[8];
+extern Vtx Flipswap_Platform_Border_MOP_Cube_001_mesh_layer_1_vtx_0[240];
+extern Gfx Flipswap_Platform_Border_MOP_Cube_001_mesh_layer_1_tri_0[];
+extern Gfx mat_Flipswap_Platform_Border_MOP_f3dlite_material[];
+extern Gfx mat_revert_Flipswap_Platform_Border_MOP_f3dlite_material[];
+extern Gfx Flipswap_Platform_Border_MOP_Cube_001_mesh_layer_1[];

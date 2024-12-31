@@ -557,6 +557,7 @@ void bhv_up_down_object_init(void);
 void bhv_up_down_object_loop(void);
 void bhv_conveyor_init(void);
 void bhv_conveyor_loop(void);
+void bhv_noteblock_loop(void);
 
 Gfx *geo_move_mario_part_from_parent(s32 callContext, UNUSED struct GraphNode *node, Mat4 mtx);
 

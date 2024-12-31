@@ -25,3 +25,12 @@
 #include "white_particle/geo.inc.c"
 #include "wooden_signpost/geo.inc.c"
 #include "tree/geo.inc.c"
+
+//MOPs
+
+#include "Flipswap_Platform_MOP/geo.inc.c"
+#include "Flipswap_Platform_Border_MOP/geo.inc.c"
+#include "Switchblock_MOP/geo.inc.c"
+#include "Switchblock_Switch_MOP/geo.inc.c"
+#include "noteblock/geo.inc.c"
+#include "Switchblock_Border_MOP/geo.inc.c"

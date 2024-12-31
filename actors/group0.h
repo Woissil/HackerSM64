@@ -343,4 +343,8 @@ extern const Gfx white_particle_small_unused_dl[];
 
 #include "spin_flower/geo_header.h"
 
+#include "bouncing_leaf/collision_header.h"
+
+#include "bouncing_leaf/geo_header.h"
+
 #endif

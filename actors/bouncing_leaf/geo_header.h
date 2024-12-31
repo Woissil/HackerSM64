@@ -1,0 +1,14 @@
+extern const GeoLayout bouncing_leaf_geo[];
+extern u8 bouncing_leaf_impact2_ia8[];
+extern u8 bouncing_leaf__87_but_better3_ci8[];
+extern u8 bouncing_leaf__87_but_better3_pal_rgba16[];
+extern Vtx bouncing_leaf_Plane_mesh_layer_4_vtx_cull[8];
+extern Vtx bouncing_leaf_Plane_mesh_layer_4_vtx_0[20];
+extern Gfx bouncing_leaf_Plane_mesh_layer_4_tri_0[];
+extern Vtx bouncing_leaf_Plane_mesh_layer_4_vtx_1[24];
+extern Gfx bouncing_leaf_Plane_mesh_layer_4_tri_1[];
+extern Gfx mat_bouncing_leaf_impact_thingy[];
+extern Gfx mat_revert_bouncing_leaf_impact_thingy[];
+extern Gfx mat_bouncing_leaf_leaves_[];
+extern Gfx mat_revert_bouncing_leaf_leaves_[];
+extern Gfx bouncing_leaf_Plane_mesh_layer_4[];

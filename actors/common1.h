@@ -294,4 +294,29 @@ extern const Gfx wooden_signpost_seg3_dl_0302DCD0[];
 extern const Gfx wooden_signpost_seg3_dl_0302DD08[];
 extern const Collision wooden_signpost_seg3_collision_0302DD80[];
 
+//MOPS
+#include "Flipswap_Platform_MOP/collision_header.h"
+
+#include "Flipswap_Platform_MOP/geo_header.h"
+
+#include "Flipswap_Platform_Border_MOP/collision_header.h"
+
+#include "Flipswap_Platform_Border_MOP/geo_header.h"
+
+#include "Switchblock_MOP/collision_header.h"
+
+#include "Switchblock_MOP/geo_header.h"
+
+#include "Switchblock_Switch_MOP/collision_header.h"
+
+#include "Switchblock_Switch_MOP/geo_header.h"
+
+#include "noteblock/geo_header.h"
+
+#include "noteblock/collision_header.h"
+
+#include "Switchblock_Border_MOP/collision_header.h"
+
+#include "Switchblock_Border_MOP/geo_header.h"
+
 #endif

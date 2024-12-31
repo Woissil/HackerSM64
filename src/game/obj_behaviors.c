@@ -776,3 +776,6 @@ UNUSED s32 debug_sequence_tracker(s16 debugInputSequence[]) {
 #include "behaviors/yoshi.inc.c"
 #include "behaviors/vine.inc.c"
 #include "behaviors/c2_behaviors.inc.c"
+#include "behaviors/SwitchBlock.inc.c"
+#include "behaviors/FlipSwap.inc.c"
+#include "behaviors/NoteBlock.inc.c"

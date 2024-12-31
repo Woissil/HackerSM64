@@ -572,7 +572,17 @@
 #define MODEL_VCUTM_WARP_PIPE                     MODEL_LEVEL_GEOMETRY_16   // warp_pipe_geo
 #define MODEL_CASTLE_GROUNDS_WARP_PIPE            MODEL_LEVEL_GEOMETRY_16   // warp_pipe_geo
 
+//C2 objects
 #define MODEL_SPIN_FLOWER                 0xE4        // spin_flower_geo
 #define MODEL_VINE                        0xE5        // vine_geo
+#define MODEL_BOUNCING_LEAF               0xE6        // bouncing_leaf_geo
+
+//MOPs
+#define MODEL_FLIPSWAP_PLATFORM_BORDER_MOP      0xE7        // Flipswap_Platform_Border_MOP_geo
+#define MODEL_FLIPSWAP_PLATFORM_MOP             0xE8        // Flipswap_Platform_MOP_geo
+#define MODEL_SWITCHBLOCK_SWITCH_MOP            0xE9        // Switchblock_Switch_MOP_geo
+#define MODEL_SWITCHBLOCK_MOP                   0xEA        // Switchblock_MOP_geo
+#define MODEL_SWITCHBLOCK_BORDER_MOP            0xEB        // Switchblock_Border_MOP_geo
+#define MODEL_NOTEBLOCK                         0xEC        // noteblock_geo
 
 #endif // MODEL_IDS_H

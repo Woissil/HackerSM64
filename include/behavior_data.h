@@ -542,5 +542,10 @@ extern const BehaviorScript bhvIntroScene[];
 extern const BehaviorScript bhvUnusedFakeStar[];
 extern const BehaviorScript bhvSpinFlower[];
 extern const BehaviorScript bhvVine[];
+extern const BehaviorScript bhvBouncingLeaf[];
+extern const BehaviorScript bhvSwitchblock_MOP[];
+extern const BehaviorScript bhvSwitchblock_Switch_MOP[];
+extern const BehaviorScript bhvFlipswap_Platform_MOP[];
+extern const BehaviorScript bhvNoteBlock[];
 
 #endif // BEHAVIOR_DATA_H

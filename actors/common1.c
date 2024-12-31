@@ -87,3 +87,17 @@ UNUSED static const u64 binid_21 = 21;
 
 #include "tree/model.inc.c"
 UNUSED static const u64 binid_22 = 22;
+
+//MOPs
+#include "Flipswap_Platform_MOP/collision.inc.c"
+#include "Flipswap_Platform_MOP/model.inc.c"
+#include "Flipswap_Platform_Border_MOP/collision.inc.c"
+#include "Flipswap_Platform_Border_MOP/model.inc.c"
+#include "Switchblock_MOP/collision.inc.c"
+#include "Switchblock_MOP/model.inc.c"
+#include "Switchblock_Switch_MOP/collision.inc.c"
+#include "Switchblock_Switch_MOP/model.inc.c"
+#include "noteblock/collision.inc.c"
+#include "noteblock/model.inc.c"
+#include "Switchblock_Border_MOP/collision.inc.c"
+#include "Switchblock_Border_MOP/model.inc.c"

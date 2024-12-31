@@ -35,3 +35,5 @@
 #include "vine/model.inc.c"
 #include "spin_flower/collision.inc.c"
 #include "spin_flower/model.inc.c"
+#include "bouncing_leaf/collision.inc.c"
+#include "bouncing_leaf/model.inc.c"

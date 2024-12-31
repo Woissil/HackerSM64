@@ -1369,14 +1369,9 @@ const BehaviorScript bhvEndPeach[] = {
 };
 
 const BehaviorScript bhvUnusedParticleSpawn[] = {
-    BEGIN(OBJ_LIST_GENACTOR),
+    BEGIN(OBJ_LIST_DEFAULT),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
-    SET_OBJ_PHYSICS(/*Wall hitbox radius*/ 30, /*Gravity*/ -400, /*Bounciness*/ -50, /*Drag strength*/ 1000, /*Friction*/ 1000, /*Buoyancy*/ 200, /*Unused*/ 0, 0),
-    SET_INT(oIntangibleTimer, 0),
-    SET_HITBOX(/*Radius*/ 40, /*Height*/ 40),
-    BEGIN_LOOP(),
-        CALL_NATIVE(bhv_unused_particle_spawn_loop),
-    END_LOOP(),
+    BREAK(),
 };
 
 const BehaviorScript bhvUkiki[] = {
@@ -6126,4 +6121,64 @@ const BehaviorScript bhvFallingObject[] = {
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_falling_object_loop),
     END_LOOP(),
+};
+
+extern void bhv_flipswap_loop();
+const BehaviorScript bhvFlipswap_Platform_MOP[] = {
+BEGIN(OBJ_LIST_SURFACE),
+OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE ),
+SET_INT(oFaceAngleRoll,0),
+LOAD_COLLISION_DATA(Flipswap_Platform_MOP_collision),
+SPAWN_CHILD(MODEL_FLIPSWAP_PLATFORM_BORDER_MOP ,bhvUnusedParticleSpawn),
+BEGIN_LOOP(),
+CALL_NATIVE(bhv_flipswap_loop),
+CALL_NATIVE(load_object_collision_model),
+END_LOOP(),
+};
+
+extern void bhv_Switchblock_loop();
+const BehaviorScript bhvSwitchblock_MOP[] = {
+BEGIN(OBJ_LIST_SURFACE),
+OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE ),
+LOAD_COLLISION_DATA(Switchblock_MOP_collision),
+BEGIN_LOOP(),
+CALL_NATIVE(bhv_Switchblock_loop),
+END_LOOP(),
+};
+
+extern void bhv_Switchblock_Switch_loop();
+const BehaviorScript bhvSwitchblock_Switch_MOP[] = {
+BEGIN(OBJ_LIST_SURFACE),
+OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+LOAD_COLLISION_DATA(Switchblock_Switch_MOP_collision),
+BEGIN_LOOP(),
+CALL_NATIVE(bhv_Switchblock_Switch_loop),
+END_LOOP(),
+};
+
+extern void bhv_noteblock_loop();
+const BehaviorScript bhvNoteBlock[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    SET_HOME(),
+    LOAD_COLLISION_DATA(noteblock_collision),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_noteblock_loop),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
+extern void bhv_bouncing_leaf();
+extern void bhv_bouncing_leaf_init();
+const BehaviorScript bhvBouncingLeaf[] = {
+        BEGIN(OBJ_LIST_SURFACE),
+        OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+        LOAD_COLLISION_DATA(bouncing_leaf_collision),
+        SET_FLOAT(oDrawingDistance, 20000),
+        SET_HOME(),
+        CALL_NATIVE(bhv_bouncing_leaf_init),
+        BEGIN_LOOP(),
+            CALL_NATIVE(bhv_bouncing_leaf),
+            CALL_NATIVE(load_object_collision_model),
+        END_LOOP(),
 };
