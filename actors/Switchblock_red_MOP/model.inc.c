@@ -1,5 +1,5 @@
-Gfx Switchblock_MOP_Switchblock_MOP_0x5f1db0_rgba16_i8_aligner[] = {gsSPEndDisplayList()};
-u8 Switchblock_MOP_Switchblock_MOP_0x5f1db0_rgba16_i8[] = {
+Gfx Switchblock_Red_MOP_Switchblock_MOP_0x5f1db0_rgba16_i8_aligner[] = {gsSPEndDisplayList()};
+u8 Switchblock_Red_MOP_Switchblock_MOP_0x5f1db0_rgba16_i8[] = {
 	0xce, 0xce, 0xce, 0xd6, 0xce, 0xce, 0xce, 0xce, 
 	0xce, 0xce, 0xce, 0xd6, 0xce, 0xce, 0xce, 0xce, 
 	0xce, 0xce, 0xce, 0xce, 0xce, 0xce, 0xce, 0xce, 
@@ -131,7 +131,7 @@ u8 Switchblock_MOP_Switchblock_MOP_0x5f1db0_rgba16_i8[] = {
 	
 };
 
-Vtx Switchblock_MOP_Cube_mesh_layer_1_vtx_cull[8] = {
+Vtx Switchblock_Red_MOP_Cube_mesh_layer_1_vtx_cull[8] = {
 	{{ {-224, -224, -224}, 0, {0, 0}, {0, 0, 0, 0} }},
 	{{ {-224, -224, 224}, 0, {0, 0}, {0, 0, 0, 0} }},
 	{{ {-224, 224, 224}, 0, {0, 0}, {0, 0, 0, 0} }},
@@ -142,7 +142,7 @@ Vtx Switchblock_MOP_Cube_mesh_layer_1_vtx_cull[8] = {
 	{{ {224, 224, -224}, 0, {0, 0}, {0, 0, 0, 0} }},
 };
 
-Vtx Switchblock_MOP_Cube_mesh_layer_1_vtx_0[46] = {
+Vtx Switchblock_Red_MOP_Cube_mesh_layer_1_vtx_0[46] = {
 	{{ {193, 224, -193}, 0, {980, -65}, {255, 255, 255, 255} }},
 	{{ {224, 193, -193}, 0, {1057, 12}, {255, 255, 255, 255} }},
 	{{ {193, 193, -224}, 0, {980, 12}, {255, 255, 255, 255} }},
@@ -191,8 +191,8 @@ Vtx Switchblock_MOP_Cube_mesh_layer_1_vtx_0[46] = {
 	{{ {-193, -193, -224}, 0, {1057, 980}, {255, 255, 255, 255} }},
 };
 
-Gfx Switchblock_MOP_Cube_mesh_layer_1_tri_0[] = {
-	gsSPVertex(Switchblock_MOP_Cube_mesh_layer_1_vtx_0 + 0, 32, 0),
+Gfx Switchblock_Red_MOP_Cube_mesh_layer_1_tri_0[] = {
+	gsSPVertex(Switchblock_Red_MOP_Cube_mesh_layer_1_vtx_0 + 0, 32, 0),
 	gsSP2Triangles(0, 1, 2, 0, 3, 4, 5, 0),
 	gsSP2Triangles(3, 6, 4, 0, 6, 3, 7, 0),
 	gsSP2Triangles(6, 7, 2, 0, 8, 2, 7, 0),
@@ -209,7 +209,7 @@ Gfx Switchblock_MOP_Cube_mesh_layer_1_tri_0[] = {
 	gsSP2Triangles(15, 27, 28, 0, 27, 29, 28, 0),
 	gsSP2Triangles(27, 30, 29, 0, 30, 27, 25, 0),
 	gsSP1Triangle(30, 25, 31, 0),
-	gsSPVertex(Switchblock_MOP_Cube_mesh_layer_1_vtx_0 + 32, 14, 0),
+	gsSPVertex(Switchblock_Red_MOP_Cube_mesh_layer_1_vtx_0 + 32, 14, 0),
 	gsSP2Triangles(0, 1, 2, 0, 0, 3, 1, 0),
 	gsSP2Triangles(0, 4, 3, 0, 5, 3, 6, 0),
 	gsSP2Triangles(5, 6, 7, 0, 7, 6, 8, 0),
@@ -221,14 +221,14 @@ Gfx Switchblock_MOP_Cube_mesh_layer_1_tri_0[] = {
 };
 
 
-Gfx mat_Switchblock_MOP_f3dlite_material[] = {
+Gfx mat_Switchblock_Red_MOP_f3dlite_material[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, ENVIRONMENT, 0, ENVIRONMENT, 0, ENVIRONMENT, 0, TEXEL0, 0, ENVIRONMENT, 0, ENVIRONMENT, 0, ENVIRONMENT, 0),
 	gsDPSetAlphaDither(G_AD_NOISE),
 	gsSPTexture(65535, 65535, 0, 0, 1),
-	gsDPSetEnvColor(31, 39, 187, 255),
-	gsDPSetTextureImage(G_IM_FMT_I, G_IM_SIZ_8b_LOAD_BLOCK, 1, Switchblock_MOP_Switchblock_MOP_0x5f1db0_rgba16_i8),
+	gsDPSetEnvColor(187, 0, 4, 255),
+	gsDPSetTextureImage(G_IM_FMT_I, G_IM_SIZ_8b_LOAD_BLOCK, 1, Switchblock_Red_MOP_Switchblock_MOP_0x5f1db0_rgba16_i8),
 	gsDPSetTile(G_IM_FMT_I, G_IM_SIZ_8b_LOAD_BLOCK, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
 	gsDPLoadBlock(7, 0, 0, 511, 512),
 	gsDPSetTile(G_IM_FMT_I, G_IM_SIZ_8b, 4, 0, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 5, 0),
@@ -236,21 +236,21 @@ Gfx mat_Switchblock_MOP_f3dlite_material[] = {
 	gsSPEndDisplayList(),
 };
 
-Gfx mat_revert_Switchblock_MOP_f3dlite_material[] = {
+Gfx mat_revert_Switchblock_Red_MOP_f3dlite_material[] = {
 	gsSPGeometryMode(0, G_LIGHTING),
 	gsDPPipeSync(),
 	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsSPEndDisplayList(),
 };
 
-Gfx Switchblock_MOP_Cube_mesh_layer_1[] = {
+Gfx Switchblock_Red_MOP_Cube_mesh_layer_1[] = {
 	gsSPClearGeometryMode(G_LIGHTING),
-	gsSPVertex(Switchblock_MOP_Cube_mesh_layer_1_vtx_cull + 0, 8, 0),
+	gsSPVertex(Switchblock_Red_MOP_Cube_mesh_layer_1_vtx_cull + 0, 8, 0),
 	gsSPSetGeometryMode(G_LIGHTING),
 	gsSPCullDisplayList(0, 7),
-	gsSPDisplayList(mat_Switchblock_MOP_f3dlite_material),
-	gsSPDisplayList(Switchblock_MOP_Cube_mesh_layer_1_tri_0),
-	gsSPDisplayList(mat_revert_Switchblock_MOP_f3dlite_material),
+	gsSPDisplayList(mat_Switchblock_Red_MOP_f3dlite_material),
+	gsSPDisplayList(Switchblock_Red_MOP_Cube_mesh_layer_1_tri_0),
+	gsSPDisplayList(mat_revert_Switchblock_Red_MOP_f3dlite_material),
 	gsDPPipeSync(),
 	gsSPSetGeometryMode(G_LIGHTING),
 	gsSPClearGeometryMode(G_TEXTURE_GEN),

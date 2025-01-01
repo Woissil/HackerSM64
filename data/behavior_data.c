@@ -6146,13 +6146,16 @@ CALL_NATIVE(bhv_Switchblock_loop),
 END_LOOP(),
 };
 
+extern void bhv_Switchblock_Switch_init();
 extern void bhv_Switchblock_Switch_loop();
 const BehaviorScript bhvSwitchblock_Switch_MOP[] = {
 BEGIN(OBJ_LIST_SURFACE),
 OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+CALL_NATIVE(bhv_Switchblock_Switch_init),
 LOAD_COLLISION_DATA(Switchblock_Switch_MOP_collision),
 BEGIN_LOOP(),
 CALL_NATIVE(bhv_Switchblock_Switch_loop),
+CALL_NATIVE(load_object_collision_model),
 END_LOOP(),
 };
 
@@ -6181,4 +6184,15 @@ const BehaviorScript bhvBouncingLeaf[] = {
             CALL_NATIVE(bhv_bouncing_leaf),
             CALL_NATIVE(load_object_collision_model),
         END_LOOP(),
+};
+
+extern void bhv_Spring_loop();
+const BehaviorScript bhvSpring_MOP[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    SET_HITBOX(160, 160),
+    SET_INTERACT_TYPE(INTERACT_COIN),
+    SET_INT(oIntangibleTimer, 0),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_Spring_loop),
+    END_LOOP(),
 };

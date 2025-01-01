@@ -1,4 +1,4 @@
-const Collision Switchblock_MOP_collision[] = {
+const Collision Switchblock_Red_MOP_collision[] = {
 	COL_INIT(),
 	COL_VERTEX_INIT(20),
 	COL_VERTEX(193, -193, 224),

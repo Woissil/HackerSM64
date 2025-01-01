@@ -584,5 +584,9 @@
 #define MODEL_SWITCHBLOCK_MOP                   0xEA        // Switchblock_MOP_geo
 #define MODEL_SWITCHBLOCK_BORDER_MOP            0xEB        // Switchblock_Border_MOP_geo
 #define MODEL_NOTEBLOCK                         0xEC        // noteblock_geo
+#define MODEL_SWITCHBLOCK_SWITCH_RED_MOP        0xED        // Switchblock_Switch_Red_MOP_geo
+#define MODEL_SWITCHBLOCK_RED_MOP               0xEE        // Switchblock_Red_MOP_geo
+#define MODEL_SWITCHBLOCK_BORDER_RED_MOP        0xEF        // Switchblock_Border_Red_MOP_geo
+#define MODEL_SPRING_MOP                        0xF0        // Switchblock_Border_Red_MOP_geo
 
 #endif // MODEL_IDS_H
