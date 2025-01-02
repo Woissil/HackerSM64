@@ -334,4 +334,6 @@ extern const Collision wooden_signpost_seg3_collision_0302DD80[];
 
 #include "Spring_MOP/geo_header.h"
 
+#include "Shrinking_Platform_Border_MOP/geo_header.h"
+
 #endif

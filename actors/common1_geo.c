@@ -38,3 +38,4 @@
 #include "Switchblock_Switch_Red_MOP/geo.inc.c"
 #include "Switchblock_Border_Red_MOP/geo.inc.c"
 #include "Spring_MOP/geo.inc.c"
+#include "Shrinking_Platform_Border_MOP/geo.inc.c"

@@ -108,3 +108,4 @@ UNUSED static const u64 binid_22 = 22;
 #include "Switchblock_Border_Red_MOP/collision.inc.c"
 #include "Switchblock_Border_Red_MOP/model.inc.c"
 #include "Spring_MOP/model.inc.c"
+#include "Shrinking_Platform_Border_MOP/model.inc.c"

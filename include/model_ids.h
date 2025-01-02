@@ -573,9 +573,9 @@
 #define MODEL_CASTLE_GROUNDS_WARP_PIPE            MODEL_LEVEL_GEOMETRY_16   // warp_pipe_geo
 
 //C2 objects
-#define MODEL_SPIN_FLOWER                 0xE4        // spin_flower_geo
-#define MODEL_VINE                        0xE5        // vine_geo
-#define MODEL_BOUNCING_LEAF               0xE6        // bouncing_leaf_geo
+#define MODEL_SPIN_FLOWER                       0xE4        // spin_flower_geo
+#define MODEL_VINE                              0xE5        // vine_geo
+#define MODEL_BOUNCING_LEAF                     0xE6        // bouncing_leaf_geo
 
 //MOPs
 #define MODEL_FLIPSWAP_PLATFORM_BORDER_MOP      0xE7        // Flipswap_Platform_Border_MOP_geo
@@ -588,5 +588,7 @@
 #define MODEL_SWITCHBLOCK_RED_MOP               0xEE        // Switchblock_Red_MOP_geo
 #define MODEL_SWITCHBLOCK_BORDER_RED_MOP        0xEF        // Switchblock_Border_Red_MOP_geo
 #define MODEL_SPRING_MOP                        0xF0        // Switchblock_Border_Red_MOP_geo
+#define MODEL_SHRINKING_PLATFORM_MOP            0xF1        // Shrinking_Platform_MOP_geo
+#define MODEL_SHRINKING_PLATFORM_BORDER_MOP     0xF2        // Shrinking_Platform_Border_MOP_geo
 
 #endif // MODEL_IDS_H

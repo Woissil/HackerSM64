@@ -347,4 +347,8 @@ extern const Gfx white_particle_small_unused_dl[];
 
 #include "bouncing_leaf/geo_header.h"
 
+#include "Shrinking_Platform_MOP/collision_header.h"
+
+#include "Shrinking_Platform_MOP/geo_header.h"
+
 #endif

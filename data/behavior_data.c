@@ -6196,3 +6196,15 @@ const BehaviorScript bhvSpring_MOP[] = {
         CALL_NATIVE(bhv_Spring_loop),
     END_LOOP(),
 };
+
+extern void bhv_shrinkingplatform_loop();
+const BehaviorScript bhvShrinking_Platform_MOP[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    LOAD_COLLISION_DATA(Shrinking_Platform_MOP_collision),
+    SPAWN_CHILD(MODEL_SHRINKING_PLATFORM_BORDER_MOP, bhvUnusedParticleSpawn),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_shrinkingplatform_loop),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};

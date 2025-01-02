@@ -780,3 +780,4 @@ UNUSED s32 debug_sequence_tracker(s16 debugInputSequence[]) {
 #include "behaviors/FlipSwap.inc.c"
 #include "behaviors/NoteBlock.inc.c"
 #include "behaviors/Spring.inc.c"
+#include "behaviors/Shriking_Platform.inc.c"

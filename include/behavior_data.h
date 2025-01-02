@@ -548,5 +548,6 @@ extern const BehaviorScript bhvSwitchblock_Switch_MOP[];
 extern const BehaviorScript bhvFlipswap_Platform_MOP[];
 extern const BehaviorScript bhvNoteBlock[];
 extern const BehaviorScript bhvSpring_MOP[];
+extern const BehaviorScript bhvShrinking_Platform_MOP[];
 
 #endif // BEHAVIOR_DATA_H

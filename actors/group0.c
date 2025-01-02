@@ -37,3 +37,5 @@
 #include "spin_flower/model.inc.c"
 #include "bouncing_leaf/collision.inc.c"
 #include "bouncing_leaf/model.inc.c"
+#include "Shrinking_Platform_MOP/collision.inc.c"
+#include "Shrinking_Platform_MOP/model.inc.c"

@@ -1,0 +1,7 @@
+extern const GeoLayout Shrinking_Platform_Border_MOP_geo[];
+extern Vtx Shrinking_Platform_Border_MOP_Plane_mesh_layer_1_vtx_cull[8];
+extern Vtx Shrinking_Platform_Border_MOP_Plane_mesh_layer_1_vtx_0[64];
+extern Gfx Shrinking_Platform_Border_MOP_Plane_mesh_layer_1_tri_0[];
+extern Gfx mat_Shrinking_Platform_Border_MOP_f3dlite_material[];
+extern Gfx mat_revert_Shrinking_Platform_Border_MOP_f3dlite_material[];
+extern Gfx Shrinking_Platform_Border_MOP_Plane_mesh_layer_1[];

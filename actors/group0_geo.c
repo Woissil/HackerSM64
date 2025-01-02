@@ -20,3 +20,4 @@
 #include "vine/geo.inc.c"
 #include "spin_flower/geo.inc.c"
 #include "bouncing_leaf/geo.inc.c"
+#include "Shrinking_Platform_MOP/geo.inc.c"
