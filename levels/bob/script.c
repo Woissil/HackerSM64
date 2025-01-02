@@ -11,10 +11,7 @@
 
 #include "levels/scripts.h"
 
-
-/* Fast64 begin persistent block [includes] */
-/* Fast64 end persistent block [includes] */
-
+#include "actors/common1.h"
 #include "make_const_nonconst.h"
 #include "levels/bob/header.h"
 
@@ -23,19 +20,33 @@
 
 const LevelScript level_bob_entry[] = {
 	INIT_LEVEL(),
-	LOAD_MIO0(0x7, _bob_segment_7SegmentRomStart, _bob_segment_7SegmentRomEnd), 
-	LOAD_MIO0(0xa, _water_skybox_mio0SegmentRomStart, _water_skybox_mio0SegmentRomEnd), 
+	LOAD_YAY0(0x07, _bob_segment_7SegmentRomStart, _bob_segment_7SegmentRomEnd), 
+	LOAD_YAY0_TEXTURE(0x09, _generic_yay0SegmentRomStart, _generic_yay0SegmentRomEnd), 
+	LOAD_YAY0(0x0A, _water_skybox_yay0SegmentRomStart, _water_skybox_yay0SegmentRomEnd), 
+	LOAD_YAY0(0x05, _group3_yay0SegmentRomStart, _group3_yay0SegmentRomEnd), 
+	LOAD_RAW(0x0C, _group3_geoSegmentRomStart, _group3_geoSegmentRomEnd), 
+	LOAD_YAY0(0x06, _group14_yay0SegmentRomStart, _group14_yay0SegmentRomEnd), 
+	LOAD_RAW(0x0D, _group14_geoSegmentRomStart, _group14_geoSegmentRomEnd), 
+	LOAD_YAY0(0x08, _common0_yay0SegmentRomStart, _common0_yay0SegmentRomEnd), 
+	LOAD_RAW(0x0F, _common0_geoSegmentRomStart, _common0_geoSegmentRomEnd), 
 	ALLOC_LEVEL_POOL(),
-	MARIO(MODEL_MARIO, 0x00000001, bhvMario),
-
+	MARIO(MODEL_MARIO, 0x00000001, bhvMario), 
+	JUMP_LINK(script_func_global_1), 
+	JUMP_LINK(script_func_global_4), 
+	JUMP_LINK(script_func_global_15), 
+	LOAD_MODEL_FROM_GEO(MODEL_BOB_BUBBLY_TREE, bubbly_tree_geo), 
+	LOAD_MODEL_FROM_GEO(MODEL_BOB_CHAIN_CHOMP_GATE, bob_geo_000440), 
+	LOAD_MODEL_FROM_GEO(MODEL_BOB_SEESAW_PLATFORM, bob_geo_000458), 
+	LOAD_MODEL_FROM_GEO(MODEL_BOB_BARS_GRILLS, bob_geo_000470), 
 	/* Fast64 begin persistent block [level commands] */
 	/* Fast64 end persistent block [level commands] */
 
 	AREA(1, bob_area_1),
 		WARP_NODE(241, LEVEL_CASTLE_GROUNDS,  1,  2, WARP_NO_CHECKPOINT),
 		WARP_NODE(240, LEVEL_CASTLE_GROUNDS,  1,  1, WARP_NO_CHECKPOINT),
-		WARP_NODE(0, LEVEL_BOB,  2,  10, WARP_NO_CHECKPOINT),
+		WARP_NODE(0, LEVEL_BOB, 2, 10, WARP_NO_CHECKPOINT),
 		WARP_NODE(10, LEVEL_BOB,  1,  0, WARP_NO_CHECKPOINT),
+		WARP_NODE(2, LEVEL_BOB, 0x02, 3, WARP_NO_CHECKPOINT),
 		OBJECT(84, -4177, 1380, -6218, 0, 0, 0,  0x0, bhvBulletBill),
 		OBJECT(84, -7531, 2215, -6481, 0, 0, 0,  0x0, bhvBulletBill),
 		OBJECT(84, -4915, 2205, -3798, 0, -180, 0,  0x0, bhvBulletBill),
@@ -50,7 +61,7 @@ const LevelScript level_bob_entry[] = {
 		OBJECT(0, 5479, 1885, -2198, 0, 90, 0,  0x40000, bhvCoinFormation),
 		OBJECT(0, -725, 250, -2416, 0, 0, 0,  0x0, bhvCoinFormation),
 		OBJECT(137, 1173, 3690, 2137, 0, 0, 0,  0x60000, bhvExclamationBox),
-		OBJECT(MODEL_FLIPSWAP_PLATFORM_MOP, 5255, 1860, 833, 0, 0, 0,  0x0, bhvFlipswap_Platform_MOP),
+		OBJECT(47, 5255, 1860, 833, 0, 0, 0,  0x0, bhvFlipswap_Platform_MOP),
 		OBJECT(220, -4709, 2445, -5003, 0, 0, 0,  0x0, bhvFlyGuy),
 		OBJECT(0, 1256, -1495, -4265, 0, 0, 0,  0x0, bhvGoombaTripletSpawner),
 		OBJECT(0, 4749, -1495, -4626, 0, 0, 0,  0x0, bhvGoombaTripletSpawner),
@@ -79,51 +90,49 @@ const LevelScript level_bob_entry[] = {
 		OBJECT(215, 4873, -749, -2365, 0, 0, 0,  0x0, bhvRedCoin),
 		OBJECT(215, 775, 3289, 3515, 0, 0, 0,  0x0, bhvRedCoin),
 		OBJECT(215, 1465, 1339, 191, 0, 0, 0,  0x0, bhvRedCoin),
-		OBJECT(MODEL_FLIPSWAP_PLATFORM_MOP, 5119, 5072, 3418, 0, 0, 0,  0x0, bhvFlipswap_Platform_MOP),
-		OBJECT(MODEL_FLIPSWAP_PLATFORM_MOP, -6209, 2085, -5163, 0, 0, 0,  0x0, bhvFlipswap_Platform_MOP),
+		OBJECT(152, 5119, 5072, 3418, 0, 0, 0,  0x0, bhvShrinking_Platform_MOP),
+		OBJECT(152, -6209, 2085, -5163, 0, 0, 0,  0x0, bhvShrinking_Platform_MOP),
 		OBJECT(0, 349, 969, -96, 0, 90, 0,  0xa0000, bhvSpinAirborneWarp),
 		OBJECT(122, 12142, 3512, 216, 0, -90, 0,  0x0, bhvStar),
 		OBJECT(122, 7305, 7830, -1817, 0, -90, 0,  0x1000000, bhvStar),
 		OBJECT(122, -8230, 4219, -5239, 0, -90, 0,  0x2000000, bhvStar),
-		OBJECT(0, 4497, -1495, -2757, 0, 0, 0,  0x0, bhvWarp),
+		OBJECT(MODEL_NONE, 4474, -1305, -2747, 0, -180, 0, (2 << 16), bhvWarp),
 		TERRAIN(bob_area_1_collision),
 		MACRO_OBJECTS(bob_area_1_macro_objs),
-		SET_BACKGROUND_MUSIC(0x00, 39),
+		SET_BACKGROUND_MUSIC(0x00, SEQ_SMB_OVERWORLD),
 		TERRAIN_TYPE(TERRAIN_GRASS),
 		/* Fast64 begin persistent block [area commands] */
 		/* Fast64 end persistent block [area commands] */
 	END_AREA(),
-
 	AREA(2, bob_area_2),
 		WARP_NODE(241, LEVEL_CASTLE_GROUNDS,  1,  2, WARP_NO_CHECKPOINT),
 		WARP_NODE(240, LEVEL_CASTLE_GROUNDS,  1,  1, WARP_NO_CHECKPOINT),
 		WARP_NODE(10, LEVEL_BOB,  2,  0, WARP_NO_CHECKPOINT),
-		OBJECT(0, 2758, 1750, -2667, 0, 0, 0,  0x20000, bhvCoinFormation),
-		OBJECT(0, -2810, 2390, -2617, 0, 0, 0,  0x110000, bhvCoinFormation),
-		OBJECT(0, 3439, 2750, 2744, 0, 90, 0,  0x0, bhvCoinFormation),
-		OBJECT(137, 4316, 4514, 143, 0, 0, 0,  0x20000, bhvExclamationBox),
-		OBJECT(137, -2817, 3360, -3245, 0, 0, 0,  0x50000, bhvExclamationBox),
-		OBJECT(207, -2841, 3500, -1964, 0, 0, 0,  0x0, bhvFloorSwitchHiddenObjects),
-		OBJECT(220, -4077, 3810, -528, 0, 0, 0,  0x0, bhvFlyGuy),
-		OBJECT(192, -4110, 3500, 1597, 0, 0, 0,  0x0, bhvGoomba),
-		OBJECT(192, -4492, 3500, 1112, 0, 0, 0,  0x0, bhvGoomba),
-		OBJECT(192, -3295, 3000, -2934, 0, 0, 0,  0x0, bhvGoomba),
-		OBJECT(0, 2758, 1750, -2667, 0, 0, 0,  0x0, bhvGoombaTripletSpawner),
-		OBJECT(129, -3402, 3350, -1014, 0, 0, 0,  0x0, bhvHiddenObject),
-		OBJECT(129, -3671, 3350, -347, 0, 0, 0,  0x0, bhvHiddenObject),
-		OBJECT(129, -3967, 3350, 354, 0, 0, 0,  0x0, bhvHiddenObject),
-		OBJECT(104, -2413, 2000, -2583, 0, 0, 0,  0x0, bhvKoopa),
-		OBJECT(0, 3431, 5150, 1893, 0, -167, 0,  0xa0000, bhvSpinAirborneWarp),
-		OBJECT(122, -557, 3034, 1443, 0, 0, 0,  0x4000000, bhvStar),
-		OBJECT(122, 4540, 2080, 2759, 0, 0, 0,  0x5000000, bhvStar),
+		OBJECT(0, 1965, -6322, -2458, 0, 0, 0,  0x20000, bhvCoinFormation),
+		OBJECT(0, -2894, -5690, -2583, 0, 0, 0,  0x110000, bhvCoinFormation),
+		OBJECT(0, 3439, -5330, 2744, 0, 90, 0,  0x0, bhvCoinFormation),
+		OBJECT(137, 3279, -3830, -191, 0, 0, 0,  0x20000, bhvExclamationBox),
+		OBJECT(137, -2817, -4720, -3125, 0, 0, 0,  0x50000, bhvExclamationBox),
+		OBJECT(207, -2841, -4937, -1484, 0, 0, 0,  0x0, bhvFloorSwitchHiddenObjects),
+		OBJECT(220, -4077, -4341, -528, 0, 0, 0,  0x0, bhvFlyGuy),
+		OBJECT(192, -4110, -4824, 753, 0, 0, 0,  0x0, bhvGoomba),
+		OBJECT(192, -4297, -4824, 1112, 0, 0, 0,  0x0, bhvGoomba),
+		OBJECT(192, -3295, -5252, -2934, 0, 0, 0,  0x0, bhvGoomba),
+		OBJECT(0, 1965, -6322, -2460, 0, 0, 0,  0x0, bhvGoombaTripletSpawner),
+		OBJECT(129, -3402, -4824, -2090, 0, 0, 0,  0x0, bhvHiddenObject),
+		OBJECT(129, -3671, -4937, -774, 0, 0, 0,  0x0, bhvHiddenObject),
+		OBJECT(129, -3967, -4937, 105, 0, 0, 0,  0x0, bhvHiddenObject),
+		OBJECT(104, -2413, -6110, -2583, 0, 0, 0,  0x0, bhvKoopa),
+		OBJECT(0, 1626, -4304, 2088, 0, -167, 0, (3 << 16), bhvWarp),
+		OBJECT(122, -874, -5292, 885, 0, 0, 0,  0x4000000, bhvStar),
+		OBJECT(122, 2851, -6000, 2054, 0, 0, 0,  0x5000000, bhvStar),
 		TERRAIN(bob_area_2_collision),
 		MACRO_OBJECTS(bob_area_2_macro_objs),
-		SET_BACKGROUND_MUSIC(0x00, 38),
+		SET_BACKGROUND_MUSIC(0x00, SEQ_SMB_UNDERGROUND),
 		TERRAIN_TYPE(TERRAIN_GRASS),
 		/* Fast64 begin persistent block [area commands] */
 		/* Fast64 end persistent block [area commands] */
 	END_AREA(),
-
 	FREE_LEVEL_POOL(),
 	MARIO_POS(1, 0, 0, 0, 0),
 	CALL(0, lvl_init_or_update),
