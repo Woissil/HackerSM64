@@ -576,6 +576,7 @@
 #define MODEL_SPIN_FLOWER                       0xE4        // spin_flower_geo
 #define MODEL_VINE                              0xE5        // vine_geo
 #define MODEL_BOUNCING_LEAF                     0xE6        // bouncing_leaf_geo
+#define MODEL_WARP_PIPE                         0xF3        // warp_pipe_geo
 
 //MOPs
 #define MODEL_FLIPSWAP_PLATFORM_BORDER_MOP      0xE7        // Flipswap_Platform_Border_MOP_geo
