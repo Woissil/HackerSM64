@@ -336,4 +336,18 @@ extern const Collision wooden_signpost_seg3_collision_0302DD80[];
 
 #include "Shrinking_Platform_Border_MOP/geo_header.h"
 
+#include "SandBlock_MOP/collision_header.h"
+
+#include "SandBlock_MOP/geo_header.h"
+
+#include "upndown/collision_header.h"
+
+#include "upndown/geo_header.h"
+
+#include "conveyor/collision_header.h"
+
+#include "bitdw_in_out_platform/collision_header.h"
+
+#include "bitdw_in_out_platform/geo_header.h"
+
 #endif

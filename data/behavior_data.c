@@ -5434,6 +5434,7 @@ const BehaviorScript bhvTTCTreadmill[] = {
     BEGIN(OBJ_LIST_SURFACE),
     OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_NO_AUTO_DISPLACEMENT)),
     SET_FLOAT(oCollisionDistance, 750),
+    LOAD_COLLISION_DATA(conveyor_collision),
     CALL_NATIVE(bhv_ttc_treadmill_init),
     DELAY(1),
     BEGIN_LOOP(),
@@ -6093,22 +6094,24 @@ const BehaviorScript bhvSpinFlower[] = {
 const BehaviorScript bhvConveyor[] = {
     BEGIN(OBJ_LIST_SURFACE),
     OR_INT(oFlags, (OBJ_FLAG_MOVE_XZ_USING_FVEL | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
-    // LOAD_COLLISION_DATA(conveyor_collision),
+    LOAD_COLLISION_DATA(conveyor_collision),
     SET_HOME(),
-    CALL_NATIVE(bhv_conveyor_init),
+    CALL_NATIVE(bhv_ttc_treadmill_init),
     BEGIN_LOOP(),
-        CALL_NATIVE(bhv_conveyor_loop),
+        CALL_NATIVE(bhv_ttc_treadmill_update),
+        CALL_NATIVE(cur_obj_compute_vel_xz),
         CALL_NATIVE(load_object_collision_model),
     END_LOOP(),
 };
 
 const BehaviorScript bhvUpDownObject[] = {
-    BEGIN(OBJ_LIST_DEFAULT),
+    BEGIN(OBJ_LIST_SURFACE),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
-    // LOAD_COLLISION_DATA(upndown_collision),
+    LOAD_COLLISION_DATA(upndown_collision),
     CALL_NATIVE(bhv_up_down_object_init),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_up_down_object_loop),
+        CALL_NATIVE(load_object_collision_model),
     END_LOOP(),
 };
 
@@ -6205,6 +6208,27 @@ const BehaviorScript bhvShrinking_Platform_MOP[] = {
     SPAWN_CHILD(MODEL_SHRINKING_PLATFORM_BORDER_MOP, bhvUnusedParticleSpawn),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_shrinkingplatform_loop),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
+extern void bhv_sandblock_loop();
+const BehaviorScript bhvSandblock_MOP[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    LOAD_COLLISION_DATA(SandBlock_MOP_collision),
+        BEGIN_LOOP(),
+        CALL_NATIVE(bhv_sandblock_loop),
+    END_LOOP(),
+};
+
+const BehaviorScript bhvInOutPlatform[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    LOAD_COLLISION_DATA(bitdw_in_out_platform_collision),
+    CALL_NATIVE(bhv_up_down_object_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_up_down_object_loop),
         CALL_NATIVE(load_object_collision_model),
     END_LOOP(),
 };

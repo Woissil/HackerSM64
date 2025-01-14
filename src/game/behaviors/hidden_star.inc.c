@@ -30,6 +30,14 @@ void bhv_hidden_star_loop(void) {
 }
 
 void bhv_hidden_star_trigger_loop(void) {
+    if (o->oBehParams2ndByte == 1) {
+        struct Object *particle = spawn_object(o, MODEL_SPARKLES, bhvSparkleParticleSpawner);
+        if (particle != NULL) {
+            particle->oPosX = o->oPosX;
+            particle->oPosY = o->oPosY;
+            particle->oPosZ = o->oPosZ;
+        }
+    }
     if (obj_check_if_collided_with_object(o, gMarioObject)) {
         struct Object *hiddenStar = cur_obj_nearest_object_with_behavior(bhvHiddenStar);
 

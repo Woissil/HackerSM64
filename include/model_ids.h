@@ -591,5 +591,10 @@
 #define MODEL_SPRING_MOP                        0xF0        // Switchblock_Border_Red_MOP_geo
 #define MODEL_SHRINKING_PLATFORM_MOP            0xF1        // Shrinking_Platform_MOP_geo
 #define MODEL_SHRINKING_PLATFORM_BORDER_MOP     0xF2        // Shrinking_Platform_Border_MOP_geo
+#define MODEL_SANDBLOCK_MOP                     0xF4        // SandBlock_MOP_geo
+
+//bitdw
+#define MODEL_UPNDOWN                           0xF5        // upndown_geo
+#define MODEL_BITDW_IN_OUT_PLATFORM             0xF6        // bitdw_in_out_platform_geo
 
 #endif // MODEL_IDS_H

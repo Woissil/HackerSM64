@@ -1,6 +1,6 @@
 void scroll_castle_grounds_dl_cg_mesh_layer_1_vtx_12() {
 	int i = 0;
-	int count = 48;
+	int count = 41;
 	int height = 32 * 0x20;
 
 	static int currentY = 0;

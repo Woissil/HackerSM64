@@ -50,6 +50,8 @@ enum SeqId {
     SEQ_GLORIOUS_SUMMER_WATERFALL,
     SEQ_CG,
     SEQ_CI,
+    SEQ_PMTTYD_MACHO_GRUBBA,
+    SEQ_WC,
     SEQ_COUNT
 };
 
