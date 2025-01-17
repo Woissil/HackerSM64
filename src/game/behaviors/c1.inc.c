@@ -46,6 +46,9 @@ void bhv_up_down_object_init(void) {
     o->oAction = 0;
     o->oVelY = 10.0f;
     o->oVelZ = 10.0f;
+    if (GET_BPARAM4(o->oBehParams) == 1) {
+        o->oAction = 1;
+    }
 }
 
 void bhv_up_down_object_loop(void) {
@@ -93,6 +96,35 @@ void bhv_up_down_object_loop(void) {
                 o->oAction++;
             }
             o->oPosY += o->oBehParams2ndByte;
+            break;
+
+            case 2:
+            if (o->oTimer > 15) {
+                o->oAction = 0;
+            }
+            break;
+
+            case 3:
+            if (o->oTimer > 15) {
+                o->oAction = 1;
+            }
+            break;
+        }
+    } else if (GET_BPARAM3(o->oBehParams) == 3) {
+
+        switch (o->oAction) {
+            case 0:
+            if (o->oTimer > (o->oBehParams >> 24)) {
+                o->oAction = 3;
+            }
+            o->oPosX -= o->oBehParams2ndByte;
+            break;
+        
+            case 1:
+            if (o->oTimer > (o->oBehParams >> 24)) {
+                o->oAction++;
+            }
+            o->oPosX += o->oBehParams2ndByte;
             break;
 
             case 2:

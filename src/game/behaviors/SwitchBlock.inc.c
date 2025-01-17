@@ -4,7 +4,7 @@ static int SwitchBlockState = 1; // if 1, blue is acvtivated, if 0 it's red
 
 void bhv_Switchblock_Switch_init(void) {
 	if (o->oBehParams2ndByte == 1) {
-		o->oAction = 1;
+		o->header.gfx.scale[1] = 0.05;
 	}
 }
 
@@ -27,13 +27,24 @@ void bhv_Switchblock_Switch_loop(void){
 	if (o->oAction == 1) {
 		o->header.gfx.scale[1] -= 0.3;
 		if (o->header.gfx.scale[1] <= 0.1) {
-			o->oAction = 0;
+			// bowser battle 1
+			if (GET_BPARAM3(o->oBehParams) == 1) {
+				obj_mark_for_deletion(o);
+			} else {
+				o->oAction = 0;
+			}
 		}
 	}
 }
 
 
-void bhv_Switchblock_loop(void){
+void bhv_Switchblock_loop(void) {
+	//for bowser battle 1
+	if (GET_BPARAM3(o->oBehParams) == 1) {
+		o->header.gfx.scale[0] = 3.6;
+		o->header.gfx.scale[2] = 3.6;
+		o->header.gfx.scale[1] = 0.15;
+	}
 	if (o->oBehParams2ndByte == SwitchBlockState) {
 		if (o->oBehParams2ndByte == 1) {
 			load_object_collision_model();

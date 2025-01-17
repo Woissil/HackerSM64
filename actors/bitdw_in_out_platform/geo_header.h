@@ -1,9 +1,9 @@
 extern const GeoLayout bitdw_in_out_platform_geo[];
 extern u8 bitdw_in_out_platform_custom_DL_07002110_0x70015b8_custom_rgba16_ci8[];
 extern u8 bitdw_in_out_platform_custom_DL_07002110_0x70015b8_custom_rgba16_pal_rgba16[];
-extern Vtx bitdw_in_out_platform_Cube_mesh_layer_1_vtx_cull[8];
-extern Vtx bitdw_in_out_platform_Cube_mesh_layer_1_vtx_0[24];
-extern Gfx bitdw_in_out_platform_Cube_mesh_layer_1_tri_0[];
+extern Vtx bitdw_in_out_platform_Cube_001_mesh_layer_1_vtx_cull[8];
+extern Vtx bitdw_in_out_platform_Cube_001_mesh_layer_1_vtx_0[24];
+extern Gfx bitdw_in_out_platform_Cube_001_mesh_layer_1_tri_0[];
 extern Gfx mat_bitdw_in_out_platform_f3dlite_material[];
 extern Gfx mat_revert_bitdw_in_out_platform_f3dlite_material[];
-extern Gfx bitdw_in_out_platform_Cube_mesh_layer_1[];
+extern Gfx bitdw_in_out_platform_Cube_001_mesh_layer_1[];
