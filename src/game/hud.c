@@ -435,6 +435,10 @@ void render_hud_coins(void) {
  * Disables "X" glyph when Mario has 100 stars or more.
  */
 void render_hud_stars(void) {
+    // if (gCurrLevelNum == LEVEL_CASTLE_GROUNDS) {
+    //     print_text_centered(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, "You're currently playing a DEMO of Super Joan bros 64 Redone 2.0. Full hack will come out the 23/01/2025 !");
+    // }
+
     if (gHudFlash == HUD_FLASH_STARS && gGlobalTimer & 0x8) return;
     s8 showX = (gHudDisplay.stars < 100);
     print_text(GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(HUD_STARS_X), HUD_TOP_Y, "^"); // 'Star' glyph

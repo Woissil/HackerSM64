@@ -913,6 +913,14 @@ s32 act_ground_pound(struct MarioState *m) {
 
     play_sound_if_no_flag(m, SOUND_ACTION_THROW, MARIO_ACTION_SOUND_PLAYED);
 
+    if (m->input & INPUT_B_PRESSED) {
+        set_mario_action(m, ACT_DIVE, 0);
+            m->vel[1] = 30.0f;
+            m->forwardVel = 40.0f;
+            m->faceAngle[1] = m->intendedYaw;
+        return FALSE;
+    }
+
     if (m->actionState == 0) {
         if (m->actionTimer < 10) {
             yOffset = 20 - 2 * m->actionTimer;
