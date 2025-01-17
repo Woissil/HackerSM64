@@ -12,17 +12,17 @@ void bhv_falling_object_loop(void) {
             if (o->oTimer > 30) {
                 o->oAction = 1;
             }
-            if (o->oPosY > o->oHomeY - 100.0f) {
-                o->oPosY -= 5.0f;
+            if (o->oPosY > o->oHomeY - 200.0f) {
+                o->oPosY -= 8.0f;
             }
             break;
 
         case 1:
-            if (o->oTimer > 60) {
+            if (o->oTimer > 30) {
                 o->oAction = 0;
             }
-            if (o->oPosY < o->oHomeY + 100.0f) {
-                o->oPosY += 10.0f;
+            if (o->oPosY < o->oHomeY + 200.0f) {
+                o->oPosY += 8.0f;
             }
             break;
     }
