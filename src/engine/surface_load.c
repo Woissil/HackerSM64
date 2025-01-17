@@ -706,7 +706,7 @@ void load_object_collision_model(void) {
     // Update if no Time Stop, in range, and in the current room.
     if (
         !(gTimeStopState & TIME_STOP_ACTIVE)
-        && inColRadius
+        && (inColRadius || (obj_has_behavior(o, bhvSwitchblock_MOP) && gCurrLevelNum == LEVEL_BOWSER_1))
         && !(o->activeFlags & ACTIVE_FLAG_IN_DIFFERENT_ROOM)
     ) {
         collisionData++;

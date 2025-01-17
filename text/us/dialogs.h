@@ -13,24 +13,12 @@
 #endif
 
 DEFINE_DIALOG(DIALOG_000, 1, 6, 30, 200, _("\
-Wow! You're smack in the\n\
-middle of the battlefield.\n\
-You'll find the Power\n\
-Stars that Bowser stole\n\
-inside the painting\n\
-worlds.\n\
-First, talk to the\n\
-Bob-omb Buddy. (Press [B]\n\
-to talk.) He'll certainly\n\
-help you out, and so will\n\
-his " COMRADES " in other\n\
-areas.\n\
-To read signs, stop, face\n\
-them and press [B]. Press [A]\n\
-or [B] to scroll ahead. You\n\
-can talk to some other\n\
-characters by facing them\n\
-and pressing [B]."))
+Hey you, see those stars\n\
+in front of you ? They\n\
+can help you reaching\n\
+the end of the level, try\n\
+to longjump inside them\n\
+and see what happen."))
 
 DEFINE_DIALOG(DIALOG_001, 1, 4, 95, 200, _("\
 Watch out! If you wander\n\
@@ -134,18 +122,22 @@ Here you go--you've won\n\
 it, fair and square!"))
 
 DEFINE_DIALOG(DIALOG_008, 1, 4, 30, 200, _("\
-BEWARE OF CHAIN CHOMP\n\
-Extreme Danger!\n\
-Get close and press [C]^\n\
-for a better look.\n\
-Scary, huh?\n\
-See the Red Coin on top\n\
-of the stake?\n\
+Joan, come get this star\n\
+and enter the UFO, we're\n\
+getting closer to the\n\
+Galactic Adventure\n\
+Chiara promissed us.\n\
+you can play Joan bros\n\
+2 and 3 to continue\n\
+travelling in this\n\
+wonderfull world before\n\
+going to the galaxy,\n\
+I'll be waiting for you.\n\
 \n\
-When you collect eight of\n\
-them, a Power Star will\n\
-appear in the meadow\n\
-across the bridge."))
+Thank you for Playing\n\
+Hack made by\n\
+ChiaraSM64, Quella,\n\
+Nintenerd and Woissil."))
 
 DEFINE_DIALOG(DIALOG_009, 1, 5, 30, 200, _("\
 Long time, no see! Wow,\n\
@@ -166,12 +158,11 @@ Ready?\n\
 
 DEFINE_DIALOG(DIALOG_010, 1, 4, 30, 200, _("\
 You've stepped on the\n\
-Wing Cap Switch. Wearing\n\
-the Wing Cap, you can\n\
-soar through the sky.\n\
-Now Wing Caps will pop\n\
-out of all the red blocks\n\
-you find.\n\
+Wing Cap Switch.\n\
+The Wing Cap makes\n\
+you able to fly after a\n\
+triple jump or a canon\n\
+shot, come on, try !\n\
 \n\
 Would you like to Save?\n\
 \n\
@@ -204,9 +195,8 @@ Would you like to Save?\n\
 //Yes////No"))
 
 DEFINE_DIALOG(DIALOG_013, 1, 5, 30, 200, _("\
-You've collected 100\n\
-coins! Mario gains more\n\
-power from the castle.\n\
+You've got 80 coins!\n\
+JOAN is getting stronger.\n\
 Do you want to Save?\n\
 //Yes////No"))
 
@@ -286,8 +276,8 @@ and don't come back!\n\
 Gwa ha ha!"))
 
 DEFINE_DIALOG(DIALOG_022, 1, 2, 95, 200, _("\
-You need a key to open\n\
-this door."))
+You can't open this door\n\
+for the moment..."))
 
 DEFINE_DIALOG(DIALOG_023, 1, 3, 95, 200, _("\
 This key doesn't fit!\n\
@@ -705,28 +695,18 @@ Star instead. You've\n\
 earned it!"))
 
 DEFINE_DIALOG(DIALOG_057, 1, 4, 30, 200, _("\
-Egad! My baby!! Have you\n\
-seen my baby??? She's\n\
-the most precious baby in\n\
-the whole wide world.\n\
-(They say she has my\n\
-beak...) I just can't\n\
-remember where I left\n\
-her.\n\
-Let's see...I stopped\n\
-for herring and ice cubes,\n\
-then I...oohh! I just\n\
-don't know!"))
+Joan !! I lost my baby...\n\
+can you please find him\n\
+for me ? I'll give you a star\n\
+if you can. \n\
+He is probably somewhere\n\
+arround the little\n\
+christmas village."))
 
 DEFINE_DIALOG(DIALOG_058, 1, 4, 30, 200, _("\
-You found my precious,\n\
-precious baby! Where\n\
-have you been? How can\n\
-I ever thank you, Mario?\n\
-Oh, I do have this...\n\
-...Star. Here, take it\n\
-with my eternal\n\
-gratitude."))
+You found him, thank\n\
+you so much, here take\n\
+this star as a reward."))
 
 DEFINE_DIALOG(DIALOG_059, 1, 4, 30, 200, _("\
 That's not my baby! She\n\
@@ -862,15 +842,9 @@ Good luck, Mario! Our\n\
 fate is in your hands."))
 
 DEFINE_DIALOG(DIALOG_067, 1, 5, 30, 200, _("\
-Tough luck, Mario!\n\
-Princess Toadstool isn't\n\
-here...Gwa ha ha!! Go\n\
-ahead--just try to grab\n\
-me by the tail!\n\
-You'll never be able to\n\
-swing ME around! A wimp\n\
-like you won't throw me\n\
-out of here! Never! Ha!"))
+OMG IT'S DARK JOAN\n\
+\n\
+literally JOAN DARK"))
 
 DEFINE_DIALOG(DIALOG_068, 1, 5, 30, 200, _("\
 It's Lethal Lava Land!\n\
@@ -1006,23 +980,18 @@ awful prison!\n\
 Please!"))
 
 DEFINE_DIALOG(DIALOG_076, 1, 6, 30, 200, _("\
-Thanks to the power of\n\
-the Stars, life is\n\
-returning to the castle.\n\
-Please, Mario, you have\n\
-to give Bowser the boot!\n\
-\n\
-Here, let me tell you a\n\
-little something about the\n\
-castle. In the room with\n\
-the mirrors, look carefully\n\
-for anything that's not\n\
-reflected in the mirror.\n\
-And when you go to the\n\
-water town, you can flood\n\
-it with a high jump into\n\
-the painting. Oh, by the\n\
-way, look what I found!"))
+Yo Joan, everyone is\n\
+sleeping in the castle so\n\
+make sure to keep quiet.\n\
+Also did you see that\n\
+superb gameboy ? it's\n\
+a part of history so I've\n\
+put it in this.\n\
+Look at it as much as you\n\
+want. Oh and I also have\n\
+this star if you want, I'm\n\
+sure you need it more\n\
+than me Joan."))
 
 DEFINE_DIALOG(DIALOG_077, 1, 2, 150, 200, _("\
 It is decreed that one\n\
@@ -1065,26 +1034,13 @@ with the depth they bring\n\
 as they enter."))
 
 DEFINE_DIALOG(DIALOG_082, 1, 4, 30, 200, _("\
-Hold on to your hat! If\n\
-you lose it, you'll be\n\
-injured easily.\n\
-\n\
-If you do lose your Cap,\n\
-you'll have to find it in\n\
-the course where you\n\
-lost it.\n\
-Oh, boy, it's not looking\n\
-good for Peach. She's\n\
-still trapped somewhere\n\
-inside the walls.\n\
-Please, Mario, you have\n\
-to help her! Did you know\n\
-that there are enemy\n\
-worlds inside the walls?\n\
-Yup. It's true. Bowser's\n\
-troops are there, too.\n\
-Oh, here, take this. I've\n\
-been keeping it for you."))
+Hi Joan, I was just chilling\n\
+there when a vine grew\n\
+and now I'm stuck on this\n\
+leaf because I'm too scared\n\
+to go back, I also got this\n\
+star while sitting there,\n\
+you can take it if you want."))
 
 DEFINE_DIALOG(DIALOG_083, 1, 6, 30, 200, _("\
 There's something strange\n\
@@ -1707,41 +1663,23 @@ Left: Black Hole\n\
 Arrow: You are here"))
 
 DEFINE_DIALOG(DIALOG_141, 1, 5, 150, 200, _("\
-You've recovered one of\n\
-the stolen Power Stars!\n\
-Now you can open some of\n\
-the sealed doors in the\n\
-castle.\n\
-Try the Princess's room\n\
-on the second floor and\n\
-the room with the\n\
-painting of Whomp's\n\
-Fortress on Floor 1.\n\
-Bowser's troops are still\n\
-gaining power, so you\n\
-can't give up. Save us,\n\
-Mario! Keep searching for\n\
-Stars!"))
+You've got your first star !\n\
+keep looking for more,\n\
+Bowser is getting stronger."))
 
 DEFINE_DIALOG(DIALOG_142, 1, 5, 150, 200, _("\
-You've recovered three\n\
-Power Stars! Now you can\n\
-open any door with a 3\n\
-on its star.\n\
-\n\
-You can come and go from\n\
-the open courses as you\n\
-please. The enemies ahead\n\
-are even meaner, so be\n\
-careful!"))
+You've got 20 Stars !\n\
+You can now enter\n\
+the first bowser course\n\
+good luck Joan !"))
 
 DEFINE_DIALOG(DIALOG_143, 1, 6, 150, 200, _("\
-You've recovered eight of\n\
-the Power Stars! Now you\n\
-can open the door with\n\
-the big Star! But Bowser\n\
-is just ahead...can you\n\
-hear the Princess calling?"))
+You've got all the stars !\n\
+thanks for playing !\n\
+check out ChiaraSM64,\n\
+Woissil, Nintenerd and\n\
+Quella on Romhacking.com\n\
+for more hacks from us."))
 
 DEFINE_DIALOG(DIALOG_144, 1, 6, 150, 200, _("\
 You've recovered 30\n\
@@ -1885,38 +1823,18 @@ bugging me! I think I'll\n\
 blow it away!"))
 
 DEFINE_DIALOG(DIALOG_154, 1, 5, 30, 200, _("\
-Hold on to your hat! If\n\
-you lose it, you'll be\n\
-easily injured. If you\n\
-lose it, look for it in the\n\
-course where you lost it.\n\
-Speaking of lost, the\n\
-Princess is still stuck in\n\
-the walls somewhere.\n\
-Please help, Mario!\n\
-\n\
-Oh, you know that there\n\
-are secret worlds in the\n\
-walls as well as in the\n\
-paintings, right?"))
+Can you help me get back\n\
+to the ground Joan please ?"))
 
 DEFINE_DIALOG(DIALOG_155, 1, 6, 30, 200, _("\
-Thanks to the power of\n\
-the Stars, life is\n\
-returning to the castle.\n\
-Please, Mario, you have\n\
-to give Bowser the boot!\n\
+Hi again, what's up ?\n\
+WHAT ??? YOU WANT\n\
+TO BUY THE GAMEBOY ???\n\
 \n\
-Here, let me tell you a\n\
-little something about the\n\
-castle. In the room with\n\
-the mirrors, look carefully\n\
-for anything that's not\n\
-reflected in the mirror.\n\
-And when you go to the\n\
-water town, you can flood\n\
-it with a high jump into\n\
-the painting."))
+no Joan I'm sorry but I\n\
+can't let you do that, or\n\
+maybe if you save the\n\
+world first..."))
 
 DEFINE_DIALOG(DIALOG_156, 1, 5, 30, 200, _("\
 The world inside the\n\

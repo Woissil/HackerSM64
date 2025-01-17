@@ -52,6 +52,8 @@ enum SeqId {
     SEQ_CI,
     SEQ_PMTTYD_MACHO_GRUBBA,
     SEQ_WC,
+    SEQ_DMG_B1,
+    SEQ_SMB3_SNOW,
     SEQ_COUNT
 };
 

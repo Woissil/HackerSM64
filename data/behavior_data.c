@@ -3987,7 +3987,6 @@ const BehaviorScript bhvBigBully[] = {
     OR_INT(oFlags, (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
     LOAD_ANIMATIONS(oAnimations, bully_seg5_anims_0500470C),
     SET_FLOAT(oDrawingDistance, 20000),
-    SET_FLOAT(oCollisionDistance, 20000),
     DROP_TO_FLOOR(),
     SET_HOME(),
     CALL_NATIVE(bhv_big_bully_init),
@@ -6146,7 +6145,7 @@ END_LOOP(),
 extern void bhv_Switchblock_loop();
 const BehaviorScript bhvSwitchblock_MOP[] = {
 BEGIN(OBJ_LIST_SURFACE),
-OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE ),
+OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_DONT_CALC_COLL_DIST),
 LOAD_COLLISION_DATA(Switchblock_MOP_collision),
 SET_FLOAT(oDrawingDistance, 20000),
 SET_FLOAT(oCollisionDistance, 20000),

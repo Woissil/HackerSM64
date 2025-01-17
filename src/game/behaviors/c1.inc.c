@@ -60,13 +60,13 @@ void bhv_up_down_object_loop(void) {
             break;
 
             case 2:
-            if (o->oTimer > 25) {
+            if (o->oTimer > 35) {
                 o->oAction = 0;
             }
             break;
 
             case 3:
-            if (o->oTimer > 25) {
+            if (o->oTimer > 35) {
                 o->oAction = 1;
             }
             break;
@@ -89,13 +89,13 @@ void bhv_up_down_object_loop(void) {
             break;
 
             case 2:
-            if (o->oTimer > 15) {
+            if (o->oTimer > 35) {
                 o->oAction = 0;
             }
             break;
 
             case 3:
-            if (o->oTimer > 15) {
+            if (o->oTimer > 35) {
                 o->oAction = 1;
             }
             break;
@@ -118,13 +118,13 @@ void bhv_up_down_object_loop(void) {
             break;
 
             case 2:
-            if (o->oTimer > 15) {
+            if (o->oTimer > 35) {
                 o->oAction = 0;
             }
             break;
 
             case 3:
-            if (o->oTimer > 15) {
+            if (o->oTimer > 35) {
                 o->oAction = 1;
             }
             break;
