@@ -24,6 +24,8 @@ UNUSED static const u64 binid_3 = 3;
 #include "bullet_bill/model.inc.c"
 UNUSED static const u64 binid_4 = 4;
 
+#include "bill_bullet/model.inc.c"
+
 #include "heave_ho/model.inc.c"
 #include "heave_ho/anims/data.inc.c"
 #include "heave_ho/anims/table.inc.c"

@@ -10,6 +10,13 @@ extern const Gfx bullet_bill_seg5_dl_0500E678[];
 extern const Gfx bullet_bill_seg5_dl_0500E730[];
 extern const Gfx bullet_bill_seg5_dl_0500E8A8[];
 
+// bill_bullet
+extern const GeoLayout bill_bullet_geo[];
+extern const Gfx bill_bullet_seg5_dl_0500E5E8[];
+extern const Gfx bill_bullet_seg5_dl_0500E678[];
+extern const Gfx bill_bullet_seg5_dl_0500E730[];
+extern const Gfx bill_bullet_seg5_dl_0500E8A8[];
+
 // heave_ho
 extern const GeoLayout heave_ho_geo[];
 extern const Gfx heave_ho_seg5_dl_05011D98[];

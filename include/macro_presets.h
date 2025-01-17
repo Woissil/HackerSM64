@@ -94,7 +94,7 @@ struct MacroPreset MacroObjectPresets[] = {
     {bhvKoopaShellUnderwater,           MODEL_KOOPA_SHELL,                  0}, // macro_koopa_shell_underwater
     {bhvExclamationBox,                 MODEL_EXCLAMATION_BOX,              EXCLAMATION_BOX_BP_1UP_RUNNING_AWAY}, // macro_box_1up_running_away
     {bhvYellowCoin,                     MODEL_YELLOW_COIN,                  0}, // macro_empty_80
-    {bhvBulletBill,                     MODEL_BULLET_BILL,                  0}, // macro_bullet_bill_cannon - unused
+    {bhvBulletBill,                     MODEL_BILL_BULLET,                  0}, // macro_bullet_bill_cannon - unused
     {bhvHeaveHo,                        MODEL_HEAVE_HO,                     0}, // macro_heave_ho
     {bhvYellowCoin,                     MODEL_YELLOW_COIN,                  0}, // macro_empty_83
     {bhvThwomp2,                        MODEL_THWOMP,                       0}, // macro_thwomp - unused (was thwomp2)

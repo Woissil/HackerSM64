@@ -1,0 +1,13 @@
+extern const GeoLayout fallplatone_geo[];
+extern u8 fallplatone__11_ci4[];
+extern u8 fallplatone__11_pal_rgba16[];
+extern Vtx fallplatone_p1plat_mesh_layer_1_vtx_cull[8];
+extern Vtx fallplatone_p1plat_mesh_layer_1_vtx_0[16];
+extern Gfx fallplatone_p1plat_mesh_layer_1_tri_0[];
+extern Vtx fallplatone_p1plat_mesh_layer_1_vtx_1[8];
+extern Gfx fallplatone_p1plat_mesh_layer_1_tri_1[];
+extern Gfx mat_fallplatone_f3dlite_material_002[];
+extern Gfx mat_revert_fallplatone_f3dlite_material_002[];
+extern Gfx mat_fallplatone_f3dlite_material_003[];
+extern Gfx mat_revert_fallplatone_f3dlite_material_003[];
+extern Gfx fallplatone_p1plat_mesh_layer_1[];

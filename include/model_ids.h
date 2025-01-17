@@ -313,6 +313,7 @@
 
 // first set of actor bins (0x54-0x63)
 // group 1
+#define MODEL_BILL_BULLET                 0xE4        // bill_bullet_geo
 #define MODEL_BULLET_BILL                 0x54        // bullet_bill_geo
 #define MODEL_YELLOW_SPHERE               0x55        // yellow_sphere_geo
 #define MODEL_HOOT                        0x56        // hoot_geo
@@ -596,5 +597,10 @@
 //bitdw
 #define MODEL_UPNDOWN                           0xF5        // upndown_geo
 #define MODEL_BITDW_IN_OUT_PLATFORM             0xF6        // bitdw_in_out_platform_geo
+
+// C1 objects
+
+#define MODEL_FALLING_OBJECT                    0xF7        // fallplatone_geo
+#define MODEL_FALLING_OBJECT_2                  0xF7        // fallplattwo_geo
 
 #endif // MODEL_IDS_H

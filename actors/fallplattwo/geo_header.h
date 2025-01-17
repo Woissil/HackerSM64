@@ -1,0 +1,12 @@
+extern const GeoLayout fallplattwo_geo[];
+extern u8 fallplattwo__8_rgba16[];
+extern Vtx fallplattwo_p2plat_mesh_layer_1_vtx_cull[8];
+extern Vtx fallplattwo_p2plat_mesh_layer_1_vtx_0[16];
+extern Gfx fallplattwo_p2plat_mesh_layer_1_tri_0[];
+extern Vtx fallplattwo_p2plat_mesh_layer_1_vtx_1[8];
+extern Gfx fallplattwo_p2plat_mesh_layer_1_tri_1[];
+extern Gfx mat_fallplattwo_f3dlite_material[];
+extern Gfx mat_revert_fallplattwo_f3dlite_material[];
+extern Gfx mat_fallplattwo_f3dlite_material_001[];
+extern Gfx mat_revert_fallplattwo_f3dlite_material_001[];
+extern Gfx fallplattwo_p2plat_mesh_layer_1[];

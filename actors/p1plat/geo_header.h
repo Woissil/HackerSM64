@@ -1,0 +1,13 @@
+extern const GeoLayout p1plat_geo[];
+extern u8 p1plat__11_ci4[];
+extern u8 p1plat__11_pal_rgba16[];
+extern Vtx p1plat_p1plat_mesh_layer_1_vtx_cull[8];
+extern Vtx p1plat_p1plat_mesh_layer_1_vtx_0[16];
+extern Gfx p1plat_p1plat_mesh_layer_1_tri_0[];
+extern Vtx p1plat_p1plat_mesh_layer_1_vtx_1[8];
+extern Gfx p1plat_p1plat_mesh_layer_1_tri_1[];
+extern Gfx mat_p1plat_f3dlite_material_002[];
+extern Gfx mat_revert_p1plat_f3dlite_material_002[];
+extern Gfx mat_p1plat_f3dlite_material_003[];
+extern Gfx mat_revert_p1plat_f3dlite_material_003[];
+extern Gfx p1plat_p1plat_mesh_layer_1[];

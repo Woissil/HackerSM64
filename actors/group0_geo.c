@@ -21,3 +21,6 @@
 #include "spin_flower/geo.inc.c"
 #include "bouncing_leaf/geo.inc.c"
 #include "Shrinking_Platform_MOP/geo.inc.c"
+#include "fallplatone/geo.inc.c"
+#include "fallplattwo/geo.inc.c"
+#include "p1plat/geo.inc.c"

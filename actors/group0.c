@@ -39,3 +39,7 @@
 #include "bouncing_leaf/model.inc.c"
 #include "Shrinking_Platform_MOP/collision.inc.c"
 #include "Shrinking_Platform_MOP/model.inc.c"
+#include "fallplatone/collision.inc.c"
+#include "fallplatone/model.inc.c"
+#include "fallplattwo/model.inc.c"
+#include "p1plat/model.inc.c"

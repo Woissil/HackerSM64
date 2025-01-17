@@ -6118,13 +6118,15 @@ const BehaviorScript bhvUpDownObject[] = {
 };
 
 const BehaviorScript bhvFallingObject[] = {
-    BEGIN(OBJ_LIST_GENACTOR),
+    BEGIN(OBJ_LIST_SURFACE),
     OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
     SET_OBJ_PHYSICS(/*Wall hitbox radius*/ 50, /*Gravity*/ -400, /*Bounciness*/ 0, /*Drag strength*/ 1000, /*Friction*/ 1000, /*Buoyancy*/ 200, /*Unused*/ 0, 0),
     SET_HOME(),
     CALL_NATIVE(bhv_falling_object_init),
+    LOAD_COLLISION_DATA(fallplatone_collision),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_falling_object_loop),
+        CALL_NATIVE(load_object_collision_model),
     END_LOOP(),
 };
 

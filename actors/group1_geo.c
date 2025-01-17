@@ -12,4 +12,5 @@
 #include "yoshi_egg/geo.inc.c"
 #include "thwomp/geo.inc.c"
 #include "bullet_bill/geo.inc.c"
+#include "bill_bullet/geo.inc.c"
 #include "heave_ho/geo.inc.c"

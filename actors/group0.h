@@ -351,4 +351,12 @@ extern const Gfx white_particle_small_unused_dl[];
 
 #include "Shrinking_Platform_MOP/geo_header.h"
 
+#include "fallplatone/collision_header.h"
+
+#include "fallplatone/geo_header.h"
+
+#include "fallplattwo/geo_header.h"
+
+#include "p1plat/geo_header.h"
+
 #endif
