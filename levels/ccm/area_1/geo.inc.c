@@ -10,6 +10,8 @@ const GeoLayout ccm_area_1_geo[] = {
 		GEO_CLOSE_NODE(),
 		GEO_TRANSLATE_ROTATE_WITH_DL(LAYER_TRANSPARENT, 3025, 4329, -2346, 90, 0, 0, ccm_dl_c4_001_mesh_layer_5),
 		GEO_TRANSLATE_ROTATE_WITH_DL(LAYER_OPAQUE, -8123, 0, 0, 90, 0, 0, ccm_dl_c4_002_mesh_layer_1),
+		GEO_TRANSLATE_ROTATE_WITH_DL(LAYER_OPAQUE, -8123, 0, 0, 90, 0, 0, ccm_dl_c4_003_mesh_layer_1),
+		GEO_TRANSLATE_ROTATE_WITH_DL(LAYER_OPAQUE, -8123, 0, 0, 90, 0, 0, ccm_dl_c4_004_mesh_layer_1),
 		GEO_TRANSLATE_NODE_WITH_DL(LAYER_TRANSPARENT, 1156, -5980, 1714, ccm_dl_Plane_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
